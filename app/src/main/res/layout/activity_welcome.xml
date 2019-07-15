@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".WelcomeActivity">
+    tools:context=".WelcomeActivity"
+    android:id="@+id/welcome_activity_layout">
 
     <ImageView
         android:id="@+id/imgPlaylistItemBg"

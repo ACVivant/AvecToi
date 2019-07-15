@@ -5,4 +5,37 @@
     <string name="main_activity_description">"L'appli qui révèle nos super-pouvoirs!"</string>
     <string name="connexion">"C'est parti!"</string>
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
+    <string name="error_no_internet">"Pas de connexion internet"</string>
+    <string name="error_authentication_canceled">"Authentificaiton annulée"</string>
+    
+    <!-- CreateUser -->
+    <string name="create_name">"Name"</string>
+    <string name="create_email">"Email"</string>
+    <string name="create_phone">"0606060606"</string>
+    <string name="create_phone_intro">"Mon numéro de téléphone: "</string>
+    <string name="create_phone_expl">"Il ne sera visible que par la personne aue vous aurez proposé d'aider."</string>
+    <string name="create_SP">"Mes super pouvoirs"</string>
+    <string name="create_householdSP">"Faire le ménage"</string>
+    <string name="create_shoppingSP">"Faire les courses"</string>
+    <string name="create_cookingSP">"Faire des gâteaux, des tartes, des salades&#8230;"</string>
+    <string name="create_driveSP">"Faire des conduites"</string>
+    <string name="create_ironingSP">"Faire du repassage"</string>
+    <string name="create_gardeningSP">"Faire le jardin"</string>
+    <string name="create_diySP">"Faire des petits bricolages (pliage, collage, dessin&#8230;)"</string>
+    <string name="create_worksSP">"Faire des petits travaux (peinture, ponçage, maçonnerie&#8230;)"</string>
+    <string name="create_relocationSP">"Aider à déménager, transporter des cartons&#8230;"</string>
+    <string name="create_readingSP">"Faire la lecture;"</string>
+    <string name="create_companySP">"Tenir compagnie, jouer, discuter&#8230;"</string>
+    <string name="create_babysittingSP">"Garder des enfants"</string>
+    <string name="create_tutoringSP">"Aider à faire ses devoirs&#8230; de façon ponctuelle!"</string>
+    <string name="create_sewingSP">"Faire de la couture"</string>
+
+    <string name="create_disponibilty">"Je suis disponible en ce moment."</string>
+    <string name="create_community">"Mon territoire d'action"</string>
+
+    <string-array name="create_town">
+        <item>"Crépy-en-Valois et environs"</item>
+        <item>"Compiègne"</item>
+    </string-array>
+
 </resources>

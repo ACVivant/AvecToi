@@ -35,9 +35,14 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
+    // FIRESTORE
+    implementation 'com.google.firebase:firebase-firestore:20.1.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
+    implementation 'com.firebaseui:firebase-ui-database:4.0.0'
+
     //BUTTERKNIFE
     //implementation 'com.jakewharton:butterknife:10.1.0'
-   //annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
