@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "269215014336",
+    "firebase_url": "https://avec-toi.firebaseio.com",
+    "project_id": "avec-toi",
+    "storage_bucket": "avec-toi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269215014336:android:a80818c410388aff",
+        "android_client_info": {
+          "package_name": "com.vivant.annecharlotte.avectoi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269215014336-q5cejft5dn2jn64b7cigludlv27vu185.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vivant.annecharlotte.avectoi",
+            "certificate_hash": "2426d3b2ddc0c4b3aff5058720bdf0f1cbf64c17"
+          }
+        },
+        {
+          "client_id": "269215014336-iou6218rouebf5g57unrohr3htbo92rg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFd0HSq9kIwwyYWzrAsmM_Xskhg5rIl2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269215014336-iou6218rouebf5g57unrohr3htbo92rg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/imgPlaylistItemBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:maxHeight="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/heros2vertical" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_activity_linear_layout">
+
+        <!-- TITLE GO4LUNCH -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            android:background="@color/colorPrimaryTransparent"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/default_margin"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/default_welcome_title_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- DESCRIPTION GO4LUNCH -->
+        <TextView
+            android:id="@+id/welcome_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/default_title2_size"
+            android:text="@string/main_activity_description"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimaryTransparent"
+            android:paddingBottom="@dimen/default_margin"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/mainactivity_button_already_user"
+            android:layout_marginHorizontal="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- BUTTON ALREADY CONNECTED -->
+        <Button
+            android:id="@+id/mainactivity_button_already_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/connexion"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/default_title2_size"
+            android:background="@color/colorPrimary"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_margin="@dimen/default_margin"
+            android:padding="@dimen/default_margin"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
