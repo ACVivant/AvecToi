@@ -26,7 +26,7 @@ public class UserHelper {
         }
 
         // --- CREATE ---
-        public static Task<Void> createUser(String uid, String userName, int userPhone,  String userEmail, String urlPicture,
+/*        public static Task<Void> createUser(String uid, String userName, int userPhone,  String userEmail, String urlPicture,
                                             Boolean householdSP, Boolean ironingSP, Boolean shoppingSP, Boolean cookingSP, Boolean driveSP, Boolean gardeningSP, Boolean diySP, Boolean worksSP,
                                             Boolean relocationSP, Boolean readingSP, Boolean companySP, Boolean babysittingSP, Boolean tutoringSP, Boolean sewingSP,
                                             Boolean disponibility) {
@@ -36,7 +36,13 @@ public class UserHelper {
                     disponibility);
             Log.d(TAG, "createUser: ");
             return UserHelper.getUsersCollection().document(uid).set(userToCreate);
-        }
+        }*/
+
+    public static Task<Void> createUser(String uid, String userName,  String userEmail, String urlPicture) {
+        User userToCreate = new User(uid, userName, userEmail, urlPicture);
+        Log.d(TAG, "createUser: ");
+        return UserHelper.getUsersCollection().document(uid).set(userToCreate);
+    }
 
         // --- GET ---
         public static Task<DocumentSnapshot> getUser(String uid){

@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/ic_face"
-            android:paddingHorizontal="@dimen/default_large_margin"
+            android:paddingHorizontal="@dimen/default_margin"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,8 +59,7 @@
                 android:padding="@dimen/default_margin"
                 android:text="@string/create_email"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/default_title_size"
-                android:textStyle="bold"
+                android:textSize="@dimen/default_title2_size"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/create_name" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -96,6 +95,7 @@
                 android:layout_gravity="center_vertical"
                 android:paddingEnd="@dimen/default_margin"/>
             <EditText
+                android:id="@+id/create_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/create_phone"
@@ -134,6 +134,7 @@
 
 
             <Switch
+                android:id="@+id/create_switch_dispo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_disponibilty"
@@ -151,81 +152,112 @@
                 android:textStyle="bold"/>
 
             <Switch
+                android:id="@+id/create_switch_ironing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_ironingSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_household"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_householdSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_driving"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_driveSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_shopping"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_shoppingSP"
+                android:paddingHorizontal="@dimen/default_margin"/>
+
+            <Switch
+                android:id="@+id/create_switch_cooking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_cookingSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_diy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_diySP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_works"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_worksSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_babysitting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_babysittingSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_gardening"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_gardeningSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_reading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_readingSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_companySP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_tutoring"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_tutoringSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_removing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_relocationSP"
                 android:paddingHorizontal="@dimen/default_margin"/>
 
             <Switch
+                android:id="@+id/create_switch_sewing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_sewingSP"
+                android:paddingHorizontal="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/create_validate_btn"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:text="@string/create_validate"
+                android:textColor="@color/colorSecondary"
+                android:layout_gravity="center_horizontal"
                 android:paddingHorizontal="@dimen/default_margin"/>
         </LinearLayout>
 

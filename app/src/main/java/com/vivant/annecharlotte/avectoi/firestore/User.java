@@ -12,12 +12,10 @@ public class User {
 
     private String uid;
     private String userName;
+    private String userEmail;
 
     @Nullable
     private int userPhone;
-    @Nullable
-    private String userEmail;
-
     @Nullable
     private String urlPicture;
 
@@ -39,6 +37,29 @@ public class User {
     private Boolean disponibility;
 
     public User() { }
+
+    public User(String uid, String userName, String userEmail, String urlPicture) {
+        this.uid = uid;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.urlPicture = urlPicture;
+        this.userPhone = 0;
+        this.householdSP = false;
+        this.ironingSP = false;
+        this.shoppingSP = false;
+        this.cookingSP = false;
+        this.driveSP = false;
+        this.gardeningSP = false;
+        this.diySP = false;
+        this.worksSP = false;
+        this.relocationSP = false;
+        this.readingSP = false;
+        this.companySP = false;
+        this.babysittingSP = false;
+        this.tutoringSP = false;
+        this.sewingSP = false;
+        this.disponibility = false;
+    }
 
     public User(String uid, String userName, int userPhone,  String userEmail, String urlPicture,
                 Boolean householdSP, Boolean ironingSP, Boolean shoppingSP, Boolean cookingSP, Boolean driveSP, Boolean gardeningSP, Boolean diySP, Boolean worksSP,

@@ -94,7 +94,8 @@ public class WelcomeActivity extends BaseActivity {
                 if (isCurrentUserLogged()) {
                     // Quelle condition ajouter pout vérfier l'existence du compte?
                         // CREATE USER
-                        this.createUser();
+                        this.createUserInFirestore();
+                        this.startCreateUserActivity();
                     }
                 } else {
                 // Si l'utilisateur a déjà un compte
@@ -123,10 +124,18 @@ public class WelcomeActivity extends BaseActivity {
     //---------------------
     // Http request that create user in firestore
 
-    private void createUser(){
-            Log.d(TAG, "createUser");
-            Intent intent = new Intent(this, CreateUserActivity.class);
-            intent.putExtra(USER_PHOTO, (Objects.requireNonNull(this.getCurrentUser()).getPhotoUrl() != null) ? Objects.requireNonNull(this.getCurrentUser().getPhotoUrl()).toString() : null);
+    private void createUserInFirestore(){
+        Log.d(TAG, "createUserInFirestore");
+        String urlPicture = (Objects.requireNonNull(this.getCurrentUser()).getPhotoUrl() != null) ? Objects.requireNonNull(this.getCurrentUser().getPhotoUrl()).toString() : null;
+        String username = this.getCurrentUser().getDisplayName();
+        String uid = this.getCurrentUser().getUid();
+        String userEmail = this.getCurrentUser().getEmail();
+        UserHelper.createUser(uid, username, userEmail, urlPicture).addOnFailureListener(this.onFailureListener());
+    }
+
+    private void startCreateUserActivity() {
+        Intent intent = new Intent(this, CreateUserActivity.class);
+        intent.putExtra(USER_PHOTO, (Objects.requireNonNull(this.getCurrentUser()).getPhotoUrl() != null) ? Objects.requireNonNull(this.getCurrentUser().getPhotoUrl()).toString() : null);
         intent.putExtra(USER_NAME,Objects.requireNonNull(this.getCurrentUser().getDisplayName()));
         intent.putExtra(USER_ID,this.getCurrentUser().getUid());
         intent.putExtra(USER_EMAIL, this.getCurrentUser().getEmail());

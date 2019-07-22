@@ -43,6 +43,9 @@ dependencies {
     //BUTTERKNIFE
     //implementation 'com.jakewharton:butterknife:10.1.0'
     //annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
+    //GLIDE
+    implementation 'jp.wasabeef:glide-transformations:3.3.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
