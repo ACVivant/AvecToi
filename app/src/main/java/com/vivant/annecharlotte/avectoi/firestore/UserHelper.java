@@ -26,18 +26,6 @@ public class UserHelper {
         }
 
         // --- CREATE ---
-/*        public static Task<Void> createUser(String uid, String userName, int userPhone,  String userEmail, String urlPicture,
-                                            Boolean householdSP, Boolean ironingSP, Boolean shoppingSP, Boolean cookingSP, Boolean driveSP, Boolean gardeningSP, Boolean diySP, Boolean worksSP,
-                                            Boolean relocationSP, Boolean readingSP, Boolean companySP, Boolean babysittingSP, Boolean tutoringSP, Boolean sewingSP,
-                                            Boolean disponibility) {
-            User userToCreate = new User(uid, userName, userPhone, userEmail, urlPicture,
-                    householdSP, ironingSP, shoppingSP, cookingSP, driveSP, gardeningSP, diySP, worksSP,
-                    relocationSP, readingSP, companySP, babysittingSP, tutoringSP, sewingSP,
-                    disponibility);
-            Log.d(TAG, "createUser: ");
-            return UserHelper.getUsersCollection().document(uid).set(userToCreate);
-        }*/
-
     public static Task<Void> createUser(String uid, String userName,  String userEmail, String urlPicture) {
         User userToCreate = new User(uid, userName, userEmail, urlPicture);
         Log.d(TAG, "createUser: ");
@@ -70,55 +58,69 @@ public class UserHelper {
         }
 
         // --- UPDATE SUPER POWER ---
-        public static Task<Void> updateHouseholdSP(Boolean householdSP, String uid) {
+        public static Task<Void> updateHouseholdSP(boolean householdSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("householdSP", householdSP);
     }
 
-    public static Task<Void> updateIroningSP(Boolean ironingSP, String uid) {
+    public static Task<Void> updateIroningSP(boolean ironingSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("ironingSP", ironingSP);
     }
 
-    public static Task<Void> updateShoppingSP(Boolean shoppingSP, String uid) {
+    public static Task<Void> updateShoppingSP(boolean shoppingSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("shoppingSP", shoppingSP);
     }
 
-    public static Task<Void> updateCookingSP(Boolean cookingSP, String uid) {
+    public static Task<Void> updateCookingSP(boolean cookingSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("cookingSP", cookingSP);
     }
 
-    public static Task<Void> updateGardeningSP(Boolean gardeningSP, String uid) {
+    public static Task<Void> updateGardeningSP(boolean gardeningSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("gardeningSP", gardeningSP);
     }
 
-    public static Task<Void> updateDiySP(Boolean diySP, String uid) {
+    public static Task<Void> updateDrivingSP(boolean drivingSP, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("drivingSP", drivingSP);
+    }
+
+    public static Task<Void> updateDiySP(boolean diySP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("diySP", diySP);
     }
 
-    public static Task<Void> updateWorksSP(Boolean  worksSP, String uid) {
+    public static Task<Void> updateWorksSP(boolean  worksSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update(" worksSP",  worksSP);
     }
 
-    public static Task<Void> updateRelocationSP(Boolean relocationSP, String uid) {
+    public static Task<Void> updateRelocationSP(boolean relocationSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("relocationSP", relocationSP);
     }
 
-    public static Task<Void> updateReadingSP(Boolean readingSP, String uid) {
+    public static Task<Void> updateReadingSP(boolean readingSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("readingSP", readingSP);
     }
 
-    public static Task<Void> updateCompanySP(Boolean companySP, String uid) {
+    public static Task<Void> updateCompanySP(boolean companySP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("companySP", companySP);
     }
-    public static Task<Void> updateBabysittingSP(Boolean babysittingSP, String uid) {
+    public static Task<Void> updateBabysittingSP(boolean babysittingSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("babysittingSP", babysittingSP);
     }
-    public static Task<Void> updateTutoringSP(Boolean tutoringSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("tutoringSP", tutoringSP);
 
+        public static Task<Void> updateTutoringSP(boolean tutoringSP, String uid) {
+            return UserHelper.getUsersCollection().document(uid).update("tutoringSP", tutoringSP);
+        }
+            public static Task<Void> updateSewingSP(boolean sewingSP, String uid) {
+                return UserHelper.getUsersCollection().document(uid).update("sewingSP", sewingSP);
+            }
         // --- UPDATE DISPONIBILITY---
-    }
-    public static Task<Void> updateDisponibility(Boolean disponibility, String uid) {
+
+    public static Task<Void> updateDisponibility(boolean disponibility, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("disponibility", disponibility);
+    }
+
+    // --- UPDATE PHONE---
+
+    public static Task<Void> updateTel(int tel, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("userPhone", tel);
     }
 
         // --- DELETE ---

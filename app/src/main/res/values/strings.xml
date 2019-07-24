@@ -7,7 +7,7 @@
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
     <string name="error_no_internet">"Pas de connexion internet"</string>
     <string name="error_authentication_canceled">"Authentificaiton annulée"</string>
-    
+
     <!-- CreateUser -->
     <string name="create_name">"Name"</string>
     <string name="create_email">"Email"</string>
@@ -42,4 +42,33 @@
         <item>"Compiègne"</item>
     </string-array>
 
+    <!-- CREATE EVENT -->
+    <string name="create_event">"Créer une demande"</string>
+    <string name="event_theme_title">"Catégorie de l'événement"</string>
+    <string name="event_description_title">"Quelques mots pour décrire l'aide demandée"</string>
+    <string name="event_description">"Description de l'événement"</string>
+    <string name="event_town_title">"Ville ou village"</string>
+    <string name="event_town">"Nom de la ville ou du village"</string>
+    <string name="event_date">"Date de l'événement"</string>
+    <string name="event_numberHero">"Nombre de héros nécessaires"</string>
+    <string name="event_validate">"Enregistrer"</string>
+    <string name="event_reset">"Annuler"</string>
+
+    <string-array name="event_theme">
+        <item>"Faire le ménage"</item>
+        <item>"Faire les courses"</item>
+        <item>"Faire des gâteaux, des tartes, des salades&#8230;"</item>
+        <item>"Faire des conduites"</item>
+        <item>"Faire du repassage"</item>
+        <item>"Faire le jardin"</item>
+        <item>"Faire des petits bricolages (pliage, collage, dessin&#8230;)"</item>
+        <item>"Faire des petits travaux (peinture, ponçage, maçonnerie&#8230;)"</item>
+        <item>"Aider à déménager, transporter des cartons&#8230;"</item>
+        <item>"Faire la lecture;"</item>
+        <item>"Tenir compagnie, jouer, discuter&#8230;"</item>
+        <item>"Garder des enfants"</item>
+        <item>"Aider à faire ses devoirs&#8230; de façon ponctuelle!"</item>
+        <item>"Faire de la couture"</item>
+        <item>"C'est parti!</item>
+    </string-array>
 </resources>

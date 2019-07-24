@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateUserActivity"></activity>
-        <!-- AUTHENTICATION ACTIVITY -->
+        <activity android:name=".CreateEventActivity"></activity>
+        <activity
+            android:name=".CreateUserActivity"
+            android:theme="@style/AppTheme.NoTitle"></activity> <!-- AUTHENTICATION ACTIVITY -->
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoTitle"> <!-- DISABLE TOOLBAR IN MAIN ACTIVITY -->
@@ -20,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoTitle" />
     </application>
 
 </manifest>

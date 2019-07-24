@@ -18,12 +18,13 @@ public class User {
     private int userPhone;
     @Nullable
     private String urlPicture;
+    private int community;
 
     private Boolean householdSP;  // ménage
     private Boolean ironingSP; // repassage
     private Boolean shoppingSP; // courses
     private Boolean cookingSP; // cuisine
-    private Boolean driveSP; // conduite
+    private Boolean drivingSP; // conduite
     private Boolean gardeningSP; // gardening
     private Boolean diySP; // bricolage
     private Boolean worksSP; // travaux
@@ -48,7 +49,7 @@ public class User {
         this.ironingSP = false;
         this.shoppingSP = false;
         this.cookingSP = false;
-        this.driveSP = false;
+        this.drivingSP = false;
         this.gardeningSP = false;
         this.diySP = false;
         this.worksSP = false;
@@ -59,12 +60,13 @@ public class User {
         this.tutoringSP = false;
         this.sewingSP = false;
         this.disponibility = false;
+        this.community = 0;
     }
 
     public User(String uid, String userName, int userPhone,  String userEmail, String urlPicture,
-                Boolean householdSP, Boolean ironingSP, Boolean shoppingSP, Boolean cookingSP, Boolean driveSP, Boolean gardeningSP, Boolean diySP, Boolean worksSP,
+                Boolean householdSP, Boolean ironingSP, Boolean shoppingSP, Boolean cookingSP, Boolean drivingSP, Boolean gardeningSP, Boolean diySP, Boolean worksSP,
                 Boolean relocationSP, Boolean readingSP, Boolean companySP, Boolean babysittingSP, Boolean tutoringSP, Boolean sewingSP,
-                Boolean disponibility) {
+                Boolean disponibility, int community) {
         this.uid = uid;
         this.userName = userName;
         this.userPhone = userPhone;
@@ -74,7 +76,7 @@ public class User {
         this.ironingSP = ironingSP;
         this.shoppingSP = shoppingSP;
         this.cookingSP = cookingSP;
-        this.driveSP = driveSP;
+        this.drivingSP = drivingSP;
         this.gardeningSP = gardeningSP;
         this.diySP = diySP;
         this.worksSP = worksSP;
@@ -85,6 +87,7 @@ public class User {
         this.tutoringSP = tutoringSP;
         this.sewingSP = sewingSP;
         this.disponibility = disponibility;
+        this.community = community;
     }
 
     public String getUid() {
@@ -161,12 +164,12 @@ public class User {
         this.cookingSP = cookingSP;
     }
 
-    public Boolean getDriveSP() {
-        return driveSP;
+    public Boolean getDrivingSP() {
+        return drivingSP;
     }
 
-    public void setDriveSP(Boolean driveSP) {
-        this.driveSP = driveSP;
+    public void setDrivingSP(Boolean drivingSP) {
+        this.drivingSP = drivingSP;
     }
 
     public Boolean getGardeningSP() {
@@ -248,4 +251,8 @@ public class User {
     public void setDisponibility(Boolean disponibility) {
         this.disponibility = disponibility;
     }
+
+    public int getCommunity() { return community;}
+
+    public void setCommunity(int community) {this.community = community;}
 }

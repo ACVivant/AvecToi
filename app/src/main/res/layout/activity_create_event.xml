@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateEventActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/event_intro_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/heros4long"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/event_intro_img"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/create_infos_complete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:padding="@dimen/default_margin">
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_theme_title"
+                    android:textColor="@color/colorSecondary"
+                    android:layout_gravity="center_vertical"
+                    android:paddingEnd="@dimen/default_margin"
+                    android:textSize="@dimen/default_title2_size"/>
+                <Spinner
+                    android:id="@+id/event_theme_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_margin" />
+            </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/event_description_title"
+                    android:textColor="@color/colorSecondary"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:textSize="@dimen/default_title2_size"/>
+
+                <EditText
+                    android:id="@+id/event_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/event_description"
+                    android:textSize="@dimen/default_title2_size"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/event_town_title"
+                        android:textColor="@color/colorSecondary"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:textSize="@dimen/default_title2_size"/>
+                    <EditText
+                        android:id="@+id/event_town"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_margin"
+                        android:hint="@string/event_town"
+                        android:textSize="@dimen/default_title2_size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/default_margin"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/event_date"
+                        android:textColor="@color/colorSecondary"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:textSize="@dimen/default_title2_size"/>
+
+
+                    <ImageButton
+                        android:id="@+id/event_date_open"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_date"
+                        android:paddingHorizontal="@dimen/default_margin"
+                        android:background="@android:color/white"
+                        android:tint="@color/colorSecondary"></ImageButton>
+
+                    <TextView
+                        android:id="@+id/event_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/default_title2_size"
+                        android:layout_gravity="center_vertical"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/event_numberHero"
+                        android:textColor="@color/colorSecondary"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:textSize="@dimen/default_title2_size"/>
+
+                    <NumberPicker
+                        android:id="@+id/np"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/default_text_size"></NumberPicker>
+                </LinearLayout>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+                    <Button
+                        android:id="@+id/event_validate_btn"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:text="@string/event_validate"
+                        android:textColor="@color/colorSecondary"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/default_margin"
+                        android:layout_margin="@dimen/default_margin"/>
+                <Button
+                    android:id="@+id/event_reset_btn"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:text="@string/event_reset"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/default_margin"
+                    android:layout_margin="@dimen/default_margin"/>
+            </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

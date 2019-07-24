@@ -14,7 +14,9 @@ import android.widget.LinearLayout;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.util.Arrays;
@@ -30,6 +32,8 @@ public class WelcomeActivity extends BaseActivity {
     private static final String USER_NAME = "userName";
     private static final String USER_ID = "userId";
     private static final String USER_EMAIL = "userEmail";
+
+    private String userId;
 
     //FOR DESIGN
     private Button loginBtn;
@@ -90,17 +94,25 @@ public class WelcomeActivity extends BaseActivity {
             if (resultCode == RESULT_OK) { // SUCCESS
                 Log.d(TAG, "handleResponseAfterSignIn: Success");
 
-                // Si l'utilisateur n'a pas encore de compte
+
                 if (isCurrentUserLogged()) {
-                    // Quelle condition ajouter pout vérfier l'existence du compte?
-                        // CREATE USER
-                        this.createUserInFirestore();
-                        this.startCreateUserActivity();
+                    userId = this.getCurrentUser().getUid();
+                    UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()) {  // Si l'utilisateur a déjà un compte
+                                Log.d(TAG, "onSuccess: documentSnapshot exists");
+                                startMainActivity();
+                            } else {
+                                // CREATE USER
+                                createUserInFirestore();
+                                startCreateUserActivity();
+                            }
+                        }
+                    });
                     }
-                } else {
-                // Si l'utilisateur a déjà un compte
-                    startMainActivity();
                 }
+
             } else { // ERRORS
                 if (response == null) {
                     showSnackBar(this.mainActivityLayout, getString(R.string.error_authentication_canceled));
