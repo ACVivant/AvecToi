@@ -187,8 +187,12 @@ public void launchSuperPowerData(String uid) {
             sewing.setChecked(sewingData);
 
             telData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserPhone();
-                Log.d(TAG, "onSuccess: telData " + telData);
-            userTel.setText("0"+telData);
+            String telString = String.valueOf(telData);
+            if (telString.length()==6) {
+                telString = "0" + telString;
+            }
+                userTel.setText(telString);
+
 
             communitySpinner.setSelection(Objects.requireNonNull(documentSnapshot.toObject(User.class)).getCommunity());
             }

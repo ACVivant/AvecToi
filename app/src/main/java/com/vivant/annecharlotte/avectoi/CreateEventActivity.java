@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,8 +38,6 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     private Spinner themeSpinner;
     private ImageButton dateButton;
     private TextView dateText;
-    private Button validate;
-    private Button reset;
     private EditText description;
     private EditText town;
     private NumberPicker np;
@@ -56,11 +58,13 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
 
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
+
         // NUMBER OF HEROS
         np = (NumberPicker) findViewById(R.id.np);
         //Populate NumberPicker values from minimum and maximum value range
         //Set the minimum value of NumberPicker
-       np.setMinValue(0);
+       np.setMinValue(1);
         //Specify the maximum value/number of NumberPicker
         np.setMaxValue(10);
         //Gets whether the selector wheel wraps when reaching the min/max value.
@@ -95,26 +99,29 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         });
         dateText = (TextView)findViewById(R.id.event_date);
 
-        // VALIDATE OR RESET
-        validate = (Button) findViewById(R.id.event_validate_btn);
-        validate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveData();
-            }
-        });
-
-        reset = (Button) findViewById(R.id.event_reset_btn);
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetNewEvent();
-            }
-        });
-
         // DESCRIPTION
         description = (EditText) findViewById(R.id.event_description);
         town = (EditText) findViewById(R.id.event_town);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.new_event_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.save_event:
+                saveData();
+                return true;
+
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
 
     }
 
@@ -154,14 +161,21 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         userId = this.getCurrentUser().getUid();
         dateToday = new Date();
 
-        createEvent();
+        if (descriptionToSave.trim().isEmpty() || townToSave.trim().isEmpty()) {
+            Toast.makeText(this, R.string.event_info_missing, Toast.LENGTH_LONG).show();
+        } else {
+            createEvent();
+        }
 
     }
 
     public void createEvent() {
         Log.d(TAG, "createEvent");
-        eventId = "test";
-        //SosEventHelper.createEvent(eventId,themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave).addOnFailureListener(this.onFailureListener());
+        eventId = userId + dateToday;
+        SosEventHelper.createEvent(eventId,themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave).addOnFailureListener(this.onFailureListener());
+        finish();
+       // Intent intent = new Intent(this, MainActivity.class);
+       // startActivity(intent);
     }
 
     public void resetNewEvent() {

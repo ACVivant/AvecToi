@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Avec Toi</string>
+    <string name="app_name">Super Moi</string>
 
     <!-- Welcome -->
     <string name="main_activity_description">"L'appli qui révèle nos super-pouvoirs!"</string>
@@ -53,6 +53,7 @@
     <string name="event_numberHero">"Nombre de héros nécessaires"</string>
     <string name="event_validate">"Enregistrer"</string>
     <string name="event_reset">"Annuler"</string>
+    <string name="event_info_missing">"Il faut remplir tous les champs."</string>
 
     <string-array name="event_theme">
         <item>"Faire le ménage"</item>
@@ -64,11 +65,17 @@
         <item>"Faire des petits bricolages (pliage, collage, dessin&#8230;)"</item>
         <item>"Faire des petits travaux (peinture, ponçage, maçonnerie&#8230;)"</item>
         <item>"Aider à déménager, transporter des cartons&#8230;"</item>
-        <item>"Faire la lecture;"</item>
+        <item>"Faire la lecture"</item>
         <item>"Tenir compagnie, jouer, discuter&#8230;"</item>
         <item>"Garder des enfants"</item>
         <item>"Aider à faire ses devoirs&#8230; de façon ponctuelle!"</item>
         <item>"Faire de la couture"</item>
-        <item>"C'est parti!</item>
     </string-array>
+
+    <!-- CARD EVENT -->
+    <string name="SOS_CV_intro">"Pour: "</string>
+    <string name="SOS_CV_town">"à: "</string>
+
+    <!-- MAIN ACTIVITY -->
+    <string name="show_all_events">"All events"</string>
 </resources>

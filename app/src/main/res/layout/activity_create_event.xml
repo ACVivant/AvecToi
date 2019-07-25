@@ -77,14 +77,15 @@
                     android:hint="@string/event_description"
                     android:textSize="@dimen/default_title2_size"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/event_town_title"
-                        android:textColor="@color/colorSecondary"
-                        android:layout_gravity="center_vertical"
-                        android:paddingEnd="@dimen/default_margin"
-                        android:textSize="@dimen/default_title2_size"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingEnd="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="@string/event_town_title"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="@dimen/default_title2_size" />
                     <EditText
                         android:id="@+id/event_town"
                         android:layout_width="match_parent"
@@ -99,14 +100,15 @@
                     android:orientation="horizontal"
                     android:layout_marginTop="@dimen/default_margin"
                     >
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/event_date"
-                        android:textColor="@color/colorSecondary"
                         android:layout_gravity="center_vertical"
                         android:paddingEnd="@dimen/default_margin"
-                        android:textSize="@dimen/default_title2_size"/>
+                        android:text="@string/event_date"
+                        android:textColor="@color/colorSecondary"
+                        android:textSize="@dimen/default_title2_size" />
 
 
                     <ImageButton
@@ -147,35 +149,6 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/default_text_size"></NumberPicker>
                 </LinearLayout>
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal">
-                    <Button
-                        android:id="@+id/event_validate_btn"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorAccent"
-                        android:text="@string/event_validate"
-                        android:textColor="@color/colorSecondary"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="@dimen/default_margin"
-                        android:layout_margin="@dimen/default_margin"/>
-                <Button
-                    android:id="@+id/event_reset_btn"
-                    android:layout_marginTop="@dimen/default_margin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorSecondary"
-                    android:text="@string/event_reset"
-                    android:textColor="@color/colorAccent"
-                    android:layout_gravity="center_horizontal"
-                    android:padding="@dimen/default_margin"
-                    android:layout_margin="@dimen/default_margin"/>
             </LinearLayout>
             </LinearLayout>
 

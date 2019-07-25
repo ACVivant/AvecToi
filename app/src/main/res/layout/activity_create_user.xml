@@ -62,7 +62,7 @@
     <ImageView
         android:id="@+id/create_intro_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="155dp"
         android:src="@drawable/heros3long"
         app:layout_constraintTop_toBottomOf="@+id/create_login_infos"
         app:layout_constraintStart_toStartOf="parent"
