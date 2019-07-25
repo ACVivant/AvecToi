@@ -1,9 +1,11 @@
 package com.vivant.annecharlotte.avectoi;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -43,11 +45,6 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
         final String myDate = myFormat.getRegisteredDate(sosEvent.getDateNeed());
         eventViewHolder.dateRV.setText(myDate);
 
-        //Theme
-        String themeArr[] = eventViewHolder.itemView.getContext().getResources().getStringArray(R.array.event_theme);
-        int themeIndex = sosEvent.getThemeIndex();
-        eventViewHolder.themeRV.setText(themeArr[themeIndex]);
-
         // Town
         eventViewHolder.townRV.setText(sosEvent.getTown());
 
@@ -65,6 +62,64 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
                 }
             }
         });
+
+        //Theme
+        String themeArr[] = eventViewHolder.itemView.getContext().getResources().getStringArray(R.array.event_theme);
+        int themeIndex = sosEvent.getThemeIndex();
+        eventViewHolder.themeRV.setText(themeArr[themeIndex]);
+        Drawable top;
+        switch (themeIndex) {
+            case 0: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_household);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+            return;
+            case 1: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_shopping);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 2: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_cooking);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 3: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_driving);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 4: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_ironing);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 5: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_gardening);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 6: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_diy);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 7: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_works);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 8: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_relocation);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 9: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_reading);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 10: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_compagny);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 11: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_babysitting);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 12: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_tutoring);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 13: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_sewing);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 14: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_admin);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            case 15: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_flower);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+                return;
+            default: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_add);
+                eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
+        }
     }
 
     @NonNull
@@ -76,7 +131,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
 
     class EventViewHolder extends RecyclerView.ViewHolder {
 
-        TextView themeRV;
+        Button themeRV;
         TextView dateRV;
         TextView nameRV;
         TextView townRV;

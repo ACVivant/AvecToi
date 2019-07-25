@@ -122,7 +122,6 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
                 default:
                     return super.onOptionsItemSelected(item);
         }
-
     }
 
     @Override

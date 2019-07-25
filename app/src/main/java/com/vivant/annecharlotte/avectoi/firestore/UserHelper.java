@@ -111,16 +111,22 @@ public class UserHelper {
             public static Task<Void> updateSewingSP(boolean sewingSP, String uid) {
                 return UserHelper.getUsersCollection().document(uid).update("sewingSP", sewingSP);
             }
-        // --- UPDATE DISPONIBILITY---
 
-    public static Task<Void> updateDisponibility(boolean disponibility, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("disponibility", disponibility);
+    public static Task<Void> updateFloweringSP(boolean floweringSP, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("floweringSP", floweringSP);
     }
 
-    // --- UPDATE PHONE---
+    public static Task<Void> updateAdminSP(boolean adminSP, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("adminSP", adminSP);
+    }
+    // --- UPDATE PHONE AND TOWN ---
 
-    public static Task<Void> updateTel(int tel, String uid) {
+    public static Task<Void> updateTel(String tel, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("userPhone", tel);
+    }
+
+    public static Task<Void> updateTown(String town, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("userTown", town);
     }
 
         // --- DELETE ---

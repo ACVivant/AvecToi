@@ -17,30 +17,27 @@
     <string name="create_SP">"Mes super pouvoirs"</string>
     <string name="create_householdSP">"Faire le ménage"</string>
     <string name="create_shoppingSP">"Faire les courses"</string>
-    <string name="create_cookingSP">"Faire des gâteaux, des tartes, des salades&#8230;"</string>
+    <string name="create_cookingSP">"Faire la cuisine"</string>
     <string name="create_driveSP">"Faire des conduites"</string>
     <string name="create_ironingSP">"Faire du repassage"</string>
-    <string name="create_gardeningSP">"Faire le jardin"</string>
-    <string name="create_diySP">"Faire des petits bricolages (pliage, collage, dessin&#8230;)"</string>
-    <string name="create_worksSP">"Faire des petits travaux (peinture, ponçage, maçonnerie&#8230;)"</string>
-    <string name="create_relocationSP">"Aider à déménager, transporter des cartons&#8230;"</string>
-    <string name="create_readingSP">"Faire la lecture;"</string>
-    <string name="create_companySP">"Tenir compagnie, jouer, discuter&#8230;"</string>
+    <string name="create_gardeningSP">"Entretenir le jardin"</string>
+    <string name="create_diySP">"Faire des bricolages"</string>
+    <string name="create_worksSP">"Faire des travaux"</string>
+    <string name="create_relocationSP">"Aider à déménager"</string>
+    <string name="create_readingSP">"Faire la lecture"</string>
+    <string name="create_companySP">"Tenir compagnie"</string>
     <string name="create_babysittingSP">"Garder des enfants"</string>
-    <string name="create_tutoringSP">"Aider à faire ses devoirs&#8230; de façon ponctuelle!"</string>
+    <string name="create_tutoringSP">"Aider à faire ses devoirs"</string>
     <string name="create_sewingSP">"Faire de la couture"</string>
+    <string name="create_adminSP">"Faire des démarches admin."</string>
+    <string name="create_flowerSP">"Faire des bouquets"</string>
     <string name="create_validate">"C'est parti!</string>
 
     <string name="info_no_email_found">"Aucune adresse email"</string>
     <string name="info_no_username_found">"Aucun nom d'utilisateur"</string>
 
     <string name="create_disponibilty">"Je suis disponible en ce moment."</string>
-    <string name="create_community">"Mon territoire d'action"</string>
-
-    <string-array name="create_town">
-        <item>"Crépy-en-Valois et environs"</item>
-        <item>"Compiègne"</item>
-    </string-array>
+    <string name="create_community">"J'habite à "</string>
 
     <!-- CREATE EVENT -->
     <string name="create_event">"Créer une demande"</string>
@@ -58,18 +55,20 @@
     <string-array name="event_theme">
         <item>"Faire le ménage"</item>
         <item>"Faire les courses"</item>
-        <item>"Faire des gâteaux, des tartes, des salades&#8230;"</item>
+        <item>"Faire la cuisine"</item>
         <item>"Faire des conduites"</item>
         <item>"Faire du repassage"</item>
-        <item>"Faire le jardin"</item>
-        <item>"Faire des petits bricolages (pliage, collage, dessin&#8230;)"</item>
-        <item>"Faire des petits travaux (peinture, ponçage, maçonnerie&#8230;)"</item>
-        <item>"Aider à déménager, transporter des cartons&#8230;"</item>
+        <item>"Entretenir le jardin"</item>
+        <item>"Faire des bricolages"</item>
+        <item>"Faire des travaux"</item>
+        <item>"Aider à déménager"</item>
         <item>"Faire la lecture"</item>
-        <item>"Tenir compagnie, jouer, discuter&#8230;"</item>
+        <item>"Tenir compagnie"</item>
         <item>"Garder des enfants"</item>
-        <item>"Aider à faire ses devoirs&#8230; de façon ponctuelle!"</item>
+        <item>"Aider à faire ses devoirs"</item>
         <item>"Faire de la couture"</item>
+        <item>"Faire des démarches admin."</item>
+        <item>"Faire des bouquets</item>
     </string-array>
 
     <!-- CARD EVENT -->
@@ -77,5 +76,6 @@
     <string name="SOS_CV_town">"à: "</string>
 
     <!-- MAIN ACTIVITY -->
-    <string name="show_all_events">"All events"</string>
+    <string name="show_all_events">"Toutes les missions"</string>
+    <string name="show_map">"Carte"</string>
 </resources>

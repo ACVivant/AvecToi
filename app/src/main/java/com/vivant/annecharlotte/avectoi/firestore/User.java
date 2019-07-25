@@ -15,27 +15,27 @@ public class User {
     private String userEmail;
 
     @Nullable
-    private int userPhone;
+    private String userPhone;
     @Nullable
     private String urlPicture;
-    private int community;
+    private String userTown;
 
-    private Boolean householdSP;  // ménage
-    private Boolean ironingSP; // repassage
-    private Boolean shoppingSP; // courses
-    private Boolean cookingSP; // cuisine
-    private Boolean drivingSP; // conduite
-    private Boolean gardeningSP; // gardening
-    private Boolean diySP; // bricolage
-    private Boolean worksSP; // travaux
-    private Boolean relocationSP; // déménagement
-    private Boolean readingSP; //lecture
-    private Boolean companySP; // tenir compagnie
-    private Boolean babysittingSP; // baby sitting
-    private Boolean tutoringSP; // soutien scolaire
-    private Boolean sewingSP; // couture
-
-    private Boolean disponibility;
+    private Boolean householdSP;  // ménage ***
+    private Boolean ironingSP; // repassage ***
+    private Boolean shoppingSP; // courses ***
+    private Boolean cookingSP; // cuisine ***
+    private Boolean drivingSP; // conduite ***
+    private Boolean gardeningSP; // gardening ***
+    private Boolean diySP; // bricolage ***
+    private Boolean worksSP; // travaux ***
+    private Boolean relocationSP; // déménagement ***
+    private Boolean readingSP; //lecture ***
+    private Boolean companySP; // tenir compagnie ***
+    private Boolean babysittingSP; // baby sitting ***
+    private Boolean tutoringSP; // soutien scolaire ***
+    private Boolean sewingSP; // couture ***
+    private Boolean adminSP; // démarches administratives ***
+    private Boolean floweringSP;
 
     public User() { }
 
@@ -44,7 +44,7 @@ public class User {
         this.userName = userName;
         this.userEmail = userEmail;
         this.urlPicture = urlPicture;
-        this.userPhone = 0;
+        this.userPhone = "";
         this.householdSP = false;
         this.ironingSP = false;
         this.shoppingSP = false;
@@ -59,36 +59,11 @@ public class User {
         this.babysittingSP = false;
         this.tutoringSP = false;
         this.sewingSP = false;
-        this.disponibility = false;
-        this.community = 0;
+        this.adminSP = false;
+        this.floweringSP = false;
+        this.userTown = "";
     }
 
-    public User(String uid, String userName, int userPhone,  String userEmail, String urlPicture,
-                Boolean householdSP, Boolean ironingSP, Boolean shoppingSP, Boolean cookingSP, Boolean drivingSP, Boolean gardeningSP, Boolean diySP, Boolean worksSP,
-                Boolean relocationSP, Boolean readingSP, Boolean companySP, Boolean babysittingSP, Boolean tutoringSP, Boolean sewingSP,
-                Boolean disponibility, int community) {
-        this.uid = uid;
-        this.userName = userName;
-        this.userPhone = userPhone;
-        this.userEmail = userEmail;
-        this.urlPicture = urlPicture;
-        this.householdSP = householdSP;
-        this.ironingSP = ironingSP;
-        this.shoppingSP = shoppingSP;
-        this.cookingSP = cookingSP;
-        this.drivingSP = drivingSP;
-        this.gardeningSP = gardeningSP;
-        this.diySP = diySP;
-        this.worksSP = worksSP;
-        this.relocationSP = relocationSP;
-        this.readingSP = readingSP;
-        this.companySP = companySP;
-        this.babysittingSP = babysittingSP;
-        this.tutoringSP = tutoringSP;
-        this.sewingSP = sewingSP;
-        this.disponibility = disponibility;
-        this.community = community;
-    }
 
     public String getUid() {
         return uid;
@@ -106,11 +81,11 @@ public class User {
         this.userName = userName;
     }
 
-    public int getUserPhone() {
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhone(int userPhone) {
+    public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
 
@@ -244,15 +219,23 @@ public class User {
         this.sewingSP = sewingSP;
     }
 
-    public Boolean getDisponibility() {
-        return disponibility;
+    public Boolean getAdminSP() {
+        return adminSP;
     }
 
-    public void setDisponibility(Boolean disponibility) {
-        this.disponibility = disponibility;
+    public void setAdminSP(Boolean adminSP) {
+        this.adminSP = adminSP;
     }
 
-    public int getCommunity() { return community;}
+    public Boolean getFloweringSP() {
+        return floweringSP;
+    }
 
-    public void setCommunity(int community) {this.community = community;}
+    public void setFloweringSP(Boolean flowering) {
+        this.floweringSP = flowering;
+    }
+
+    public String getUserTown() { return userTown;}
+
+    public void setUserTown(String town) {this.userTown = town;}
 }

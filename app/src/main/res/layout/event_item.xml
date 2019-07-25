@@ -11,9 +11,23 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/default_margin">
+        android:paddingEnd="@dimen/default_margin">
 
-        <TextView
+        <Button
+            android:id="@+id/RV_event_theme"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@drawable/button_background"
+            android:drawableTop="@drawable/ic_flower"
+            android:paddingTop="@dimen/default_margin"
+            android:text="@string/create_flowerSP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <!--TextView
             android:id="@+id/RV_event_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,58 +37,38 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:maxLines="1"
             android:layout_toStartOf="@+id/RV_event_date_needed"
-            android:ellipsize="end"/>
+            android:ellipsize="end"/-->
 
         <TextView
         android:id="@+id/RV_event_date_needed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/event_date"
+            android:layout_marginTop="@dimen/default_margin"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:paddingLeft="@dimen/default_large_margin"/>
 
         <TextView
-            android:id="@+id/RV_event_intro_name"
+            android:id="@+id/RV_event_town"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/SOS_CV_intro"
-            android:layout_below="@+id/RV_event_theme"
-            android:layout_alignParentStart="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_toStartOf="@+id/RV_event_name"
-            android:ellipsize="end"
-            android:maxLines="1"/>
+            android:text="@string/event_town"
+            android:layout_below="@+id/RV_event_date_needed"
+            android:layout_alignParentEnd="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <TextView
             android:id="@+id/RV_event_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Babar Céleste"
-            android:layout_below="@+id/RV_event_theme"
+            android:layout_below="@+id/RV_event_town"
             android:layout_alignParentEnd="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
-        <TextView
-            android:id="@+id/RV_event_town_intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/SOS_CV_town"
-            android:layout_below="@+id/RV_event_intro_name"
-            android:layout_alignParentStart="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_toStartOf="@+id/RV_event_town"
-            android:ellipsize="end"/>
 
-        <TextView
-            android:id="@+id/RV_event_town"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/event_town"
-            android:layout_below="@+id/RV_event_intro_name"
-            android:layout_alignParentEnd="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
 
     </RelativeLayout>

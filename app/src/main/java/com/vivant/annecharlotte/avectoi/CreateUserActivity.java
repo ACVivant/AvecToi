@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -36,26 +39,27 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     private TextView userNameTV;
     private TextView userEmailTV;
     private EditText userTel;
+    private EditText userTown;
     private Spinner communitySpinner;
-    private Switch userDispo;
-    private Switch ironing;
-    private Switch household;
-    private Switch shopping;
-    private Switch cooking;
-    private Switch driving;
-    private Switch gardening;
-    private Switch diy;
-    private Switch works;
-    private Switch relocation;
-    private Switch reading;
-    private Switch company;
-    private Switch babysitting;
-    private Switch sewing;
-    private Button validate;
+    private Button ironing;
+    private Button household;
+    private Button shopping;
+    private Button cooking;
+    private Button driving;
+    private Button gardening;
+    private Button diy;
+    private Button works;
+    private Button relocation;
+    private Button reading;
+    private Button babysitting;
+    private Button sewing;
+    private Button admin;
+    private Button flower;
+    private Button tutoring;
+    private Button company;
 
-    private int telData;
-    private int townData;
-    private boolean dispoData;
+    private String telData;
+    private String townData;
     private boolean ironData;
     private boolean houseData;
     private boolean shopData;
@@ -66,9 +70,12 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     private boolean workData;
     private boolean relocationData;
     private boolean readingData;
-    private boolean companyData;
     private boolean babysittingData;
     private boolean sewingData;
+    private boolean floweringData;
+    private boolean tutoringData;
+    private boolean companyData;
+    private boolean adminData;
 
 
     @Override
@@ -76,6 +83,7 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_create_user);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         userId = this.getCurrentUser().getUid();
         layoutLinks();
         updateUIwhenCreating();
@@ -93,41 +101,126 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         userEmailTV = findViewById(R.id.create_email);
 
         userTel = findViewById(R.id.create_tel);
-        userDispo = findViewById(R.id.create_switch_dispo);
+        userTown = findViewById(R.id.create_town);
 
-        communitySpinner = findViewById(R.id.create_spinner_community);
-
-        ironing = findViewById(R.id.create_switch_ironing);
-        household = findViewById(R.id.create_switch_household);
-        shopping = findViewById(R.id.create_switch_shopping);
-        cooking = findViewById(R.id.create_switch_cooking);
-        driving = findViewById(R.id.create_switch_driving);
-        gardening = findViewById(R.id.create_switch_gardening);
-        diy = findViewById(R.id.create_switch_diy);
-        works = findViewById(R.id.create_switch_works);
-        relocation = findViewById(R.id.create_switch_removing);
-        reading = findViewById(R.id.create_switch_reading);
-        company = findViewById(R.id.create_switch_company);
-        babysitting = findViewById(R.id.create_switch_babysitting);
-        sewing = findViewById(R.id.create_switch_sewing);
-
-        validate = findViewById(R.id.create_validate_btn);
-        validate.setOnClickListener(new View.OnClickListener() {
+        ironing = findViewById(R.id.create_user_SP_ironing);
+        ironing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveData();
+                Log.d(TAG, "onClick: irondata " + ironData);
+                ironData = !ironData;
+                Log.d(TAG, "onClick: irondata " + ironData);
+            }
+        });
+        household = findViewById(R.id.create_user_SP_household);
+        household.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                houseData = !houseData;
+            }
+        });
+        shopping = findViewById(R.id.create_user_SP_shopping);
+        shopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shopData = !shopData;
+            }
+        });
+        cooking = findViewById(R.id.create_user_SP_cooking);
+        cooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cookData = !cookData;
+            }
+        });
+        driving = findViewById(R.id.create_user_SP_driving);
+        driving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                driveData = !driveData;
+            }
+        });
+        gardening = findViewById(R.id.create_user_SP_gardening);
+        gardening.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gardenData = !gardenData;
+            }
+        });
+        diy = findViewById(R.id.create_user_SP_diy);
+        diy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                diyData = !diyData;
+            }
+        });
+        works = findViewById(R.id.create_user_SP_works);
+        works.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                workData = !workData;
+            }
+        });
+        relocation = findViewById(R.id.create_user_SP_relocation);
+        relocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relocationData = !relocationData;
+            }
+        });
+        reading = findViewById(R.id.create_user_SP_reading);
+        reading.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readingData = !readingData;
+            }
+        });
+        company = findViewById(R.id.create_user_SP_company);
+        company.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                companyData = !companyData;
+            }
+        });
+        babysitting = findViewById(R.id.create_user_SP_babysitting);
+        babysitting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                babysittingData = !babysittingData;
+            }
+        });
+        sewing = findViewById(R.id.create_user_SP_sewing);
+        sewing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sewingData = !sewingData;
+            }
+        });
+        admin = findViewById(R.id.create_user_SP_admin);
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adminData = !adminData;
+            }
+        });
+        flower = findViewById(R.id.create_user_SP_flower);
+        flower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                floweringData = !floweringData;
+            }
+        });
+        tutoring = findViewById(R.id.create_user_SP_tutoring);
+        tutoring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tutoringData = !tutoringData;
             }
         });
     }
 
 public void updateUIwhenCreating() {
     Log.d(TAG, "updateUIwhenCreating");
-    ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-            R.array.create_town, android.R.layout.simple_spinner_item);
-    // Specify the layout to use when the list of choices appears
-    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    communitySpinner.setAdapter(adapter);
-    communitySpinner.setOnItemSelectedListener(this);
 
     if (this.getCurrentUser() != null){
         //Get picture URL from Firebase
@@ -160,41 +253,42 @@ public void launchSuperPowerData(String uid) {
             if (documentSnapshot.exists()) {
                 Log.d(TAG, "onSuccess: documentSnapshot exists");
             ironData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getIroningSP();
-            ironing.setChecked(ironData);
+            if (ironData) {ironing.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             houseData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getHouseholdSP();
-            household.setChecked(houseData);
+                if (houseData) {household.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             shopData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getShoppingSP();
-            shopping.setChecked(shopData);
+                    if (shopData) {shopping.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             cookData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getCookingSP();
-            cooking.setChecked(cookData);
+                        if (cookData) {cooking.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             driveData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getDrivingSP();
-            driving.setChecked(driveData);
+                            if (driveData) {driving.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             gardenData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getGardeningSP();
-            gardening.setChecked(gardenData);
+                                if (gardenData) {gardening.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             diyData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getDiySP();
-            diy.setChecked(diyData);
+                                    if (diyData) {diy.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             workData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getWorksSP();
-            works.setChecked(workData);
+                                        if (workData) {works.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             relocationData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getRelocationSP();
-            relocation.setChecked(relocationData);
+                                            if (relocationData) {relocation.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             readingData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getReadingSP();
-            reading.setChecked(readingData);
+                                                if (readingData) {reading.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             companyData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getCompanySP();
-            company.setChecked(companyData);
+                                                    if (companyData) {company.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             babysittingData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getBabysittingSP();
-            babysitting.setChecked(babysittingData);
+                                                        if (babysittingData) {babysitting.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
             sewingData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getSewingSP();
-            sewing.setChecked(sewingData);
+                                                            if (sewingData) {sewing.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
+            adminData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getAdminSP();
+                                                                if (adminData) {admin.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight));}
+            floweringData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getFloweringSP();
+                                                                    if (floweringData) {flower.setBackgroundColor(getResources().getColor(R.color.colorPrimaryLight)); }
 
             telData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserPhone();
-            String telString = String.valueOf(telData);
-            if (telString.length()==6) {
-                telString = "0" + telString;
-            }
-                userTel.setText(telString);
+            userTel.setText(telData);
 
 
-            communitySpinner.setSelection(Objects.requireNonNull(documentSnapshot.toObject(User.class)).getCommunity());
+            townData = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserTown();
+            userTown.setText(townData);
             }
         }
     });
@@ -204,23 +298,8 @@ public void saveData() {
         if (userTel.getText().equals("")) {
             Toast.makeText(this, "Il faut entrer un numéro de téléphone.", Toast.LENGTH_LONG).show();
         } else {
-            telData = Integer.parseInt(userTel.getText().toString());
-            townData = communitySpinner.getSelectedItemPosition();
-            dispoData = userDispo.isChecked();
-
-            ironData = ironing.isChecked();
-            houseData = household.isChecked();
-            shopData = shopping.isChecked();
-            cookData = cooking.isChecked();
-            driveData = driving.isChecked();
-            gardenData = gardening.isChecked();
-            diyData = diy.isChecked();
-            workData = diy.isChecked();
-            relocationData = relocation.isChecked();
-            readingData = reading.isChecked();
-            companyData = company.isChecked();
-            babysittingData = babysitting.isChecked();
-            sewingData = sewing.isChecked();
+            telData =userTel.getText().toString();
+            townData = userTown.getText().toString();
 
             Log.d(TAG, "updateLikeInFirebase: idUser " + userId);
             UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -229,8 +308,7 @@ public void saveData() {
                     if (documentSnapshot.exists()) {
                         Log.d(TAG, "onSuccess: documentSnapshot exists");
                         updateSuperPower(userId);
-                        updateDispo(userId);
-                        updateTel(userId);
+                        updateTelandTown(userId);
                     }
                 }
             });
@@ -253,15 +331,16 @@ public void updateSuperPower(String uid) {
         UserHelper.updateCompanySP(companyData, uid);
         UserHelper.updateBabysittingSP(babysittingData, uid);
         UserHelper.updateSewingSP(sewingData, uid);
+        UserHelper.updateTutoringSP(tutoringData, uid);
+        UserHelper.updateFloweringSP(floweringData, uid);
+        UserHelper.updateAdminSP(adminData, uid);
 }
 
-public void updateDispo(String uid) {
-        UserHelper.updateDisponibility(dispoData, uid);
-}
-
-public void updateTel(String uid) {
+public void updateTelandTown(String uid) {
         UserHelper.updateTel(telData, uid);
+        UserHelper.updateTown(townData, uid);
 }
+
 
 public void launchMainActivity() {
         Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
@@ -275,6 +354,26 @@ public void launchMainActivity() {
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.new_event_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.save_event:
+                saveData();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
     }
 }
