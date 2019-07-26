@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -31,11 +32,9 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).set(eventToCreate);
     }*/
 
-    public static Task<Void> createEvent(String eventId, int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
+    public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
         SosEvent eventToCreate = new SosEvent(themeIndex, description, town, numberHero, userAskId, dateCreated, dateNeed);
-        Log.d(TAG, "createEvent: eventId " + eventId);
-        Log.d(TAG, "createEvent: town " + town);
-        return SosEventHelper.getEventsCollection().document(eventId).set(eventToCreate);
+        return SosEventHelper.getEventsCollection().add(eventToCreate);
     }
 
     // --- GET ---

@@ -171,7 +171,7 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     public void createEvent() {
         Log.d(TAG, "createEvent");
         eventId = userId + dateToday;
-        SosEventHelper.createEvent(eventId,themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave).addOnFailureListener(this.onFailureListener());
+        SosEventHelper.createEvent(themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave).addOnFailureListener(this.onFailureListener());
         finish();
        // Intent intent = new Intent(this, MainActivity.class);
        // startActivity(intent);

@@ -5,79 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateEventActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/event_intro_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/heros4long"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/create_event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/event_intro_img"
-            app:layout_constraintStart_toStartOf="parent"
-            >
+            android:text="@string/create_event"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/default_margin"
+            android:background="@color/colorSecondary"
+            android:textColor="@android:color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_margin="@dimen/default_margin"
+                app:layout_constraintTop_toBottomOf="@+id/create_event_title"
+                app:layout_constraintStart_toStartOf="@+id/create_event_title">
 
-            <LinearLayout
-                android:id="@+id/create_infos_complete"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:padding="@dimen/default_margin">
-
-                <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
                 <TextView
+                    android:id="@+id/event_theme_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/event_theme_title"
                     android:textColor="@color/colorSecondary"
                     android:layout_gravity="center_vertical"
-                    android:paddingEnd="@dimen/default_margin"
-                    android:textSize="@dimen/default_title2_size"/>
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
                 <Spinner
                     android:id="@+id/event_theme_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/default_margin" />
-            </LinearLayout>
+                    android:padding="@dimen/default_margin"
+                    app:layout_constraintTop_toBottomOf="@+id/event_theme_title"
+                    app:layout_constraintStart_toStartOf="@+id/event_theme_title"/>
+
 
                 <TextView
+                    android:id="@+id/event_description_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/event_description_title"
                     android:textColor="@color/colorSecondary"
                     android:layout_marginTop="@dimen/default_margin"
-                    android:textSize="@dimen/default_title2_size"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toBottomOf="@+id/event_theme_spinner"
+                    app:layout_constraintStart_toStartOf="@+id/event_theme_spinner"/>
 
                 <EditText
                     android:id="@+id/event_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/event_description"
-                    android:textSize="@dimen/default_title2_size"/>
+                    android:textSize="@dimen/default_title2_size"
+                    app:layout_constraintTop_toBottomOf="@+id/event_description_title"
+                    app:layout_constraintStart_toStartOf="@+id/event_description_title"/>
 
                 <TextView
+                    android:id="@+id/event_town_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -85,30 +80,32 @@
                     android:layout_marginTop="@dimen/default_margin"
                     android:text="@string/event_town_title"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="@dimen/default_title2_size" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toBottomOf="@+id/event_description"
+                    app:layout_constraintStart_toStartOf="@+id/event_description"/>
+
                     <EditText
                         android:id="@+id/event_town"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/default_margin"
                         android:hint="@string/event_town"
-                        android:textSize="@dimen/default_title2_size" />
+                        android:textSize="@dimen/default_title2_size"
+                        app:layout_constraintTop_toBottomOf="@+id/event_town_title"
+                        app:layout_constraintStart_toStartOf="@+id/event_town_title"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/event_date_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/default_margin"
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingEnd="@dimen/default_margin"
-                        android:text="@string/event_date"
-                        android:textColor="@color/colorSecondary"
-                        android:textSize="@dimen/default_title2_size" />
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:paddingEnd="@dimen/default_margin"
+                    android:text="@string/event_date"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorSecondary"
+                    app:layout_constraintStart_toStartOf="@+id/event_town"
+                    app:layout_constraintTop_toBottomOf="@+id/event_town" />
 
 
                     <ImageButton
@@ -118,40 +115,49 @@
                         android:src="@drawable/ic_date"
                         android:paddingHorizontal="@dimen/default_margin"
                         android:background="@android:color/white"
-                        android:tint="@color/colorSecondary"></ImageButton>
+                        android:tint="@color/colorSecondary"
+                        app:layout_constraintTop_toTopOf="@+id/event_date_title"
+                        app:layout_constraintStart_toEndOf="@+id/event_date_title"></ImageButton>
 
-                    <TextView
-                        android:id="@+id/event_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/default_title2_size"
-                        android:layout_gravity="center_vertical"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/event_date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/event_numberHero"
-                        android:textColor="@color/colorSecondary"
-                        android:layout_gravity="center_vertical"
-                        android:paddingEnd="@dimen/default_margin"
-                        android:textSize="@dimen/default_title2_size"/>
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/default_title2_size"
+                    app:layout_constraintStart_toEndOf="@+id/event_date_open"
+                    app:layout_constraintTop_toTopOf="@+id/event_date_title" />
+
+                <TextView
+                    android:id="@+id/event_number_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:paddingEnd="@dimen/default_margin"
+                    android:text="@string/event_numberHero"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorSecondary"
+                    app:layout_constraintStart_toStartOf="@+id/event_date_title"
+                    app:layout_constraintTop_toBottomOf="@+id/event_date_title" />
 
                     <NumberPicker
                         android:id="@+id/np"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/default_text_size"></NumberPicker>
-                </LinearLayout>
-            </LinearLayout>
-            </LinearLayout>
+                        android:textSize="@dimen/default_text_size"
+                        app:layout_constraintTop_toTopOf="@+id/event_number_title"
+                        app:layout_constraintStart_toEndOf="@+id/event_number_title"></NumberPicker>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/event_intro_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heros4long"
+        android:layout_gravity="bottom"/>
+    </LinearLayout>
+
 </ScrollView>
