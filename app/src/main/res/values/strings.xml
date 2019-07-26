@@ -36,8 +36,10 @@
     <string name="info_no_email_found">"Aucune adresse email"</string>
     <string name="info_no_username_found">"Aucun nom d'utilisateur"</string>
 
-    <string name="create_disponibilty">"Je suis disponible en ce moment."</string>
     <string name="create_community">"J'habite à "</string>
+
+    <string name="phone_or_town_missing">"Il faut entrer un numéro de téléphone et une ville."</string>
+    <string name="SP_missing">"Il faut révéler au moins un super pouvoir."</string>
 
     <!-- CREATE EVENT -->
     <string name="create_event">"Créer une demande"</string>

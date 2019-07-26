@@ -57,7 +57,12 @@ public class UserHelper {
             return UserHelper.getUsersCollection().document(uid).update("username", username);
         }
 
-        // --- UPDATE SUPER POWER ---
+    // --- UPDATE SUPER POWER LIST---
+    public static Task<Void> updateUserSPList(List<String> userSPList, String userId) {
+        return UserHelper.getUsersCollection().document(userId).update("userSPList", userSPList);
+    }
+
+  /*      // --- UPDATE SUPER POWER ---
         public static Task<Void> updateHouseholdSP(boolean householdSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("householdSP", householdSP);
     }
@@ -118,7 +123,8 @@ public class UserHelper {
 
     public static Task<Void> updateAdminSP(boolean adminSP, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("adminSP", adminSP);
-    }
+    }*/
+
     // --- UPDATE PHONE AND TOWN ---
 
     public static Task<Void> updateTel(String tel, String uid) {

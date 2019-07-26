@@ -20,7 +20,9 @@ public class User {
     private String urlPicture;
     private String userTown;
 
-    private Boolean householdSP;  // ménage ***
+    private List<String> userSPList;
+
+   /* private Boolean householdSP;  // ménage ***
     private Boolean ironingSP; // repassage ***
     private Boolean shoppingSP; // courses ***
     private Boolean cookingSP; // cuisine ***
@@ -35,11 +37,12 @@ public class User {
     private Boolean tutoringSP; // soutien scolaire ***
     private Boolean sewingSP; // couture ***
     private Boolean adminSP; // démarches administratives ***
-    private Boolean floweringSP;
+    private Boolean floweringSP;*/
+
 
     public User() { }
 
-    public User(String uid, String userName, String userEmail, String urlPicture) {
+   /* public User(String uid, String userName, String userEmail, String urlPicture) {
         this.uid = uid;
         this.userName = userName;
         this.userEmail = userEmail;
@@ -62,8 +65,16 @@ public class User {
         this.adminSP = false;
         this.floweringSP = false;
         this.userTown = "";
-    }
+    }*/
 
+    public User(String uid, String userName, String userEmail, String urlPicture) {
+        this.uid = uid;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.urlPicture = urlPicture;
+        this.userPhone = "";
+        this.userSPList = new ArrayList<>();
+    }
 
     public String getUid() {
         return uid;
@@ -88,6 +99,9 @@ public class User {
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
     }
+    public String getUserTown() { return userTown;}
+
+    public void setUserTown(String town) {this.userTown = town;}
 
     @Nullable
     public String getUserEmail() {
@@ -107,7 +121,12 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
-    public Boolean getHouseholdSP() {
+    public List<String> getUserSPList() { return userSPList; }
+
+    public void setUserSPList(List<String> userSPList) { this.userSPList = userSPList; }
+
+
+  /*  public Boolean getHouseholdSP() {
         return householdSP;
     }
 
@@ -234,8 +253,6 @@ public class User {
     public void setFloweringSP(Boolean flowering) {
         this.floweringSP = flowering;
     }
+*/
 
-    public String getUserTown() { return userTown;}
-
-    public void setUserTown(String town) {this.userTown = town;}
 }
