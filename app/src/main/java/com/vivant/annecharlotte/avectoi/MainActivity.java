@@ -24,6 +24,7 @@ import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
+    public static final String EVENT_ID = "EventId";
     private Toolbar toolbar;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -111,8 +112,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
-                Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, EventDetailActivity.class);
+                Log.d(TAG, "onItemClick: eventId " +id);
+                intent.putExtra(EVENT_ID, id);
                 startActivity(intent);
             }
         });

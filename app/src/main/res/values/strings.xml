@@ -42,14 +42,15 @@
     <string name="SP_missing">"Il faut révéler au moins un super pouvoir."</string>
 
     <!-- CREATE EVENT -->
-    <string name="create_event">"Créer une demande"</string>
-    <string name="event_theme_title">"Catégorie de l'événement"</string>
-    <string name="event_description_title">"Quelques mots pour décrire l'aide demandée"</string>
-    <string name="event_description">"Description de l'événement"</string>
-    <string name="event_town_title">"Ville ou village"</string>
+    <string name="create_event">"Créer une fiche mission"</string>
+    <string name="event_theme_title">"C'est une mission de type&#8230;"</string>
+    <string name="event_description_title">"En quelques lignes, votre mission sera: "</string>
+    <string name="event_description">"Je décris en quelques lignes en quoi j'ai besoin d'aide et dans quelles conditions la mission pourra se dérouler."</string>
+    <string name="event_town_title">"Ville ou village où se déroulera la mission: "</string>
     <string name="event_town">"Nom de la ville ou du village"</string>
-    <string name="event_date">"Date de l'événement"</string>
+    <string name="event_date">"Date de la mission"</string>
     <string name="event_numberHero">"Nombre de héros nécessaires"</string>
+    <string name="event_car">"Je peux aller chercher le(s) super héros."</string>
     <string name="event_validate">"Enregistrer"</string>
     <string name="event_reset">"Annuler"</string>
     <string name="event_info_missing">"Il faut remplir tous les champs."</string>
@@ -87,4 +88,8 @@
     <string name="detail_event_validate">"Go! J'accomplis cette mission."</string>
     <string name="detail_event_numer_heros_asked">"Nombre de héros sollicités: "</string>
     <string name="detail_event_numer_heros_not_found">"Nombre de héros encore à trouver: "</string>
+    <string name="detail_event_car">"Si besoin, le transport est assuré: "</string>
+    <string name="detail_event_car_yes">"Oui"</string>
+    <string name="detail_event_car_no">"Non"</string>
+    <string name="detail_event_date_created_intro">"Création de la fiche: "</string>
 </resources>

@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
  * Created by Anne-Charlotte Vivant on 24/07/2019.
  */
 public class SosEvent {
-    private String eventId;
+
     private int themeIndex;
     private Date dateNeed;
     private Date dateCreated;
@@ -19,10 +19,11 @@ public class SosEvent {
     private String userAskId;
     private List<String> userHeroIdList;
     private int numberHero;
+    private boolean car;
 
     public SosEvent() { }
 
-    public SosEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
+    public SosEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed, boolean car) {
         this.themeIndex = themeIndex;
         this.description = description;
         this.town = town;
@@ -30,16 +31,9 @@ public class SosEvent {
         this.userAskId = userAskId;
         this.dateCreated = dateCreated;
         this.dateNeed = dateNeed;
+        this.car = car;
         this.userHeroIdList = new ArrayList<>();
     }
-
-/*    public String getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }*/
 
     public int getThemeIndex() {
         return themeIndex;
@@ -103,5 +97,13 @@ public class SosEvent {
 
     public void setNumberHero(int numberHero) {
         this.numberHero = numberHero;
+    }
+
+    public boolean getCar() {
+        return car;
+    }
+
+    public void setCar(boolean car) {
+        this.car = car;
     }
 }

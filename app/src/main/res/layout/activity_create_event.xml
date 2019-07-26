@@ -32,23 +32,28 @@
 
                 <TextView
                     android:id="@+id/event_theme_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/event_theme_title"
                     android:textColor="@color/colorSecondary"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="@dimen/default_margin"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/colorSecondaryVeryTransparent"
                     />
                 <Spinner
                     android:id="@+id/event_theme_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/default_margin"
+                    android:paddingBottom="@dimen/default_margin"
                     app:layout_constraintTop_toBottomOf="@+id/event_theme_title"
-                    app:layout_constraintStart_toStartOf="@+id/event_theme_title"/>
+                    app:layout_constraintStart_toStartOf="@+id/event_theme_title"
+                    android:background="@color/colorSecondaryVeryTransparent"/>
 
 
                 <TextView
@@ -58,6 +63,7 @@
                     android:text="@string/event_description_title"
                     android:textColor="@color/colorSecondary"
                     android:layout_marginTop="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintTop_toBottomOf="@+id/event_theme_spinner"
                     app:layout_constraintStart_toStartOf="@+id/event_theme_spinner"/>
@@ -67,22 +73,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/event_description"
+                    android:paddingLeft="@dimen/default_margin"
                     android:textSize="@dimen/default_title2_size"
                     app:layout_constraintTop_toBottomOf="@+id/event_description_title"
                     app:layout_constraintStart_toStartOf="@+id/event_description_title"/>
 
                 <TextView
                     android:id="@+id/event_town_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin"
                     android:paddingEnd="@dimen/default_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     android:text="@string/event_town_title"
                     android:textColor="@color/colorSecondary"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintTop_toBottomOf="@+id/event_description"
-                    app:layout_constraintStart_toStartOf="@+id/event_description"/>
+                    app:layout_constraintStart_toStartOf="@+id/event_description"
+                    android:background="@color/colorSecondaryVeryTransparent"/>
 
                     <EditText
                         android:id="@+id/event_town"
@@ -92,7 +102,8 @@
                         android:hint="@string/event_town"
                         android:textSize="@dimen/default_title2_size"
                         app:layout_constraintTop_toBottomOf="@+id/event_town_title"
-                        app:layout_constraintStart_toStartOf="@+id/event_town_title"/>
+                        app:layout_constraintStart_toStartOf="@+id/event_town_title"
+                        android:background="@color/colorSecondaryVeryTransparent"/>
 
                 <TextView
                     android:id="@+id/event_date_title"
@@ -101,6 +112,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:paddingEnd="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingBottom="@dimen/default_margin"
                     android:text="@string/event_date"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/colorSecondary"
@@ -117,6 +131,7 @@
                         android:background="@android:color/white"
                         android:tint="@color/colorSecondary"
                         app:layout_constraintTop_toTopOf="@+id/event_date_title"
+                        app:layout_constraintBottom_toBottomOf="@+id/event_date_title"
                         app:layout_constraintStart_toEndOf="@+id/event_date_title"></ImageButton>
 
                 <TextView
@@ -126,7 +141,8 @@
                     android:layout_gravity="center_vertical"
                     android:textSize="@dimen/default_title2_size"
                     app:layout_constraintStart_toEndOf="@+id/event_date_open"
-                    app:layout_constraintTop_toTopOf="@+id/event_date_title" />
+                    app:layout_constraintTop_toTopOf="@+id/event_date_title"
+                    app:layout_constraintBottom_toBottomOf="@+id/event_date_title" />
 
                 <TextView
                     android:id="@+id/event_number_title"
@@ -135,21 +151,48 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     android:paddingEnd="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin"
                     android:text="@string/event_numberHero"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/colorSecondary"
-                    app:layout_constraintStart_toStartOf="@+id/event_date_title"
-                    app:layout_constraintTop_toBottomOf="@+id/event_date_title" />
+                    app:layout_constraintStart_toStartOf="@+id/event_car_title"
+                    app:layout_constraintTop_toTopOf="@+id/np"
+                    app:layout_constraintBottom_toBottomOf="@+id/np"/>
 
                     <NumberPicker
                         android:id="@+id/np"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/default_text_size"
-                        app:layout_constraintTop_toTopOf="@+id/event_number_title"
+                        android:layout_marginTop="@dimen/default_text_size"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        app:layout_constraintTop_toBottomOf="@+id/event_car_title"
                         app:layout_constraintStart_toEndOf="@+id/event_number_title"></NumberPicker>
 
+                <TextView
+                    android:id="@+id/event_car_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:paddingEnd="@dimen/default_margin"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin"
+                    android:paddingBottom="@dimen/default_margin"
+                    android:text="@string/event_car"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorSecondary"
+                    app:layout_constraintStart_toStartOf="@+id/event_date_title"
+                    app:layout_constraintTop_toBottomOf="@+id/event_date"
+                    android:background="@color/colorSecondaryVeryTransparent"/>
 
+                <Switch
+                    android:id="@+id/event_car_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/event_car_title"
+                    app:layout_constraintTop_toTopOf="@+id/event_car_title"
+                    app:layout_constraintEnd_toEndOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView

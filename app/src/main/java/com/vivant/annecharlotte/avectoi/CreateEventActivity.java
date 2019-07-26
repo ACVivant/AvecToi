@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,12 +42,14 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     private EditText description;
     private EditText town;
     private NumberPicker np;
+    private Switch carSwitch;
 
     private String descriptionToSave;
     private String dateToShow;
     private String townToSave;
     private Date dateToSave;
     private Date dateToday;
+    private boolean carToSave;
     private int themeToSave;
     private int numberOfHeroToSave;
     private String eventId;
@@ -103,6 +106,9 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         description = (EditText) findViewById(R.id.event_description);
         town = (EditText) findViewById(R.id.event_town);
 
+        // CAR
+        carSwitch = (Switch) findViewById(R.id.event_car_switch);
+
     }
 
     @Override
@@ -155,6 +161,8 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         descriptionToSave = description.getText().toString();
         themeToSave = themeSpinner.getSelectedItemPosition();
         townToSave = town.getText().toString();
+        carToSave = carSwitch.isChecked();
+        Log.d(TAG, "saveData: carToSave " + carToSave);
         // la date de l'événement et le nombre de personnes sont déjà enregistrés via les méthodes d'affichage
 
         userId = this.getCurrentUser().getUid();
@@ -171,10 +179,8 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     public void createEvent() {
         Log.d(TAG, "createEvent");
         eventId = userId + dateToday;
-        SosEventHelper.createEvent(themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave).addOnFailureListener(this.onFailureListener());
+        SosEventHelper.createEvent(themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave, carToSave).addOnFailureListener(this.onFailureListener());
         finish();
-       // Intent intent = new Intent(this, MainActivity.class);
-       // startActivity(intent);
     }
 
     public void resetNewEvent() {

@@ -33,8 +33,8 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).set(eventToCreate);
     }*/
 
-    public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
-        SosEvent eventToCreate = new SosEvent(themeIndex, description, town, numberHero, userAskId, dateCreated, dateNeed);
+    public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed, boolean car) {
+        SosEvent eventToCreate = new SosEvent(themeIndex, description, town, numberHero, userAskId, dateCreated, dateNeed, car);
         return SosEventHelper.getEventsCollection().add(eventToCreate);
     }
 

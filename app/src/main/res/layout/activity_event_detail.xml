@@ -32,7 +32,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/default_margin">
+        android:layout_margin="@dimen/default_margin"
+        android:background="@color/colorPrimaryVeryTransparent"
+        android:padding="@dimen/default_margin">
 
         <Button
             android:id="@+id/detail_event_button"
@@ -129,11 +131,37 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             android:background="@drawable/circle_number"
-            android:textStyle="bold"
             android:padding="@dimen/default_margin"
             android:layout_marginTop="@dimen/default_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/detail_event_number_asked"/>
+
+        <TextView
+            android:id="@+id/detail_event_car_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_event_car"
+            android:layout_marginTop="@dimen/default_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/detail_event_car"/>
+
+        <TextView
+            android:id="@+id/detail_event_car"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="@string/detail_event_car_yes"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:shadowColor="@android:color/white"
+            android:shadowRadius="10.0"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/default_text_size"
+            android:background="@drawable/circle_number"
+            android:padding="@dimen/default_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_event_number_hero_stillasked"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -142,7 +170,6 @@
             android:layout_height="wrap_content"
             android:text="@string/detail_event_title2"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="@dimen/default_large_margin"
             android:padding="@dimen/default_margin"
             android:background="@color/colorSecondary"
             android:textColor="@android:color/white"
@@ -151,12 +178,15 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/default_margin">
+            android:layout_margin="@dimen/default_margin"
+            android:background="@color/colorSecondaryVeryTransparent"
+            android:padding="@dimen/default_margin">
 
             <ImageView
                 android:id="@+id/detail_event_user_photo"
                 android:layout_width="86dp"
                 android:layout_height="86dp"
+                android:background="@drawable/border_shape"
                 android:src="@drawable/vignetteheros"
                 android:layout_marginStart="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
@@ -171,11 +201,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/create_name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_marginTop="@dimen/default_margin"
                 app:layout_constraintTop_toTopOf="@id/detail_event_user_photo"
-                app:layout_constraintEnd_toEndOf="parent"
-
-                />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/detail_event_userTel"
@@ -189,18 +216,38 @@
                 />
 
             <TextView
-                android:id="@+id/detail_event_userEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_email"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_marginTop="@dimen/default_margin"
-                app:layout_constraintTop_toBottomOf="@id/detail_event_userTel"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+            android:id="@+id/detail_event_userEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_email"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginTop="@dimen/default_margin"
+            app:layout_constraintTop_toBottomOf="@id/detail_event_userTel"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/default_margin">
+        <TextView
+            android:id="@+id/detail_event_created_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail_event_date_created_intro"
+            android:textStyle="italic"/>
 
+        <TextView
+            android:id="@+id/detail_event_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_date"
+            android:paddingLeft="@dimen/default_margin"
+            android:textStyle="italic"
+            />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
