@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateEventActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".EventDetailActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".CreateEventActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CreateUserActivity"
-            android:parentActivityName=".WelcomeActivity"></activity>
+            android:parentActivityName=".WelcomeActivity" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoTitle">
@@ -25,7 +28,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

@@ -80,4 +80,11 @@
     <!-- MAIN ACTIVITY -->
     <string name="show_all_events">"Toutes les missions"</string>
     <string name="show_map">"Carte"</string>
+
+    <!-- DETAIL EVENT ACTIVITY -->
+    <string name="detail_event_title">"Votre mission si vous l'acceptez&#8230;"</string>
+    <string name="detail_event_title2">"Vous volerez au secours de: "</string>
+    <string name="detail_event_validate">"Go! J'accomplis cette mission."</string>
+    <string name="detail_event_numer_heros_asked">"Nombre de héros sollicités: "</string>
+    <string name="detail_event_numer_heros_not_found">"Nombre de héros encore à trouver: "</string>
 </resources>

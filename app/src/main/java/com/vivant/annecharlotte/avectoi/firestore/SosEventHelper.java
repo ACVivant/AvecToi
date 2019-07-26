@@ -10,6 +10,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -69,5 +70,10 @@ public class SosEventHelper {
 
     public static Task<Void> updateEventUserAskId(String userAskId, String eventId) {
         return SosEventHelper.getEventsCollection().document(eventId).update("userAskId", userAskId);
+    }
+
+    // --- UPDATE SUPER HEROS LIST---
+    public static Task<Void> updateUserHerosIdList(List<String> userHeroIdList, String userId) {
+        return UserHelper.getUsersCollection().document(userId).update("userHeroIdList", userHeroIdList);
     }
 }

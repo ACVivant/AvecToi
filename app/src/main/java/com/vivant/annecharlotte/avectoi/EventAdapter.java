@@ -30,6 +30,8 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapter.EventViewHolder> {
 
+    private OnItemClickListener listener;
+
     private static final String TAG = "EventAdapter";
     private String myName;
 
@@ -129,6 +131,15 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
         return new EventViewHolder(v);
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+
     class EventViewHolder extends RecyclerView.ViewHolder {
 
         Button themeRV;
@@ -143,6 +154,17 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
             dateRV = itemView.findViewById(R.id.RV_event_date_needed);
             nameRV = itemView.findViewById(R.id.RV_event_name);
             townRV = itemView.findViewById(R.id.RV_event_town);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener !=null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+
+                    }
+                }
+            });
         }
     }
 }

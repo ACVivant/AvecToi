@@ -1,6 +1,8 @@
 package com.vivant.annecharlotte.avectoi.firestore;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 
@@ -15,23 +17,10 @@ public class SosEvent {
     private String town;
     private String description;
     private String userAskId;
-    @Nullable
-    private String userHeroId;
+    private List<String> userHeroIdList;
     private int numberHero;
 
     public SosEvent() { }
-
-/*    public SosEvent(String eventId, int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
-        this.eventId = eventId;
-        this.themeIndex = themeIndex;
-        this.description = description;
-        this.town = town;
-        this.numberHero = numberHero;
-        this.userAskId = userAskId;
-        this.dateCreated = dateCreated;
-        this.dateNeed = dateNeed;
-        this.userHeroId ="";
-    }*/
 
     public SosEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
         this.themeIndex = themeIndex;
@@ -41,7 +30,7 @@ public class SosEvent {
         this.userAskId = userAskId;
         this.dateCreated = dateCreated;
         this.dateNeed = dateNeed;
-        this.userHeroId ="";
+        this.userHeroIdList = new ArrayList<>();
     }
 
 /*    public String getEventId() {
@@ -100,13 +89,12 @@ public class SosEvent {
         this.userAskId = userAskId;
     }
 
-    @Nullable
-    public String getUserHeroId() {
-        return userHeroId;
+    public List<String> getUserHeroIdList() {
+        return userHeroIdList;
     }
 
-    public void setUserHeroId(@Nullable String userHeroId) {
-        this.userHeroId = userHeroId;
+    public void setUserHeroIdList(List<String> userHeroIdList) {
+        this.userHeroIdList = userHeroIdList;
     }
 
     public int getNumberHero() {

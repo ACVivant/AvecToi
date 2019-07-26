@@ -62,69 +62,6 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(userId).update("userSPList", userSPList);
     }
 
-  /*      // --- UPDATE SUPER POWER ---
-        public static Task<Void> updateHouseholdSP(boolean householdSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("householdSP", householdSP);
-    }
-
-    public static Task<Void> updateIroningSP(boolean ironingSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("ironingSP", ironingSP);
-    }
-
-    public static Task<Void> updateShoppingSP(boolean shoppingSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("shoppingSP", shoppingSP);
-    }
-
-    public static Task<Void> updateCookingSP(boolean cookingSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("cookingSP", cookingSP);
-    }
-
-    public static Task<Void> updateGardeningSP(boolean gardeningSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("gardeningSP", gardeningSP);
-    }
-
-    public static Task<Void> updateDrivingSP(boolean drivingSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("drivingSP", drivingSP);
-    }
-
-    public static Task<Void> updateDiySP(boolean diySP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("diySP", diySP);
-    }
-
-    public static Task<Void> updateWorksSP(boolean  worksSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update(" worksSP",  worksSP);
-    }
-
-    public static Task<Void> updateRelocationSP(boolean relocationSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("relocationSP", relocationSP);
-    }
-
-    public static Task<Void> updateReadingSP(boolean readingSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("readingSP", readingSP);
-    }
-
-    public static Task<Void> updateCompanySP(boolean companySP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("companySP", companySP);
-    }
-    public static Task<Void> updateBabysittingSP(boolean babysittingSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("babysittingSP", babysittingSP);
-    }
-
-        public static Task<Void> updateTutoringSP(boolean tutoringSP, String uid) {
-            return UserHelper.getUsersCollection().document(uid).update("tutoringSP", tutoringSP);
-        }
-            public static Task<Void> updateSewingSP(boolean sewingSP, String uid) {
-                return UserHelper.getUsersCollection().document(uid).update("sewingSP", sewingSP);
-            }
-
-    public static Task<Void> updateFloweringSP(boolean floweringSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("floweringSP", floweringSP);
-    }
-
-    public static Task<Void> updateAdminSP(boolean adminSP, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("adminSP", adminSP);
-    }*/
-
     // --- UPDATE PHONE AND TOWN ---
 
     public static Task<Void> updateTel(String tel, String uid) {

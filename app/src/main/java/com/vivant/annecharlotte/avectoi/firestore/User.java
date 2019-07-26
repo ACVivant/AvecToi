@@ -22,50 +22,7 @@ public class User {
 
     private List<String> userSPList;
 
-   /* private Boolean householdSP;  // ménage ***
-    private Boolean ironingSP; // repassage ***
-    private Boolean shoppingSP; // courses ***
-    private Boolean cookingSP; // cuisine ***
-    private Boolean drivingSP; // conduite ***
-    private Boolean gardeningSP; // gardening ***
-    private Boolean diySP; // bricolage ***
-    private Boolean worksSP; // travaux ***
-    private Boolean relocationSP; // déménagement ***
-    private Boolean readingSP; //lecture ***
-    private Boolean companySP; // tenir compagnie ***
-    private Boolean babysittingSP; // baby sitting ***
-    private Boolean tutoringSP; // soutien scolaire ***
-    private Boolean sewingSP; // couture ***
-    private Boolean adminSP; // démarches administratives ***
-    private Boolean floweringSP;*/
-
-
     public User() { }
-
-   /* public User(String uid, String userName, String userEmail, String urlPicture) {
-        this.uid = uid;
-        this.userName = userName;
-        this.userEmail = userEmail;
-        this.urlPicture = urlPicture;
-        this.userPhone = "";
-        this.householdSP = false;
-        this.ironingSP = false;
-        this.shoppingSP = false;
-        this.cookingSP = false;
-        this.drivingSP = false;
-        this.gardeningSP = false;
-        this.diySP = false;
-        this.worksSP = false;
-        this.relocationSP = false;
-        this.readingSP = false;
-        this.companySP = false;
-        this.babysittingSP = false;
-        this.tutoringSP = false;
-        this.sewingSP = false;
-        this.adminSP = false;
-        this.floweringSP = false;
-        this.userTown = "";
-    }*/
 
     public User(String uid, String userName, String userEmail, String urlPicture) {
         this.uid = uid;
