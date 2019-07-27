@@ -1,9 +1,14 @@
 package com.vivant.annecharlotte.avectoi;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class EventDetailActivity extends AppCompatActivity {
+public class EventDetailActivity extends BaseActivity {
 
     private static final String TAG = "EventDetailActivity";
 
@@ -46,6 +51,9 @@ public class EventDetailActivity extends AppCompatActivity {
 
     private FloatingActionButton validate;
 
+    private List<String> listHeros = new ArrayList<>();
+    private String userHeroId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +62,40 @@ public class EventDetailActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         eventId = getIntent().getStringExtra(MainActivity.EVENT_ID);
+        userHeroId = this.getCurrentUser().getUid();
 
         Log.d(TAG, "onCreate: eventId " +eventId);
 
         layoutlinks();
         updateView(eventId);
+
+        validate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listHeros.add(userHeroId);
+                openDialog(listHeros);
+
+            }
+        });
+    }
+
+    private void openDialog(final List<String> list) {
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.detail_event_confirmation_title)
+                .setMessage(R.string.detail_event_hero_confirmation)
+                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SosEventHelper.updateUserHerosIdList(list, eventId);
+                    }
+                })
+                .setNegativeButton("Non", null)
+                .show();
+    }
+
+    @Override
+    public int getFragmentLayout() {
+        return R.layout.activity_event_detail;
     }
 
     public void layoutlinks() {
@@ -76,8 +113,11 @@ public class EventDetailActivity extends AppCompatActivity {
         userTelTV = findViewById(R.id.detail_event_userTel);
         userEmailTV = findViewById(R.id.detail_event_userEmail);
 
-        validate = findViewById(R.id.add_new_event_button);
+        validate = findViewById(R.id.add_new_hero_button);
+
+
     }
+
 
     public void updateView(String eid) {
         SosEventHelper.getEvent(eid).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -128,9 +168,8 @@ public class EventDetailActivity extends AppCompatActivity {
                     //NUMBER
                     int totalHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHero();
                     eventNumberAskedTV.setText(String.valueOf(totalHeros));
-                    List<String> listHero = new ArrayList<>();
-                    listHero = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroIdList();
-                    int alreadyHeros = listHero.size();
+                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroIdList();
+                    int alreadyHeros = listHeros.size();
                     int toFindHeros = totalHeros - alreadyHeros;
                     eventNumberWaitedTV.setText(String.valueOf(toFindHeros));
 
@@ -141,6 +180,7 @@ public class EventDetailActivity extends AppCompatActivity {
                     } else {
                         eventCarTV.setText(R.string.detail_event_car_no);
                     }
+
 
                                         /* <string-array name="event_theme">
         <item>"Faire le ménage"</item>

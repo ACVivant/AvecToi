@@ -73,7 +73,7 @@ public class SosEventHelper {
     }
 
     // --- UPDATE SUPER HEROS LIST---
-    public static Task<Void> updateUserHerosIdList(List<String> userHeroIdList, String userId) {
-        return UserHelper.getUsersCollection().document(userId).update("userHeroIdList", userHeroIdList);
+    public static Task<Void> updateUserHerosIdList(List<String> userHeroIdList, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("userHeroIdList", userHeroIdList);
     }
 }

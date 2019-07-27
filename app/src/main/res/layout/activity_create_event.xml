@@ -14,14 +14,15 @@
             android:id="@+id/create_event_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/create_event"
             android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/default_margin"
+            android:background="@color/colorPrimary"
             android:padding="@dimen/default_margin"
-            android:background="@color/colorSecondary"
+            android:text="@string/create_event"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/event_theme_title"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorPrimary"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="@dimen/default_margin"
                     android:paddingTop="@dimen/default_margin"
@@ -43,7 +44,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:background="@color/colorSecondaryVeryTransparent"
+                    android:background="@color/colorPrimaryVeryTransparent"
                     />
                 <Spinner
                     android:id="@+id/event_theme_spinner"
@@ -53,7 +54,7 @@
                     android:paddingBottom="@dimen/default_margin"
                     app:layout_constraintTop_toBottomOf="@+id/event_theme_title"
                     app:layout_constraintStart_toStartOf="@+id/event_theme_title"
-                    android:background="@color/colorSecondaryVeryTransparent"/>
+                    android:background="@color/colorPrimaryVeryTransparent"/>
 
 
                 <TextView
@@ -61,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/event_description_title"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorPrimary"
                     android:layout_marginTop="@dimen/default_margin"
                     android:paddingLeft="@dimen/default_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -88,11 +89,11 @@
                     android:paddingEnd="@dimen/default_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     android:text="@string/event_town_title"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorPrimary"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintTop_toBottomOf="@+id/event_description"
                     app:layout_constraintStart_toStartOf="@+id/event_description"
-                    android:background="@color/colorSecondaryVeryTransparent"/>
+                    android:background="@color/colorPrimaryVeryTransparent"/>
 
                     <EditText
                         android:id="@+id/event_town"
@@ -103,7 +104,7 @@
                         android:textSize="@dimen/default_title2_size"
                         app:layout_constraintTop_toBottomOf="@+id/event_town_title"
                         app:layout_constraintStart_toStartOf="@+id/event_town_title"
-                        android:background="@color/colorSecondaryVeryTransparent"/>
+                        android:background="@color/colorPrimaryVeryTransparent"/>
 
                 <TextView
                     android:id="@+id/event_date_title"
@@ -117,7 +118,7 @@
                     android:paddingBottom="@dimen/default_margin"
                     android:text="@string/event_date"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/event_town"
                     app:layout_constraintTop_toBottomOf="@+id/event_town" />
 
@@ -129,7 +130,7 @@
                         android:src="@drawable/ic_date"
                         android:paddingHorizontal="@dimen/default_margin"
                         android:background="@android:color/white"
-                        android:tint="@color/colorSecondary"
+                        android:textColor="@color/colorPrimary"
                         app:layout_constraintTop_toTopOf="@+id/event_date_title"
                         app:layout_constraintBottom_toBottomOf="@+id/event_date_title"
                         app:layout_constraintStart_toEndOf="@+id/event_date_title"></ImageButton>
@@ -154,7 +155,7 @@
                     android:paddingLeft="@dimen/default_margin"
                     android:text="@string/event_numberHero"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/event_car_title"
                     app:layout_constraintTop_toTopOf="@+id/np"
                     app:layout_constraintBottom_toBottomOf="@+id/np"/>
@@ -175,16 +176,16 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="8dp"
-                    android:paddingEnd="@dimen/default_margin"
-                    android:paddingTop="@dimen/default_margin"
+                    android:background="@color/colorPrimaryVeryTransparent"
                     android:paddingLeft="@dimen/default_margin"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingEnd="@dimen/default_margin"
                     android:paddingBottom="@dimen/default_margin"
                     android:text="@string/event_car"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorPrimary"
                     app:layout_constraintStart_toStartOf="@+id/event_date_title"
-                    app:layout_constraintTop_toBottomOf="@+id/event_date"
-                    android:background="@color/colorSecondaryVeryTransparent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/event_date" />
 
                 <Switch
                     android:id="@+id/event_car_switch"

@@ -92,4 +92,6 @@
     <string name="detail_event_car_yes">"Oui"</string>
     <string name="detail_event_car_no">"Non"</string>
     <string name="detail_event_date_created_intro">"Création de la fiche: "</string>
+    <string name="detail_event_confirmation_title">"Confirmation"</string>
+    <string name="detail_event_hero_confirmation">"Vous confirmez que vous proposez d'assurer cette mission?"</string>
 </resources>
