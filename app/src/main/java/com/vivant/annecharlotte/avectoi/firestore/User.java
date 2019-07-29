@@ -20,7 +20,7 @@ public class User {
     private String urlPicture;
     private String userTown;
 
-    private List<String> userSPList;
+    private List<Integer> userSPList;
 
     public User() { }
 
@@ -78,9 +78,9 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
-    public List<String> getUserSPList() { return userSPList; }
+    public List<Integer> getUserSPList() { return userSPList; }
 
-    public void setUserSPList(List<String> userSPList) { this.userSPList = userSPList; }
+    public void setUserSPList(List<Integer> userSPList) { this.userSPList = userSPList; }
 
 
   /*  public Boolean getHouseholdSP() {

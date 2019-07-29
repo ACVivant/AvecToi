@@ -169,8 +169,8 @@ public class NotificationHeroService extends FirebaseMessagingService {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     User user = documentSnapshot.toObject(User.class);
-                                    List<String> userSP= user.getUserSPList();
-                                    if (userSP.contains("cookingSP")) {  // remplacer par eventIndex
+                                    List<Integer> userSP= user.getUserSPList();
+                                    if (userSP.contains(eventIndex)) {
                                         listNewEvents.add(event.getThemeIndex());
                                     }
                                 }
@@ -216,15 +216,14 @@ public class NotificationHeroService extends FirebaseMessagingService {
         String textToDisplay = "";
         switch (list.size()) {
             case 0:
-                textToDisplay = "";
                 displayEvent = false;
                 break;
             case 1:
-                textToDisplay = "Une nouvelle mission a été mise en ligne: " + stringMissionTab[0];
+                textToDisplay = "Une nouvelle mission nécessitant vos super pouvoirs a été mise en ligne: " + stringMissionTab[0];
                 displayEvent = true;
                 break;
             default:
-                textToDisplay = "De nouvelles missions ont été mises en ligne: ";
+                textToDisplay = "De nouvelles missions nécessitant vos super pouvoirs ont été mises en ligne: ";
                 for (int i = 0; i < list.size() - 1; i++) {
                     textToDisplay += stringMissionTab[i] + " / ";
                 }

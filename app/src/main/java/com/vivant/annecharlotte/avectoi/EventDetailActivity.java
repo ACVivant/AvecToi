@@ -89,6 +89,7 @@ public class EventDetailActivity extends BaseActivity {
                         SosEventHelper.updateUserHerosIdList(list, eventId);
                         Date today = new Date();
                         SosEventHelper.updateDateHeroOk(today, eventId);
+                        finish();
                     }
                 })
                 .setNegativeButton("Non", null)

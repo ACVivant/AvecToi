@@ -58,7 +58,7 @@ public class UserHelper {
         }
 
     // --- UPDATE SUPER POWER LIST---
-    public static Task<Void> updateUserSPList(List<String> userSPList, String userId) {
+    public static Task<Void> updateUserSPList(List<Integer> userSPList, String userId) {
         return UserHelper.getUsersCollection().document(userId).update("userSPList", userSPList);
     }
 

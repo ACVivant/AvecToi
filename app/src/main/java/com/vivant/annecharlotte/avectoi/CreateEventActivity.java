@@ -51,7 +51,7 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     private Date dateToday;
     private boolean carToSave;
     private int themeToSave;
-    private int numberOfHeroToSave;
+    private int numberOfHeroToSave=1;
     private String eventId;
 
     private String userId;

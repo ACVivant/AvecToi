@@ -53,10 +53,11 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     //private Button[] buttonTab = {ironing, household, shopping, cooking, driving, gardening, diy, works, relocation, reading, babysitting, sewing, admin, flower, tutoring, company};
     private boolean[] booleanTab = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
     private String[] stringTab = {"ironingSP", "householSP", "shoppingSP", "cookingSP", "drivingSP", "gardeningSP", "diySP", "worksSP", "relocationSP", "readingSP", "babysittingSP", "sewingSP", "floweringSP", "tutoringSP", "companySP", "adminSP"};
+    private Integer[] indexTab = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 
     private Context context;
 
-    List<String> listUserSP = new ArrayList<>();
+    List<Integer> listUserSP = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,7 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
             buttonTab[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    booleanTab[i] = actionClick(booleanTab[i], buttonTab[i], stringTab[i]);
+                    booleanTab[i] = actionClick(booleanTab[i], buttonTab[i], i);
                 }
             });
         }*/
@@ -115,21 +116,21 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         buttonTab[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[0] = actionClick(booleanTab[0], buttonTab[0], stringTab[0]);
+                booleanTab[0] = actionClick(booleanTab[0], buttonTab[0], 0);
             }
         });
 
         buttonTab[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[1] = actionClick(booleanTab[1], buttonTab[1], stringTab[1]);
+                booleanTab[1] = actionClick(booleanTab[1], buttonTab[1], 1);
             }
         });
 
         buttonTab[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[2] = actionClick(booleanTab[2], buttonTab[2], stringTab[2]);
+                booleanTab[2] = actionClick(booleanTab[2], buttonTab[2], 2);
             }
         });
 
@@ -137,96 +138,96 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: " + cookData);
-                booleanTab[3] = actionClick(booleanTab[3], buttonTab[3], stringTab[3]);
+                booleanTab[3] = actionClick(booleanTab[3], buttonTab[3], 3);
             }
         });
 
         buttonTab[4].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[4] = actionClick(booleanTab[4], buttonTab[4], stringTab[4]);
+                booleanTab[4] = actionClick(booleanTab[4], buttonTab[4], 4);
             }
         });
 
         buttonTab[5].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[5] = actionClick(booleanTab[5], buttonTab[5], stringTab[5]);
+                booleanTab[5] = actionClick(booleanTab[5], buttonTab[5], 5);
             }
         });
 
         buttonTab[6].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[6] = actionClick(booleanTab[6], buttonTab[6], stringTab[6]);
+                booleanTab[6] = actionClick(booleanTab[6], buttonTab[6], 6);
             }
         });
 
         buttonTab[7].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[7] = actionClick(booleanTab[7], buttonTab[7], stringTab[7]);
+                booleanTab[7] = actionClick(booleanTab[7], buttonTab[7], 7);
             }
         });
 
         buttonTab[8].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[8] = actionClick(booleanTab[8], buttonTab[8], stringTab[8]);
+                booleanTab[8] = actionClick(booleanTab[8], buttonTab[8], 8);
             }
         });
 
         buttonTab[9].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[9] = actionClick(booleanTab[9], buttonTab[9], stringTab[9]);
+                booleanTab[9] = actionClick(booleanTab[9], buttonTab[9], 9);
             }
         });
 
         buttonTab[10].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[10] = actionClick(booleanTab[10], buttonTab[10], stringTab[10]);
+                booleanTab[10] = actionClick(booleanTab[10], buttonTab[10], 10);
             }
         });
 
         buttonTab[11].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[11] = actionClick(booleanTab[11], buttonTab[11], stringTab[11]);
+                booleanTab[11] = actionClick(booleanTab[11], buttonTab[11], 11);
             }
         });
 
         buttonTab[12].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[12] = actionClick(booleanTab[12], buttonTab[12], stringTab[12]);
+                booleanTab[12] = actionClick(booleanTab[12], buttonTab[12], 12);
             }
         });
 
         buttonTab[13].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[13] = actionClick(booleanTab[13], buttonTab[13], stringTab[13]);
+                booleanTab[13] = actionClick(booleanTab[13], buttonTab[13], 13);
             }
         });
 
         buttonTab[14].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[14] = actionClick(booleanTab[14], buttonTab[14], stringTab[14]);
+                booleanTab[14] = actionClick(booleanTab[14], buttonTab[14], 14);
             }
         });
 
         buttonTab[15].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                booleanTab[15] = actionClick(booleanTab[15], buttonTab[15], stringTab[15]);
+                booleanTab[15] = actionClick(booleanTab[15], buttonTab[15], 15);
             }
         });
     }
 
-    public boolean actionClick(boolean data, Button button, String sp) {
+    public boolean actionClick(boolean data, Button button, int sp) {
         Log.d(TAG, "actionClick: listUserSP " + listUserSP);
         Log.d(TAG, "actionClick: sp "+sp);
         Log.d(TAG, "actionClick: data "+ data);
