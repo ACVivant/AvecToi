@@ -40,6 +40,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-firestore:4.3.1'
     implementation 'com.firebaseui:firebase-ui-database:4.0.0'
 
+    // FIREBASE MESSAGING
+    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+
     //BUTTERKNIFE
     //implementation 'com.jakewharton:butterknife:10.1.0'
     //annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'

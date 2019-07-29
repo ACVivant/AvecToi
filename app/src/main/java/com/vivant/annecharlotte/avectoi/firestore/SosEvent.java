@@ -14,6 +14,8 @@ public class SosEvent {
     private int themeIndex;
     private Date dateNeed;
     private Date dateCreated;
+    @Nullable
+    private Date dateHeroOk;
     private String town;
     private String description;
     private String userAskId;
@@ -31,6 +33,7 @@ public class SosEvent {
         this.userAskId = userAskId;
         this.dateCreated = dateCreated;
         this.dateNeed = dateNeed;
+        this.dateHeroOk = null;
         this.car = car;
         this.userHeroIdList = new ArrayList<>();
     }
@@ -49,6 +52,14 @@ public class SosEvent {
 
     public void setDateNeed(Date dateNeed) {
         this.dateNeed = dateNeed;
+    }
+
+    public Date getDateHeroOk() {
+        return dateHeroOk;
+    }
+
+    public void setDateHeroOk(Date dateHeroOk) {
+        this.dateHeroOk = dateHeroOk;
     }
 
     public Date getDateCreated() {

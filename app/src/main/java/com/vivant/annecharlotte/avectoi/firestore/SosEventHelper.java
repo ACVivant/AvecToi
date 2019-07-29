@@ -33,7 +33,7 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).set(eventToCreate);
     }*/
 
-    public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed, boolean car) {
+    public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed,boolean car) {
         SosEvent eventToCreate = new SosEvent(themeIndex, description, town, numberHero, userAskId, dateCreated, dateNeed, car);
         return SosEventHelper.getEventsCollection().add(eventToCreate);
     }
@@ -75,5 +75,9 @@ public class SosEventHelper {
     // --- UPDATE SUPER HEROS LIST---
     public static Task<Void> updateUserHerosIdList(List<String> userHeroIdList, String eventId) {
         return SosEventHelper.getEventsCollection().document(eventId).update("userHeroIdList", userHeroIdList);
+    }
+
+    public static Task<Void> updateDateHeroOk(Date today, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("dateHeroOk", today);
     }
 }

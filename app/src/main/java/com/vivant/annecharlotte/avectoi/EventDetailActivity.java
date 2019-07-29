@@ -87,6 +87,8 @@ public class EventDetailActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         SosEventHelper.updateUserHerosIdList(list, eventId);
+                        Date today = new Date();
+                        SosEventHelper.updateDateHeroOk(today, eventId);
                     }
                 })
                 .setNegativeButton("Non", null)

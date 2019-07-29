@@ -53,13 +53,6 @@ public class MainActivity extends AppCompatActivity {
     // CONFIGURATION
     // ---------------------
 
-    // Configure toolbar
-/*    private void configureToolbar(){
-        Log.d(TAG, "configureToolbar: ");
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }*/
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         Log.d(TAG, "onCreateOptionsMenu: ");
