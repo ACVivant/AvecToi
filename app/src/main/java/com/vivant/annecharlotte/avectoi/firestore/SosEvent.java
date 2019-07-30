@@ -20,16 +20,20 @@ public class SosEvent {
     private String description;
     private String userAskId;
     private List<String> userHeroIdList;
-    private int numberHero;
+    private int numberHeroWanted;
+    private int numberHeroNotFound;
+    private boolean missionOK;
     private boolean car;
 
     public SosEvent() { }
 
-    public SosEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed, boolean car) {
+    public SosEvent(int themeIndex, String description, String town, int numberHeroWanted, String userAskId, Date dateCreated, Date dateNeed, boolean car) {
         this.themeIndex = themeIndex;
         this.description = description;
         this.town = town;
-        this.numberHero = numberHero;
+        this.numberHeroWanted = numberHeroWanted;
+        this.numberHeroNotFound = numberHeroWanted;
+        this.missionOK = false;
         this.userAskId = userAskId;
         this.dateCreated = dateCreated;
         this.dateNeed = dateNeed;
@@ -102,12 +106,29 @@ public class SosEvent {
         this.userHeroIdList = userHeroIdList;
     }
 
-    public int getNumberHero() {
-        return numberHero;
+    public int getNumberHeroWanted() {
+        return numberHeroWanted;
     }
 
-    public void setNumberHero(int numberHero) {
-        this.numberHero = numberHero;
+    public void setNumberHeroWanted(int numberHeroWanted) {
+        this.numberHeroWanted = numberHeroWanted;
+    }
+
+    public int getNumberHeroNotFound() {
+        return numberHeroNotFound;
+    }
+
+    public void setNumberHeroNotFound(int numberHeroNotFound) {
+        this.numberHeroNotFound = numberHeroNotFound;
+    }
+
+
+    public boolean isMissionOK() {
+        return missionOK;
+    }
+
+    public void setMissionOK(boolean missionOK) {
+        this.missionOK = missionOK;
     }
 
     public boolean getCar() {

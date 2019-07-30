@@ -53,6 +53,7 @@ public class EventDetailActivity extends BaseActivity {
 
     private List<String> listHeros = new ArrayList<>();
     private String userHeroId;
+    private int toFindHeros;
 
 
     @Override
@@ -86,14 +87,23 @@ public class EventDetailActivity extends BaseActivity {
                 .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SosEventHelper.updateUserHerosIdList(list, eventId);
-                        Date today = new Date();
-                        SosEventHelper.updateDateHeroOk(today, eventId);
+                       updateEvent(list);
                         finish();
                     }
                 })
                 .setNegativeButton("Non", null)
                 .show();
+    }
+
+    public void updateEvent(List<String> list) {
+        SosEventHelper.updateUserHerosIdList(list, eventId);
+        Date today = new Date();
+        SosEventHelper.updateDateHeroOk(today, eventId);
+        SosEventHelper.updateUserHerosNotFound(toFindHeros-1, eventId);
+
+        if(toFindHeros-1==0) {
+            SosEventHelper.updateMissionOk(true, eventId);
+        }
     }
 
     @Override
@@ -168,13 +178,14 @@ public class EventDetailActivity extends BaseActivity {
                     //DESCRIPTION
                     eventDescriptionTV.setText(Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getDescription());
 
-                    //NUMBER
-                    int totalHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHero();
+                    //HEROS
+                    int totalHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHeroWanted();
                     eventNumberAskedTV.setText(String.valueOf(totalHeros));
-                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroIdList();
-                    int alreadyHeros = listHeros.size();
-                    int toFindHeros = totalHeros - alreadyHeros;
+
+                    toFindHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHeroNotFound();
                     eventNumberWaitedTV.setText(String.valueOf(toFindHeros));
+
+                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroIdList();
 
                     //CAR
                     boolean car = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getCar();
@@ -184,26 +195,6 @@ public class EventDetailActivity extends BaseActivity {
                         eventCarTV.setText(R.string.detail_event_car_no);
                     }
 
-
-                                        /* <string-array name="event_theme">
-        <item>"Faire le ménage"</item>
-        <item>"Faire les courses"</item>
-        <item>"Faire la cuisine"</item>
-        <item>"Faire des conduites"</item>
-        <item>"Faire du repassage"</item>
-        <item>"Entretenir le jardin"</item>
-        <item>"Faire des bricolages"</item>
-        <item>"Faire des travaux"</item>
-        <item>"Aider à déménager"</item>
-        <item>"Faire la lecture"</item>
-        <item>"Tenir compagnie"</item>
-        <item>"Garder des enfants"</item>
-        <item>"Aider à faire ses devoirs"</item>
-        <item>"Faire de la couture"</item>
-        <item>"Faire des démarches admin."</item>
-        <item>"Faire des bouquets</item>
-    </string-array>*/
-
                     //THEME
                     String[] themeArray = getResources().getStringArray(R.array.event_theme);
                     int themeIndex = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getThemeIndex();
@@ -211,23 +202,23 @@ public class EventDetailActivity extends BaseActivity {
                     switch (themeIndex) {
                         case 0:
                             eventBtn.setText(themeArray[0]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_household), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_ironing), null, null);
                             return;
                         case 1:
                             eventBtn.setText(themeArray[1]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_shopping), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_household), null, null);
                             return;
                         case 2:
                             eventBtn.setText(themeArray[2]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_cooking), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_shopping), null, null);
                             return;
                         case 3:
                             eventBtn.setText(themeArray[3]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_driving), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_cooking), null, null);
                             return;
                         case 4:
                             eventBtn.setText(themeArray[4]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_ironing), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_driving), null, null);
                             return;
                         case 5:
                             eventBtn.setText(themeArray[5]);
@@ -251,27 +242,27 @@ public class EventDetailActivity extends BaseActivity {
                             return;
                         case 10:
                             eventBtn.setText(themeArray[10]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_compagny), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_babysitting), null, null);
                             return;
                         case 11:
                             eventBtn.setText(themeArray[11]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_babysitting), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_sewing), null, null);
                             return;
                         case 12:
                             eventBtn.setText(themeArray[12]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_tutoring), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_flower), null, null);
                             return;
                         case 13:
                             eventBtn.setText(themeArray[13]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_sewing), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_tutoring), null, null);
                             return;
                         case 14:
                             eventBtn.setText(themeArray[14]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_admin), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_compagny), null, null);
                             return;
                         case 15:
                             eventBtn.setText(themeArray[15]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_flower), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_admin), null, null);
                             return;
                         default:
                             eventBtn.setText(getResources().getString(R.string.app_name));

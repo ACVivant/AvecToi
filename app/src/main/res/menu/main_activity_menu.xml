@@ -12,15 +12,6 @@
         android:iconTint="@android:color/white"/>
 
     <item
-        android:id="@+id/main_all_events"
-        android:icon="@drawable/ic_filter_none"
-        android:title="@string/show_all_events"
-        app:showAsAction="always"
-        android:orderInCategory="100"
-        app:theme="@style/ToolbarColoredBackArrow"
-        android:iconTint="@android:color/white"/>
-
-    <item
         android:id="@+id/main_map"
         android:icon="@drawable/ic_map"
         android:title="@string/show_map"

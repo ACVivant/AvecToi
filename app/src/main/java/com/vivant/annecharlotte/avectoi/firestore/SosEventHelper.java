@@ -8,6 +8,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.Date;
 import java.util.List;
@@ -27,11 +28,6 @@ public class SosEventHelper {
     }
 
     // --- CREATE ---
-/*    public static Task<Void> createEvent(String eventId, int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed) {
-        SosEvent eventToCreate = new SosEvent(eventId, themeIndex, description, town, numberHero, userAskId, dateCreated, dateNeed);
-        Log.d(TAG, "createEvent");
-        return SosEventHelper.getEventsCollection().document(eventId).set(eventToCreate);
-    }*/
 
     public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, String userAskId, Date dateCreated, Date dateNeed,boolean car) {
         SosEvent eventToCreate = new SosEvent(themeIndex, description, town, numberHero, userAskId, dateCreated, dateNeed, car);
@@ -41,6 +37,21 @@ public class SosEventHelper {
     // --- GET ---
     public static Task<DocumentSnapshot> getEvent(String eventId){
         return SosEventHelper.getEventsCollection().document(eventId).get();
+    }
+
+    // -- GET ALL EVENTS --
+    public static Query getAllEvents(){
+        Date today = new Date();
+        return SosEventHelper.getEventsCollection().orderBy("dateNeed", Query.Direction.ASCENDING);
+    }
+
+    public static Query getAllEventsFromToday(){
+        Date today = new Date();
+        return SosEventHelper.getEventsCollection().orderBy("dateNeed", Query.Direction.ASCENDING).startAt(today);
+    }
+
+    public static Query getAllEventsWithHeroTofind() {
+        return SosEventHelper.getEventsCollection().orderBy("numberHeroNotFound", Query.Direction.ASCENDING).startAt(1);
     }
 
     // --- UPDATE EVENT ---
@@ -77,7 +88,16 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).update("userHeroIdList", userHeroIdList);
     }
 
+    public static Task<Void> updateUserHerosNotFound(int nbHeros, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("numberHeroNotFound", nbHeros);
+    }
+
     public static Task<Void> updateDateHeroOk(Date today, String eventId) {
         return SosEventHelper.getEventsCollection().document(eventId).update("dateHeroOk", today);
+    }
+
+    // --- UPDATE MISSION STATUS
+    public static Task<Void> updateMissionOk(boolean missionOK, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("missionOK", missionOK);
     }
 }

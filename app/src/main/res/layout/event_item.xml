@@ -27,17 +27,21 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"/>
 
-        <!--TextView
-            android:id="@+id/RV_event_theme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_householdSP"
+        <TextView
+            android:id="@+id/RV_event_heros_not_found"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="1"
+            android:shadowColor="@android:color/white"
+            android:shadowRadius="10.0"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            android:background="@drawable/circle_number"
+            android:padding="@dimen/default_margin"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:maxLines="1"
-            android:layout_toStartOf="@+id/RV_event_date_needed"
-            android:ellipsize="end"/-->
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/default_margin"/>
 
         <TextView
         android:id="@+id/RV_event_date_needed"
@@ -46,9 +50,8 @@
         android:text="@string/event_date"
             android:layout_marginTop="@dimen/default_margin"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:paddingLeft="@dimen/default_large_margin"/>
+        android:layout_toEndOf="@id/RV_event_theme"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:id="@+id/RV_event_town"
@@ -56,7 +59,7 @@
             android:layout_height="wrap_content"
             android:text="@string/event_town"
             android:layout_below="@+id/RV_event_date_needed"
-            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@id/RV_event_date_needed"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <TextView
@@ -65,7 +68,7 @@
             android:layout_height="wrap_content"
             android:text="Babar Céleste"
             android:layout_below="@+id/RV_event_town"
-            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@id/RV_event_date_needed"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
 

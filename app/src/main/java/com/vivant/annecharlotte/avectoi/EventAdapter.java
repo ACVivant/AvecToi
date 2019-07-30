@@ -67,25 +67,36 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
             }
         });
 
+        // Number
+        int numberHeros = sosEvent.getNumberHeroNotFound();
+        eventViewHolder.numberRV.setText(String.valueOf(numberHeros));
+        if (numberHeros==0) {
+            eventViewHolder.numberRV.setBackground(eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.circle_number_transparent));
+            eventViewHolder.themeRV.setBackground(eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.button_background_transparent));
+        } else {
+            eventViewHolder.numberRV.setBackground(eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.circle_number));
+            eventViewHolder.themeRV.setBackground(eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.button_background));
+        }
+
         //Theme
         String themeArr[] = eventViewHolder.itemView.getContext().getResources().getStringArray(R.array.event_theme);
         int themeIndex = sosEvent.getThemeIndex();
         eventViewHolder.themeRV.setText(themeArr[themeIndex]);
         Drawable top;
         switch (themeIndex) {
-            case 0: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_household);
+            case 0: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_ironing);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
             return;
-            case 1: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_shopping);
+            case 1: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_household);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 2: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_cooking);
+            case 2: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_shopping);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 3: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_driving);
+            case 3: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_cooking);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 4: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_ironing);
+            case 4: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_driving);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
             case 5: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_gardening);
@@ -103,22 +114,22 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
             case 9: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_reading);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 10: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_compagny);
+            case 10: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_babysitting);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 11: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_babysitting);
+            case 11: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_sewing);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 12: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_tutoring);
+            case 12: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_flower);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 13: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_sewing);
+            case 13: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_tutoring);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 14: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_admin);
+            case 14: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_compagny);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
-            case 15: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_flower);
+            case 15: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_admin);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;
             default: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_add);
@@ -148,6 +159,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
         TextView dateRV;
         TextView nameRV;
         TextView townRV;
+        TextView numberRV;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -156,6 +168,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
             dateRV = itemView.findViewById(R.id.RV_event_date_needed);
             nameRV = itemView.findViewById(R.id.RV_event_name);
             townRV = itemView.findViewById(R.id.RV_event_town);
+            numberRV = itemView.findViewById(R.id.RV_event_heros_not_found);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

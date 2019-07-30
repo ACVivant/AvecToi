@@ -19,12 +19,17 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
+import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     public static final String EVENT_ID = "EventId";
+    public static final String QUERY_ID = "QueryId";
     private Toolbar toolbar;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -37,11 +42,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.add_new_event_button);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton floatingActionButtonCreate = findViewById(R.id.add_new_event_button);
+        floatingActionButtonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchCreate();
+            }
+        });
+
+        FloatingActionButton floatingActionButtonFilter = findViewById(R.id.all_events_button);
+        floatingActionButtonFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick floatingFilter");
+
             }
         });
 
@@ -65,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "onOptionsItemSelected: ");
         switch (item.getItemId()) {
-            case R.id.main_all_events:
-                //
-                return true;
+
             case R.id.main_my_events:
                 Intent intent = new Intent(MainActivity.this, UserEventsActivity.class);
                 startActivity(intent);
@@ -90,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
     // ------------------------
 
     private void setupRecyclerView() {
-        Query query = eventsRef.orderBy("dateNeed", Query.Direction.ASCENDING);
+        //Query query = eventsRef.orderBy("dateNeed", Query.Direction.ASCENDING);
+        //Query query = eventsRef.whereGreaterThan("numberHeroNotFound",0);
+        Query query = SosEventHelper.getAllEventsFromToday().whereEqualTo("missionOK", false);
 
         FirestoreRecyclerOptions<SosEvent> options = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(query, SosEvent.class)
