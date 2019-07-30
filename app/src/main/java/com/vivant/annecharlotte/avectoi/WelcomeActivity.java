@@ -33,7 +33,7 @@ public class WelcomeActivity extends BaseActivity {
     private static final String USER_ID = "userId";
     private static final String USER_EMAIL = "userEmail";
 
-    private String userId;
+    public String userId;
 
     //FOR DESIGN
     private Button loginBtn;
@@ -103,6 +103,7 @@ public class WelcomeActivity extends BaseActivity {
                             if (documentSnapshot.exists()) {  // Si l'utilisateur a déjà un compte
                                 Log.d(TAG, "onSuccess: documentSnapshot exists");
                                 startMainActivity();
+                               // startCreateUserActivity();
                             } else {
                                 // CREATE USER
                                 createUserInFirestore();

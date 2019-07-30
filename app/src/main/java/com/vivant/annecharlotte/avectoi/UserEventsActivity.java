@@ -1,17 +1,13 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,76 +17,54 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 
-public class MainActivity extends AppCompatActivity {
+public class UserEventsActivity extends BaseActivity{
 
-    private static final String TAG = "MainActivity";
-    public static final String EVENT_ID = "EventId";
-    private Toolbar toolbar;
-
+    private static final String TAG = "UserEventsActivity";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
 
     private EventAdapter adapter;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_events);
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.add_new_event_button);
+        userId = this.getCurrentUser().getUid();
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.modify_profil);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchCreate();
+                launchUserProfil();
             }
         });
 
-        setupRecyclerView();
-    }
-
-    // ---------------------
-    // CONFIGURATION
-    // ---------------------
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG, "onCreateOptionsMenu: ");
-        //Inflate the menu and add it to the top Toolbar
-            getMenuInflater().inflate(R.menu.main_activity_menu, menu);
-
-        return true;
+        setupIamheroRecyclerView();
+        setupIneedhelpRecyclerView();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "onOptionsItemSelected: ");
-        switch (item.getItemId()) {
-            case R.id.main_all_events:
-                //
-                return true;
-            case R.id.main_my_events:
-                Intent intent = new Intent(MainActivity.this, UserEventsActivity.class);
-                startActivity(intent);
-                return true;
-        }
-        return false;
+    public int getFragmentLayout() {
+        return R.layout.activity_user_events;
     }
 
-    // ------------------------
-    // CREATE NEW EVENT
-    // ------------------------
-
-    public void launchCreate() {
-        Intent intent = new Intent(this, CreateEventActivity.class);
+    public void launchUserProfil() {
+        Intent intent = new Intent(UserEventsActivity.this ,CreateUserActivity.class);
         startActivity(intent);
     }
 
-    // ------------------------
-    // RECYCLERVIEW
-    // ------------------------
+    public void setupIamheroRecyclerView() {
 
-    private void setupRecyclerView() {
-        Query query = eventsRef.orderBy("dateNeed", Query.Direction.ASCENDING);
+    }
+
+    public void setupIneedhelpRecyclerView() {
+        Log.d(TAG, "setupIneedhelpRecyclerView: userId ");
+        Query query = eventsRef.whereEqualTo("userAskId", userId).orderBy("dateNeed", Query.Direction.ASCENDING);
+        //Query query = eventsRef.orderBy("dateNeed", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<SosEvent> options = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(query, SosEvent.class)
@@ -98,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new EventAdapter(options);
 
-        RecyclerView recyclerView = findViewById(R.id.events_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.ineedhelp_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -107,10 +81,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
-                //Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MainActivity.this, EventDetailActivity.class);
+                Intent intent = new Intent(UserEventsActivity.this, EventDetailActivity.class);
                 Log.d(TAG, "onItemClick: eventId " +id);
-                intent.putExtra(EVENT_ID, id);
+                intent.putExtra(MainActivity.EVENT_ID, id);
                 startActivity(intent);
             }
         });
@@ -128,5 +101,4 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
 }

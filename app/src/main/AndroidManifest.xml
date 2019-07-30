@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserEventsActivity"
+            android:parentActivityName=".MainActivity"></activity>
+
         <service
             android:name=".NotificationHeroService"
             android:enabled="true"
@@ -26,7 +29,7 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CreateUserActivity"
-            android:parentActivityName=".WelcomeActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoTitle">

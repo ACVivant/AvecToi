@@ -142,33 +142,33 @@
 
 
         <Button
-            android:id="@+id/create_user_SP_household"
+            android:id="@+id/create_user_SP_ironing"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
             android:layout_marginEnd="@dimen/default_margin"
             android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_household"
+            android:drawableTop="@drawable/ic_ironing"
             android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_householdSP"
+            android:text="@string/create_ironingSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_user_intro_SP" />
 
         <Button
-            android:id="@+id/create_user_SP_ironing"
+            android:id="@+id/create_user_SP_household"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_ironing"
+            android:drawableTop="@drawable/ic_household"
             android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_ironingSP"
+            android:text="@string/create_householdSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_household"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_household"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_ironing"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_ironing"
             android:layout_marginStart="@dimen/default_margin" />
 
         <Button
@@ -181,8 +181,8 @@
             android:text="@string/create_shoppingSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_ironing"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_ironing"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_household"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_household"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
@@ -200,6 +200,20 @@
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
+            android:id="@+id/create_user_SP_driving"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@drawable/button_background"
+            android:drawableTop="@drawable/ic_driving"
+            android:paddingTop="@dimen/default_margin"
+            android:text="@string/create_driveSP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/create_user_SP_ironing"
+            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_ironing"
+            android:layout_marginTop="@dimen/default_margin"/>
+
+        <Button
             android:id="@+id/create_user_SP_gardening"
             android:layout_width="86dp"
             android:layout_height="86dp"
@@ -209,9 +223,9 @@
             android:text="@string/create_gardeningSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/create_user_SP_household"
-            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_household"
-            android:layout_marginTop="@dimen/default_margin"/>
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_driving"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_driving"
+            android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
             android:id="@+id/create_user_SP_diy"
@@ -251,9 +265,9 @@
             android:text="@string/create_relocationSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_works"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_works"
-            android:layout_marginStart="@dimen/default_margin"/>
+            app:layout_constraintStart_toStartOf="@+id/create_user_SP_driving"
+            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_driving"
+            android:layout_marginTop="@dimen/default_margin"/>
 
         <Button
             android:id="@+id/create_user_SP_reading"
@@ -265,22 +279,8 @@
             android:text="@string/create_readingSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/create_user_SP_gardening"
-            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_gardening"
-            android:layout_marginTop="@dimen/default_margin"/>
-
-        <Button
-            android:id="@+id/create_user_SP_sewing"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_sewing"
-            android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_sewingSP"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_reading"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_reading"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_relocation"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_relocation"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
@@ -293,8 +293,64 @@
             android:text="@string/create_babysittingSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_sewing"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_sewing"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_reading"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_reading"
+            android:layout_marginStart="@dimen/default_margin"/>
+
+        <Button
+            android:id="@+id/create_user_SP_sewing"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@drawable/button_background"
+            android:drawableTop="@drawable/ic_sewing"
+            android:paddingTop="@dimen/default_margin"
+            android:text="@string/create_sewingSP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_babysitting"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_babysitting"
+            android:layout_marginStart="@dimen/default_margin"/>
+
+        <Button
+            android:id="@+id/create_user_SP_flowering"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@drawable/button_background"
+            android:drawableTop="@drawable/ic_flower"
+            android:paddingTop="@dimen/default_margin"
+            android:text="@string/create_flowerSP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/create_user_SP_relocation"
+            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_relocation"
+            android:layout_marginTop="@dimen/default_margin"/>
+
+        <Button
+            android:id="@+id/create_user_SP_tutoring"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@drawable/button_background"
+            android:drawableTop="@drawable/ic_tutoring"
+            android:paddingTop="@dimen/default_margin"
+            android:text="@string/create_tutoringSP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_flowering"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_flowering"
+            android:layout_marginStart="@dimen/default_margin"/>
+
+        <Button
+            android:id="@+id/create_user_SP_company"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:background="@drawable/button_background"
+            android:drawableTop="@drawable/ic_compagny"
+            android:paddingTop="@dimen/default_margin"
+            android:text="@string/create_companySP"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_tutoring"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_tutoring"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
@@ -307,64 +363,8 @@
             android:text="@string/create_adminSP"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_babysitting"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_babysitting"
-            android:layout_marginStart="@dimen/default_margin"/>
-
-        <Button
-            android:id="@+id/create_user_SP_driving"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_driving"
-            android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_driveSP"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/create_user_SP_reading"
-            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_reading"
-            android:layout_marginTop="@dimen/default_margin"/>
-
-        <Button
-            android:id="@+id/create_user_SP_company"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_compagny"
-            android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_companySP"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_driving"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_driving"
-            android:layout_marginStart="@dimen/default_margin"/>
-
-        <Button
-            android:id="@+id/create_user_SP_tutoring"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_tutoring"
-            android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_tutoringSP"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
             app:layout_constraintStart_toEndOf="@+id/create_user_SP_company"
             app:layout_constraintTop_toTopOf="@+id/create_user_SP_company"
-            android:layout_marginStart="@dimen/default_margin"/>
-
-        <Button
-            android:id="@+id/create_user_SP_flower"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            android:background="@drawable/button_background"
-            android:drawableTop="@drawable/ic_flower"
-            android:paddingTop="@dimen/default_margin"
-            android:text="@string/create_flowerSP"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_tutoring"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_tutoring"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

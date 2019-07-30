@@ -42,6 +42,8 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
     @Override
     protected void onBindViewHolder(@NonNull EventViewHolder eventViewHolder, int i, @NonNull SosEvent sosEvent) {
 
+        Log.d(TAG, "onBindViewHolder: ");
+
         //Date
         DateFormat myFormat = new DateFormat();
         final String myDate = myFormat.getRegisteredDate(sosEvent.getDateNeed());

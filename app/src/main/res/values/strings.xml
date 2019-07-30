@@ -56,22 +56,26 @@
     <string name="event_info_missing">"Il faut remplir tous les champs."</string>
 
     <string-array name="event_theme">
+        <item>"Faire du repassage"</item>
         <item>"Faire le ménage"</item>
         <item>"Faire les courses"</item>
         <item>"Faire la cuisine"</item>
+
         <item>"Faire des conduites"</item>
-        <item>"Faire du repassage"</item>
         <item>"Entretenir le jardin"</item>
         <item>"Faire des bricolages"</item>
         <item>"Faire des travaux"</item>
+
         <item>"Aider à déménager"</item>
         <item>"Faire la lecture"</item>
-        <item>"Tenir compagnie"</item>
         <item>"Garder des enfants"</item>
-        <item>"Aider à faire ses devoirs"</item>
         <item>"Faire de la couture"</item>
-        <item>"Faire des démarches admin."</item>
+
         <item>"Faire des bouquets</item>
+        <item>"Aider à faire ses devoirs"</item>
+        <item>"Tenir compagnie"</item>
+        <item>"Faire des démarches admin."</item>
+
     </string-array>
 
     <!-- CARD EVENT -->
@@ -81,6 +85,7 @@
     <!-- MAIN ACTIVITY -->
     <string name="show_all_events">"Toutes les missions"</string>
     <string name="show_map">"Carte"</string>
+    <string name="my_events">"Mes missions"</string>
 
     <!-- DETAIL EVENT ACTIVITY -->
     <string name="detail_event_title">"Votre mission si vous l'acceptez&#8230;"</string>
@@ -98,4 +103,8 @@
     <!-- NOTIFICATION -->
     <string name="notification_hero_title">"Des héros volent à votre secours"</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+    <!-- USER EVENTS ACTIVITY -->
+    <string name="iamhero_title">"Je me suis engagé(e) à voler au secours de "</string>
+    <string name="ineedhelp_title">"J'ai demandé de l'aide pour "</string>
 </resources>

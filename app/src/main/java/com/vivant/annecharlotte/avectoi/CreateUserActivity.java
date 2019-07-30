@@ -45,19 +45,14 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     private EditText userTown;
     private String telData;
     private String townData;
-    private Button ironing, household, shopping, cooking, driving, gardening, diy, works, relocation, reading, babysitting, sewing, admin, flower, tutoring, company;
-    private boolean ironData, houseData, shopData, cookData, driveData, gardenData, diyData, workData, relocationData, readingData, babysittingData, sewingData, floweringData, tutoringData, companyData, adminData;
-    private String ironingSP, householSP, shoppingSP, cookingSP, drivingSP, gardeningSP, diySP, worksSP, relocationSP, readingSP, babysittingSP, sewingSP, floweringSP, tutoringSP, companySP, adminSP;
 
     private Button[] buttonTab = new Button[16];
-    //private Button[] buttonTab = {ironing, household, shopping, cooking, driving, gardening, diy, works, relocation, reading, babysitting, sewing, admin, flower, tutoring, company};
     private boolean[] booleanTab = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    private String[] stringTab = {"ironingSP", "householSP", "shoppingSP", "cookingSP", "drivingSP", "gardeningSP", "diySP", "worksSP", "relocationSP", "readingSP", "babysittingSP", "sewingSP", "floweringSP", "tutoringSP", "companySP", "adminSP"};
-    private Integer[] indexTab = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 
     private Context context;
 
-    List<Integer> listUserSP = new ArrayList<>();
+    List<String> listUserSP = new ArrayList<>();
+    List<Integer> listUserSPInt = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +93,10 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         buttonTab[9] = findViewById(R.id.create_user_SP_reading);
         buttonTab[10] = findViewById(R.id.create_user_SP_babysitting);
         buttonTab[11] = findViewById(R.id.create_user_SP_sewing);
-        buttonTab[12] = findViewById(R.id.create_user_SP_admin);
-        buttonTab[13] = findViewById(R.id.create_user_SP_flower);
-        buttonTab[14] = findViewById(R.id.create_user_SP_tutoring);
-        buttonTab[15] = findViewById(R.id.create_user_SP_company);
+        buttonTab[12] = findViewById(R.id.create_user_SP_flowering);
+        buttonTab[13] = findViewById(R.id.create_user_SP_tutoring);
+        buttonTab[14] = findViewById(R.id.create_user_SP_company);
+        buttonTab[15] = findViewById(R.id.create_user_SP_admin);
 
 /*        for (int i = 0; i< stringTab.length; i++) { // ne fonctionne pas parce que i doit être déclaré final
             buttonTab[i].setOnClickListener(new View.OnClickListener() {
@@ -137,7 +132,6 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         buttonTab[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: " + cookData);
                 booleanTab[3] = actionClick(booleanTab[3], buttonTab[3], 3);
             }
         });
@@ -233,11 +227,11 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         Log.d(TAG, "actionClick: data "+ data);
         if (!data) {
             button.setBackground(context.getResources().getDrawable(R.drawable.button_background2));
-            listUserSP.add(sp);
+            listUserSP.add(String.valueOf(sp));
             Log.d(TAG, "actionClick: listUserSP add " + listUserSP);
         } else {
             button.setBackground(context.getResources().getDrawable(R.drawable.button_background));
-            listUserSP.remove(sp);
+            listUserSP.remove(String.valueOf(sp));
             Log.d(TAG, "actionClick: listUserSP remove " + listUserSP);
         }
         data =!data;
@@ -251,6 +245,7 @@ public void updateUIwhenCreating() {
     if (this.getCurrentUser() != null){
         //Get picture URL from Firebase
         if (this.getCurrentUser().getPhotoUrl() != null) {
+            
             Glide.with(this)
                     .load(this.getCurrentUser().getPhotoUrl())
                     .apply(RequestOptions.circleCropTransform())
@@ -262,8 +257,8 @@ public void updateUIwhenCreating() {
         String username = TextUtils.isEmpty(this.getCurrentUser().getDisplayName()) ? getString(R.string.info_no_username_found) : this.getCurrentUser().getDisplayName();
 
         //Update views with login data
-        this.userNameTV.setText(username);
-        this.userEmailTV.setText(email);
+        userNameTV.setText(username);
+        userEmailTV.setText(email);
 
         Log.d(TAG, "updateUIwhenCreating: userId " + userId);
         //Update views with super powers data
@@ -273,16 +268,17 @@ public void updateUIwhenCreating() {
 
 public void launchSuperPowerData(String uid) {
     Log.d(TAG, "launchSuperPowerData");
-    Log.d(TAG, "launchSuperPowerData: StringTab " + stringTab[1]);
 
     UserHelper.getUser(uid).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
         @Override
         public void onSuccess(DocumentSnapshot documentSnapshot) {
             if (documentSnapshot.exists()) {
-                listUserSP = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserSPList();
-                for (int i=0; i<stringTab.length; i++) {
-                    Log.d(TAG, "onSuccess: stringTab[i] " + stringTab[i]);
-                    if (listUserSP.contains(stringTab[i])) {
+                listUserSPInt = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserSPList();
+                for (int i=0; i<listUserSPInt.size(); i++) {
+                    listUserSP.add(String.valueOf(listUserSPInt.get(i)));
+                }
+                for (int i=0; i<booleanTab.length; i++) {
+                    if (listUserSP.contains(String.valueOf(i))) {
                         Log.d(TAG, "onSuccess: contains");
                         buttonTab[i].setBackground(getResources().getDrawable(R.drawable.button_background2));
                         booleanTab[i]=true;
@@ -294,6 +290,11 @@ public void launchSuperPowerData(String uid) {
                 }
                 Log.d(TAG, "onSuccess: booleanData " + booleanTab);
             }
+
+            String tel =  Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserPhone();
+            if (userTel!=null) { userTel.setText(tel);}
+            String town = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserTown();
+             if (userTown!=null) {userTown.setText(town);}
         }
     });
 }
@@ -327,7 +328,11 @@ public void saveData() {
 }
 
 public void updateSuperPower(String uid) {
-        UserHelper.updateUserSPList(listUserSP, uid);
+        listUserSPInt = new ArrayList<>();
+        for (int i=0;i<listUserSP.size();i++) {
+            listUserSPInt.add(Integer.parseInt(listUserSP.get(i)));
+    }
+        UserHelper.updateUserSPList(listUserSPInt, uid);
 }
 
 public void updateTelAndTown(String uid) {
