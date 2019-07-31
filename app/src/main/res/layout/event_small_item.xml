@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/default_margin"
+    android:layout_marginStart="@dimen/default_margin"
+    android:layout_marginEnd="@dimen/default_margin"
+    app:cardBackgroundColor="@color/colorPrimaryVeryTransparent"
+    android:id="@+id/RV_event_small_cardview">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingEnd="@dimen/default_margin">
+
+        <ImageButton
+            android:id="@+id/RV_event_small_theme"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_background"
+            android:src="@drawable/ic_flower"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/RV_event_small_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Babar Céleste"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/RV_event_small_theme"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/RV_event_small_date_needed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_date"
+            android:layout_below="@+id/RV_event_small_name"
+            android:layout_toEndOf="@id/RV_event_small_theme"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <TextView
+            android:id="@+id/RV_event_small_town"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_town"
+            android:layout_alignBottom="@id/RV_event_small_date_needed"
+            android:layout_toEndOf="@id/RV_event_small_date_needed"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

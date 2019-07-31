@@ -16,15 +16,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
+import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 
 public class UserEventsActivity extends BaseActivity{
 
     private static final String TAG = "UserEventsActivity";
+    public static final String HERO_INDEX = "iamheroIndex";
+    public static final String NEED_INDEX = "inededhelpIndex";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
 
-    private EventAdapter adapterHero;
-    private EventAdapter adapterNeed;
+    private EventSmallAdapter adapterHero;
+    private EventSmallAdapter adapterNeed;
     private String userId;
 
     @Override
@@ -60,21 +63,20 @@ public class UserEventsActivity extends BaseActivity{
 
     public void setupIamheroRecyclerView() {
         Log.d(TAG, "setupIamHeroRecyclerView: userId " + userId);
-        Query queryHero = eventsRef.whereArrayContains("userHeroIdList", userId);//.orderBy("dateNeed", Query.Direction.ASCENDING);
+        Query queryHero = SosEventHelper.getAllEventsFromToday().whereArrayContains("userHeroIdList", userId);
 
-        //2EMdkAnaT0fc6V9k481bIYMxCv63
         FirestoreRecyclerOptions<SosEvent> optionsHero = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(queryHero, SosEvent.class)
                 .build();
 
-        adapterHero = new EventAdapter(optionsHero);
+        adapterHero = new EventSmallAdapter(optionsHero, HERO_INDEX);
 
         RecyclerView recyclerView = findViewById(R.id.iamhero_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterHero);
 
-        adapterHero.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+        adapterHero.setOnItemClickListener(new EventSmallAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
@@ -88,21 +90,20 @@ public class UserEventsActivity extends BaseActivity{
 
     public void setupIneedhelpRecyclerView() {
         Log.d(TAG, "setupIneedhelpRecyclerView: userId " +userId);
-        Query queryNeed = eventsRef.whereEqualTo("userAskId", userId).orderBy("dateNeed", Query.Direction.ASCENDING);
-        //Query query = eventsRef.orderBy("dateNeed", Query.Direction.ASCENDING);
+        Query queryNeed = SosEventHelper.getAllEventsFromToday().whereEqualTo("userAskId", userId);
 
         FirestoreRecyclerOptions<SosEvent> optionsNeed = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(queryNeed, SosEvent.class)
                 .build();
 
-        adapterNeed = new EventAdapter(optionsNeed);
+        adapterNeed = new EventSmallAdapter(optionsNeed, NEED_INDEX);
 
         RecyclerView recyclerView = findViewById(R.id.ineedhelp_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterNeed);
 
-        adapterNeed.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+        adapterNeed.setOnItemClickListener(new EventSmallAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
