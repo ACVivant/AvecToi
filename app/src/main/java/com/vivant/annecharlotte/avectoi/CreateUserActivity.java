@@ -43,6 +43,7 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     private TextView userEmailTV;
     private EditText userTel;
     private EditText userTown;
+    private EditText userDescription;
     private String telData;
     private String townData;
 
@@ -80,6 +81,7 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
 
         userTel = findViewById(R.id.create_tel);
         userTown = findViewById(R.id.create_town);
+        userDescription = findViewById(R.id.create_user_description);
 
         buttonTab[0] = findViewById(R.id.create_user_SP_ironing);
         buttonTab[1] = findViewById(R.id.create_user_SP_household);
@@ -301,7 +303,8 @@ public void launchSuperPowerData(String uid) {
 
 public void saveData() {
     Log.d(TAG, "saveData: userTel " + userTel.getText().toString());
-        if (userTel.getText().toString().equals("")||userTown.getText().toString().equals("")) {
+        if (userTel.getText().toString().trim().equals("")||userTown.getText().toString().trim().equals("") || userDescription.getText().toString().trim().equals("") ||
+        userTel.getText()==null || userTown.getText()==null || userDescription.getText() ==null) {
             Toast.makeText(this, R.string.phone_or_town_missing, Toast.LENGTH_LONG).show();
         } else {
             if (listUserSP.size() == 0) {

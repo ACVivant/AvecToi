@@ -1,7 +1,11 @@
 package com.vivant.annecharlotte.avectoi;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +21,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,12 +32,14 @@ import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "MainActivity";
     public static final String EVENT_ID = "EventId";
     public static final String QUERY_ID = "QueryId";
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView  navigationView;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
@@ -67,6 +74,10 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        this.configureDrawerLayout();
+        this.configureNavigationView();
+        this.configureToolbar();
+
        // fm.beginTransaction().add(R.id.events_fragment_recycler_view, fragmentToFind, "1").commit();
     }
 
@@ -83,6 +94,7 @@ public class MainActivity extends AppCompatActivity{
         return true;
     }
 
+    // On va pouvoir supprimer ce menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.d(TAG, "onOptionsItemSelected: ");
@@ -96,6 +108,40 @@ public class MainActivity extends AppCompatActivity{
         return false;
     }
 
+    // Configure toolbar
+    private void configureToolbar(){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    // Configure Drawer Layout
+    private void configureDrawerLayout(){
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+    }
+
+    // Configure NavigationView
+    private void configureNavigationView(){
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        // 5 - Handle back click to close menu
+        if (this.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
     // ------------------------
     // CREATE NEW EVENT
     // ------------------------
@@ -104,6 +150,8 @@ public class MainActivity extends AppCompatActivity{
         Intent intent = new Intent(this, CreateEventActivity.class);
         startActivity(intent);
     }
+
+
 
   /*  // ------------------------
     // RECYCLERVIEW

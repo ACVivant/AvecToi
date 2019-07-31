@@ -3,17 +3,32 @@
 
     <!-- Welcome -->
     <string name="main_activity_description">"L'appli qui révèle nos super-pouvoirs!"</string>
+    <string name="welcome_title_with">"avec la paroisse Saint Seb"</string>
     <string name="connexion">"C'est parti!"</string>
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
     <string name="error_no_internet">"Pas de connexion internet"</string>
     <string name="error_authentication_canceled">"Authentificaiton annulée"</string>
+
+    <!-- Drawer Menu -->
+    <string name="drawer_profil_title">"Moi, beau et bon"</string>
+    <string name="drawer_profil_description">"Ma fiche descriptive"</string>
+    <string name="drawer_innedhelp_events">"Mes appels au secours"</string>
+    <string name="drawer_iamhero_events">"Mes engagements"</string>
+    <string name="drawer_sponsorship">"Et les autres aussi!"</string>
+    <string name="drawer_users">"Les super héros"</string>
+    <string name="drawer_sponsorhip_wait">"Les parrainages en attente</string>
+    <string name="drawer_sponsorship_invitation">"Inviter à rejoindre Super Moi"</string>
+    <string name="navigation_drawer_open">"Ouvrir le menu"</string>
+    <string name="navigation_drawer_close">"Fermer le menu"</string>
 
     <!-- CreateUser -->
     <string name="create_name">"Name"</string>
     <string name="create_email">"Email"</string>
     <string name="create_phone">"0606060606"</string>
     <string name="create_phone_intro">"Mon numéro de téléphone: "</string>
-    <string name="create_phone_expl">"Il ne sera visible que par la personne aue vous aurez proposé d'aider."</string>
+    <string name="create_phone_expl">"Il ne sera visible que par la personne que vous aurez proposé d'aider."</string>
+    <string name="create_description_title">"Qui suis-je?"</string>
+    <string name="create_description_hint">"Je raconte en quelques mots qui je suis."</string>
     <string name="create_SP">"Mes super pouvoirs"</string>
     <string name="create_householdSP">"Faire le ménage"</string>
     <string name="create_shoppingSP">"Faire les courses"</string>
@@ -38,7 +53,7 @@
 
     <string name="create_community">"J'habite à "</string>
 
-    <string name="phone_or_town_missing">"Il faut entrer un numéro de téléphone et une ville."</string>
+    <string name="phone_or_town_missing">"Il faut entrer un numéro de téléphone, une ville et une petite description."</string>
     <string name="SP_missing">"Il faut révéler au moins un super pouvoir."</string>
 
     <!-- CREATE EVENT -->

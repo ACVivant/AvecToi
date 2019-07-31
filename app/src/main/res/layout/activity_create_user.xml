@@ -70,7 +70,7 @@
         <LinearLayout
             android:id="@+id/create_infos_complete"
             android:layout_width="match_parent"
-            android:layout_height="115dp"
+            android:layout_height="match_parent"
             android:background="@color/colorSecondary"
             android:orientation="vertical"
             android:padding="@dimen/default_margin"
@@ -125,6 +125,24 @@
                     android:gravity="right|end"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/create_user_description_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="@string/create_description_title"
+                android:paddingTop="@dimen/default_margin"
+                />
+
+            <EditText
+                android:id="@+id/create_user_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/create_description_hint"
+                android:inputType="textMultiLine"
+                android:gravity="center_horizontal"/>
         </LinearLayout>
 
 

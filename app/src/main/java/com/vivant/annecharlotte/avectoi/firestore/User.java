@@ -18,7 +18,10 @@ public class User {
     private String userPhone;
     @Nullable
     private String urlPicture;
+    @Nullable
     private String userTown;
+    @Nullable
+    private String userDescription;
 
     private List<Integer> userSPList;
 
@@ -29,7 +32,9 @@ public class User {
         this.userName = userName;
         this.userEmail = userEmail;
         this.urlPicture = urlPicture;
-        this.userPhone = "";
+        this.userPhone = null;
+        this.userDescription = null;
+        this.userTown = null;
         this.userSPList = new ArrayList<>();
     }
 
@@ -78,138 +83,17 @@ public class User {
         this.urlPicture = urlPicture;
     }
 
+    @Nullable
+    public String getUserDescription() {
+        return userDescription;
+    }
+
+    public void setUserDescription(@Nullable String userDescription) {
+        this.userDescription = userDescription;
+    }
+
     public List<Integer> getUserSPList() { return userSPList; }
 
     public void setUserSPList(List<Integer> userSPList) { this.userSPList = userSPList; }
-
-
-  /*  public Boolean getHouseholdSP() {
-        return householdSP;
-    }
-
-    public void setHouseholdSP(Boolean householdSP) {
-        this.householdSP = householdSP;
-    }
-
-    public Boolean getIroningSP() {
-        return ironingSP;
-    }
-
-    public void setIroningSP(Boolean ironingSP) {
-        this.ironingSP = ironingSP;
-    }
-
-    public Boolean getShoppingSP() {
-        return shoppingSP;
-    }
-
-    public void setShoppingSP(Boolean shoppingSP) {
-        this.shoppingSP = shoppingSP;
-    }
-
-    public Boolean getCookingSP() {
-        return cookingSP;
-    }
-
-    public void setCookingSP(Boolean cookingSP) {
-        this.cookingSP = cookingSP;
-    }
-
-    public Boolean getDrivingSP() {
-        return drivingSP;
-    }
-
-    public void setDrivingSP(Boolean drivingSP) {
-        this.drivingSP = drivingSP;
-    }
-
-    public Boolean getGardeningSP() {
-        return gardeningSP;
-    }
-
-    public void setGardeningSP(Boolean gardeningSP) {
-        this.gardeningSP = gardeningSP;
-    }
-
-    public Boolean getDiySP() {
-        return diySP;
-    }
-
-    public void setDiySP(Boolean diySP) {
-        this.diySP = diySP;
-    }
-
-    public Boolean getWorksSP() {
-        return worksSP;
-    }
-
-    public void setWorksSP(Boolean worksSP) {
-        this.worksSP = worksSP;
-    }
-
-    public Boolean getRelocationSP() {
-        return relocationSP;
-    }
-
-    public void setRelocationSP(Boolean relocationSP) {
-        this.relocationSP = relocationSP;
-    }
-
-    public Boolean getReadingSP() {
-        return readingSP;
-    }
-
-    public void setReadingSP(Boolean readingSP) {
-        this.readingSP = readingSP;
-    }
-
-    public Boolean getCompanySP() {
-        return companySP;
-    }
-
-    public void setCompanySP(Boolean companySP) {
-        this.companySP = companySP;
-    }
-
-    public Boolean getBabysittingSP() {
-        return babysittingSP;
-    }
-
-    public void setBabysittingSP(Boolean babysittingSP) {
-        this.babysittingSP = babysittingSP;
-    }
-
-    public Boolean getTutoringSP() {
-        return tutoringSP;
-    }
-
-    public void setTutoringSP(Boolean tutoringSP) {
-        this.tutoringSP = tutoringSP;
-    }
-
-    public Boolean getSewingSP() {
-        return sewingSP;
-    }
-
-    public void setSewingSP(Boolean sewingSP) {
-        this.sewingSP = sewingSP;
-    }
-
-    public Boolean getAdminSP() {
-        return adminSP;
-    }
-
-    public void setAdminSP(Boolean adminSP) {
-        this.adminSP = adminSP;
-    }
-
-    public Boolean getFloweringSP() {
-        return floweringSP;
-    }
-
-    public void setFloweringSP(Boolean flowering) {
-        this.floweringSP = flowering;
-    }
-*/
 
 }

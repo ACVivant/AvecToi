@@ -62,7 +62,7 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(userId).update("userSPList", userSPList);
     }
 
-    // --- UPDATE PHONE AND TOWN ---
+    // --- UPDATE PHONE, TOWN AND DESCRIPTION---
 
     public static Task<Void> updateTel(String tel, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("userPhone", tel);
@@ -70,6 +70,10 @@ public class UserHelper {
 
     public static Task<Void> updateTown(String town, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("userTown", town);
+    }
+
+    public static Task<Void> updateDescription(String description, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("userDescription", description);
     }
 
         // --- DELETE ---

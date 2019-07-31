@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_drawer">
+
+    <item android:title="@string/drawer_profil_title">
+        <menu>
+            <item
+                android:id="@+id/drawer_profil"
+                android:icon="@drawable/ic_account_circle"
+                android:title="@string/drawer_profil_description" />
+            <item
+                android:id="@+id/drawer_ineedhelp"
+                android:icon="@drawable/ic_needhelp"
+                android:title="@string/drawer_innedhelp_events" />
+            <item
+                android:id="@+id/menu_iamhero"
+                android:icon="@drawable/ic_star"
+                android:title="@string/drawer_iamhero_events" />
+        </menu>
+    </item>
+
+    <item android:title="@string/drawer_sponsorship">
+        <menu>
+            <item
+                android:id="@+id/drawers_users"
+                android:icon="@drawable/ic_users"
+                android:title="@string/drawer_users" />
+
+            <item
+                android:id="@+id/drawer_sponsorship_wait"
+                android:icon="@drawable/ic_sponsorship"
+                android:title="@string/drawer_sponsorhip_wait" />
+            <item
+                android:id="@+id/drawer_invitation"
+                android:icon="@drawable/ic_invitation"
+                android:title="@string/drawer_sponsorship_invitation" />
+        </menu>
+    </item>
+</menu>
