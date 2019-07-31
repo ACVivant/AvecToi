@@ -13,15 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView  navigationView;
+
+    private ImageView userPhoto;
+    private TextView userName;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
@@ -74,9 +83,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
         this.configureDrawerLayout();
         this.configureNavigationView();
-        this.configureToolbar();
+        this.configureDrawerToolbar();
+        this.layoutLinks();
+        updateUIWhenCreating();
 
        // fm.beginTransaction().add(R.id.events_fragment_recycler_view, fragmentToFind, "1").commit();
     }
@@ -109,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     // Configure toolbar
-    private void configureToolbar(){
+    private void configureDrawerToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
@@ -140,6 +152,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    //----------------------------
+    // UPDATE UI
+    //---------------------------
+
+    protected void layoutLinks() {
+        userName = navigationView.getHeaderView(0).findViewById(R.id.header_name);
+        userPhoto = navigationView.getHeaderView(0).findViewById(R.id.header_photo);
+    }
+
+    private void updateUIWhenCreating(){
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            //Get picture URL from Firebase
+            if (FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl() != null) {
+                Glide.with(this)
+                        .load(FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl())
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(userPhoto);
+            }
+
+            //Get username from Firebase
+            String username = TextUtils.isEmpty(FirebaseAuth.getInstance().getCurrentUser().getDisplayName()) ? getString(R.string.info_no_username_found) :FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+
+            //Update views with data
+            this.userName.setText(username);
         }
     }
     // ------------------------

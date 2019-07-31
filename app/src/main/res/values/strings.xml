@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Super Moi</string>
 
+    <!-- A PERSONNALISER -->
+    <string name="welcome_title_with">"avec la paroisse Saint-Sébastien"</string>
+
     <!-- Welcome -->
     <string name="main_activity_description">"L'appli qui révèle nos super-pouvoirs!"</string>
-    <string name="welcome_title_with">"avec la paroisse Saint Seb"</string>
     <string name="connexion">"C'est parti!"</string>
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
     <string name="error_no_internet">"Pas de connexion internet"</string>
