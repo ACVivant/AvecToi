@@ -2,6 +2,8 @@ package com.vivant.annecharlotte.avectoi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +27,7 @@ import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private static final String TAG = "MainActivity";
     public static final String EVENT_ID = "EventId";
@@ -36,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private CollectionReference eventsRef = db.collection("events");
 
     private EventAdapter adapter;
+
+    final MainAllFragment fragmentAll = new MainAllFragment();
+    final MainAllFragment fragmentToFind = new MainAllFragment();
+
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = fragmentToFind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +67,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setupRecyclerView();
+       // fm.beginTransaction().add(R.id.events_fragment_recycler_view, fragmentToFind, "1").commit();
     }
 
-    // ---------------------
+// ---------------------
     // CONFIGURATION
     // ---------------------
 
@@ -97,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // ------------------------
+  /*  // ------------------------
     // RECYCLERVIEW
     // ------------------------
 
@@ -142,5 +150,5 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
+*/
 }

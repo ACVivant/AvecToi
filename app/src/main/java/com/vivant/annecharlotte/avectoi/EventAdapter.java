@@ -37,6 +37,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
 
     public EventAdapter(@NonNull FirestoreRecyclerOptions<SosEvent> options) {
         super(options);
+        Log.d(TAG, "EventAdapter called");
     }
 
     @Override

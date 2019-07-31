@@ -107,4 +107,7 @@
     <!-- USER EVENTS ACTIVITY -->
     <string name="iamhero_title">"Je me suis engagé(e) à voler au secours de "</string>
     <string name="ineedhelp_title">"J'ai demandé de l'aide pour "</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
