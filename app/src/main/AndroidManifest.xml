@@ -9,11 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserEventsActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <service
+            android:name=".notifications.NotificationEventsService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity
+            android:name=".UserEventsActivity"
+            android:parentActivityName=".MainActivity" />
 
         <service
-            android:name=".notifications.NotificationHeroService"
+            android:name=".EventDetailActivity$NotificationHeroService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

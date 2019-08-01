@@ -1,11 +1,18 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +24,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
@@ -73,7 +86,7 @@ public class EventDetailActivity extends BaseActivity {
             }
         });
 
-        Log.d(TAG, "onCreate: eventId " +eventId);
+        Log.d(TAG, "onCreate: eventId " + eventId);
 
         layoutlinks();
         updateView(eventId);
@@ -107,9 +120,9 @@ public class EventDetailActivity extends BaseActivity {
         SosEventHelper.updateUserHerosList(list, eventId);
         Date today = new Date();
         SosEventHelper.updateDateHeroOk(today, eventId);
-        SosEventHelper.updateUserHerosNotFound(toFindHeros-1, eventId);
+        SosEventHelper.updateUserHerosNotFound(toFindHeros - 1, eventId);
 
-        if(toFindHeros-1==0) {
+        if (toFindHeros - 1 == 0) {
             SosEventHelper.updateMissionOk(true, eventId);
         }
     }
