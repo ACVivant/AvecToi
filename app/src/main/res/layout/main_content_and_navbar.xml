@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,20 +24,10 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:layout_gravity="top"
             app:title="@string/app_name"/>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <!--include
-    layout="@layout/fragment_main_all"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" /-->
-
-    <fragment
-        android:id="@+id/fragment_events_RV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.vivant.annecharlotte.avectoi.MainAllFragment" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/all_events_button"
@@ -46,7 +36,9 @@
     android:layout_gravity="bottom|end"
     android:layout_marginBottom="80dp"
     android:layout_marginEnd="@dimen/default_margin"
-    android:src="@drawable/ic_filter_none" />
+    android:src="@drawable/ic_filter_none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/add_new_event_button"
@@ -54,6 +46,15 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|end"
     android:layout_margin="@dimen/default_margin"
-    android:src="@drawable/ic_add" />
+    android:src="@drawable/ic_add"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/all_events_button"/>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/fragment_events_RV"
+        android:layout_marginTop="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

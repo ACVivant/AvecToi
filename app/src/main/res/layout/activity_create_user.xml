@@ -141,6 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/create_description_hint"
+                android:textColor="@android:color/white"
                 android:inputType="textMultiLine"
                 android:gravity="center_horizontal"/>
         </LinearLayout>

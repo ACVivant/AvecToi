@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton floatingActionButtonCreate = findViewById(R.id.add_new_event_button);
+       FloatingActionButton floatingActionButtonCreate = findViewById(R.id.add_new_event_button);
         floatingActionButtonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.layoutLinks();
         updateUIWhenCreating();
 
-       // fm.beginTransaction().add(R.id.events_fragment_recycler_view, fragmentToFind, "1").commit();
+        fm.beginTransaction().add(R.id.fragment_events_RV, fragmentToFind, "1").commit();
     }
 
 // ---------------------
@@ -142,6 +142,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.drawer_profil:
+                Intent intent = new Intent(MainActivity.this, CreateUserActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.drawer_myevents:
+                Intent intent2 = new Intent(MainActivity.this, UserEventsActivity.class);
+                startActivity(intent2);
+                return true;
+            case R.id.drawer_allusers:
+                return true;
+            case R.id.drawer_invitation:
+                return true;
+        }
         return false;
     }
 

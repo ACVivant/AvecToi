@@ -12,13 +12,11 @@
     <string name="error_authentication_canceled">"Authentificaiton annulée"</string>
 
     <!-- Drawer Menu -->
-    <string name="drawer_profil_title">"Moi, beau et bon"</string>
+    <string name="drawer_profil_title">"Moi, bon et beau"</string>
     <string name="drawer_profil_description">"Ma fiche descriptive"</string>
-    <string name="drawer_innedhelp_events">"Mes appels au secours"</string>
-    <string name="drawer_iamhero_events">"Mes engagements"</string>
+    <string name="drawer_innedhelp_events">"Mes missions"</string>
     <string name="drawer_sponsorship">"Et les autres aussi!"</string>
-    <string name="drawer_users">"Les super héros"</string>
-    <string name="drawer_sponsorhip_wait">"Les parrainages en attente</string>
+    <string name="drawer_users">"Annuaire des super héros"</string>
     <string name="drawer_sponsorship_invitation">"Inviter à rejoindre Super Moi"</string>
     <string name="navigation_drawer_open">"Ouvrir le menu"</string>
     <string name="navigation_drawer_close">"Fermer le menu"</string>

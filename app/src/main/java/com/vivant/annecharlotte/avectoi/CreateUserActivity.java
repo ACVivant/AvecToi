@@ -46,6 +46,7 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     private EditText userDescription;
     private String telData;
     private String townData;
+    private String descriptionData;
 
     private Button[] buttonTab = new Button[16];
     private boolean[] booleanTab = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
@@ -99,16 +100,6 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         buttonTab[13] = findViewById(R.id.create_user_SP_tutoring);
         buttonTab[14] = findViewById(R.id.create_user_SP_company);
         buttonTab[15] = findViewById(R.id.create_user_SP_admin);
-
-/*        for (int i = 0; i< stringTab.length; i++) { // ne fonctionne pas parce que i doit être déclaré final
-            buttonTab[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    booleanTab[i] = actionClick(booleanTab[i], buttonTab[i], i);
-                }
-            });
-        }*/
-
 
         buttonTab[0].setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,9 +215,7 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
     }
 
     public boolean actionClick(boolean data, Button button, int sp) {
-        Log.d(TAG, "actionClick: listUserSP " + listUserSP);
-        Log.d(TAG, "actionClick: sp "+sp);
-        Log.d(TAG, "actionClick: data "+ data);
+
         if (!data) {
             button.setBackground(context.getResources().getDrawable(R.drawable.button_background2));
             listUserSP.add(String.valueOf(sp));
@@ -297,6 +286,8 @@ public void launchSuperPowerData(String uid) {
             if (userTel!=null) { userTel.setText(tel);}
             String town = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserTown();
              if (userTown!=null) {userTown.setText(town);}
+             String description = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserDescription();
+            if (userDescription!=null) {userDescription.setText(description);}
         }
     });
 }
@@ -312,6 +303,7 @@ public void saveData() {
             } else {
                 telData = userTel.getText().toString();
                 townData = userTown.getText().toString();
+                descriptionData = userDescription.getText().toString();
 
                 Log.d(TAG, "updateLikeInFirebase: idUser " + userId);
                 UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -341,6 +333,7 @@ public void updateSuperPower(String uid) {
 public void updateTelAndTown(String uid) {
         UserHelper.updateTel(telData, uid);
         UserHelper.updateTown(townData, uid);
+        UserHelper.updateDescription(descriptionData, uid);
 }
 
 
