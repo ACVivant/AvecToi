@@ -33,7 +33,6 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
     private OnItemClickListener listener;
 
     private static final String TAG = "EventAdapter";
-    private String myName;
 
     public EventAdapter(@NonNull FirestoreRecyclerOptions<SosEvent> options) {
         super(options);
@@ -54,19 +53,11 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
         eventViewHolder.townRV.setText(sosEvent.getTown());
 
         // Name
-        String userAskId = sosEvent.getUserAskId();
-        final TextView namePlace = eventViewHolder.nameRV;
 
-        UserHelper.getUser(userAskId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    Log.d(TAG, "onSuccess: documentSnapshot exists");
-                    myName = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserName();
-                    namePlace.setText(myName);
-                }
-            }
-        });
+        //String userAskId = sosEvent.getUserAskId();
+        String myName = sosEvent.getUserAsk().getUserName();
+        final TextView namePlace = eventViewHolder.nameRV;
+        namePlace.setText(myName);
 
         // Number
         int numberHeros = sosEvent.getNumberHeroNotFound();

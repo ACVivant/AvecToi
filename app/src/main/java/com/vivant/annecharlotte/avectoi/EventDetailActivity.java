@@ -51,8 +51,10 @@ public class EventDetailActivity extends BaseActivity {
 
     private FloatingActionButton validate;
 
-    private List<String> listHeros = new ArrayList<>();
-    private String userHeroId;
+    //private List<String> listHeros = new ArrayList<>();
+    private List<User> listHeros = new ArrayList<>();
+    //private String userHeroId;
+    private User userHero;
     private int toFindHeros;
 
 
@@ -63,7 +65,13 @@ public class EventDetailActivity extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         eventId = getIntent().getStringExtra(MainActivity.EVENT_ID);
-        userHeroId = this.getCurrentUser().getUid();
+
+        UserHelper.getUser(getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                userHero = documentSnapshot.toObject(User.class);
+            }
+        });
 
         Log.d(TAG, "onCreate: eventId " +eventId);
 
@@ -73,21 +81,21 @@ public class EventDetailActivity extends BaseActivity {
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listHeros.add(userHeroId);
+                listHeros.add(userHero);
                 openDialog(listHeros);
 
             }
         });
     }
 
-    private void openDialog(final List<String> list) {
+    private void openDialog(final List<User> list) {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.detail_event_confirmation_title)
                 .setMessage(R.string.detail_event_hero_confirmation)
                 .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       updateEvent(list);
+                        updateEvent(list);
                         finish();
                     }
                 })
@@ -95,8 +103,8 @@ public class EventDetailActivity extends BaseActivity {
                 .show();
     }
 
-    public void updateEvent(List<String> list) {
-        SosEventHelper.updateUserHerosIdList(list, eventId);
+    public void updateEvent(List<User> list) {
+        SosEventHelper.updateUserHerosList(list, eventId);
         Date today = new Date();
         SosEventHelper.updateDateHeroOk(today, eventId);
         SosEventHelper.updateUserHerosNotFound(toFindHeros-1, eventId);
@@ -127,8 +135,6 @@ public class EventDetailActivity extends BaseActivity {
         userEmailTV = findViewById(R.id.detail_event_userEmail);
 
         validate = findViewById(R.id.add_new_hero_button);
-
-
     }
 
 
@@ -137,30 +143,18 @@ public class EventDetailActivity extends BaseActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
+                    User userAsk = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserAsk();
+                    userNameTV.setText(userAsk.getUserName());
+                    userTelTV.setText(userAsk.getUserPhone());
+                    userEmailTV.setText(userAsk.getUserEmail());
 
-                    //USER
-                    String userAskId = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserAskId();
-                    UserHelper.getUser(userAskId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            //NAME
-                            userNameTV.setText(Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserName());
+                    if (userAsk.getUrlPicture() != null) {
+                        Glide.with(EventDetailActivity.this)
+                                .load(userAsk.getUrlPicture())
+                                .apply(RequestOptions.circleCropTransform())
+                                .into(userPhotoIV);
+                    }
 
-                            //PHONE
-                            userTelTV.setText(Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserPhone());
-
-                            //EMAIL
-                            userEmailTV.setText(Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserEmail());
-
-                            //PHOTO
-                            if (documentSnapshot.toObject(User.class).getUrlPicture() != null) {
-                                Glide.with(EventDetailActivity.this)
-                                        .load(documentSnapshot.toObject(User.class).getUrlPicture())
-                                       .apply(RequestOptions.circleCropTransform())
-                                        .into(userPhotoIV);
-                            }
-                        }
-                    });
 
                     //DATE
                     Date eventDate = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getDateNeed();

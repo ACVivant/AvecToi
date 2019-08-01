@@ -18,8 +18,8 @@ public class SosEvent {
     private Date dateHeroOk;
     private String town;
     private String description;
-    private String userAskId;
-    private List<String> userHeroIdList;
+    private User userAsk;
+    private List<User> userHeroList;
     private int numberHeroWanted;
     private int numberHeroNotFound;
     private boolean missionOK;
@@ -27,19 +27,19 @@ public class SosEvent {
 
     public SosEvent() { }
 
-    public SosEvent(int themeIndex, String description, String town, int numberHeroWanted, String userAskId, Date dateCreated, Date dateNeed, boolean car) {
+    public SosEvent(int themeIndex, String description, String town, int numberHeroWanted, User userAsk, Date dateCreated, Date dateNeed, boolean car) {
         this.themeIndex = themeIndex;
         this.description = description;
         this.town = town;
         this.numberHeroWanted = numberHeroWanted;
         this.numberHeroNotFound = numberHeroWanted;
         this.missionOK = false;
-        this.userAskId = userAskId;
+        this.userAsk = userAsk;
         this.dateCreated = dateCreated;
         this.dateNeed = dateNeed;
         this.dateHeroOk = null;
         this.car = car;
-        this.userHeroIdList = new ArrayList<>();
+        this.userHeroList = new ArrayList<>();
     }
 
     public int getThemeIndex() {
@@ -90,20 +90,20 @@ public class SosEvent {
         this.description = description;
     }
 
-    public String getUserAskId() {
-        return userAskId;
+    public User getUserAsk() {
+        return userAsk;
     }
 
-    public void setUserAskId(String userAskId) {
-        this.userAskId = userAskId;
+    public void setUserAsk(User userAsk) {
+        this.userAsk = userAsk;
     }
 
-    public List<String> getUserHeroIdList() {
-        return userHeroIdList;
-    }
+public List<User> getUserHeroIdList() {
+    return userHeroList;
+}
 
-    public void setUserHeroIdList(List<String> userHeroIdList) {
-        this.userHeroIdList = userHeroIdList;
+    public void setUserHeroIdList(List<User> userHeroList) {
+        this.userHeroList = userHeroList;
     }
 
     public int getNumberHeroWanted() {
@@ -121,7 +121,6 @@ public class SosEvent {
     public void setNumberHeroNotFound(int numberHeroNotFound) {
         this.numberHeroNotFound = numberHeroNotFound;
     }
-
 
     public boolean isMissionOK() {
         return missionOK;

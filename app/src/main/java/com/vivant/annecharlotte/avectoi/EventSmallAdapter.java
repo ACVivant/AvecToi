@@ -35,7 +35,6 @@ public class EventSmallAdapter extends FirestoreRecyclerAdapter<SosEvent, EventS
     private OnItemClickListener listener;
 
     private static final String TAG = "EventSmallAdapter";
-    private String myName;
     private String from;
 
     public EventSmallAdapter(@NonNull FirestoreRecyclerOptions<SosEvent> options, String from) {
@@ -69,19 +68,9 @@ public class EventSmallAdapter extends FirestoreRecyclerAdapter<SosEvent, EventS
         final TextView nameOrThemePlace = eventViewHolder.nameRV;
 
         if (from==UserEventsActivity.HERO_INDEX) {
-            String userAskId = sosEvent.getUserAskId();
 
+            nameOrThemePlace.setText(sosEvent.getUserAsk().getUserName());
 
-            UserHelper.getUser(userAskId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if (documentSnapshot.exists()) {
-                        Log.d(TAG, "onSuccess: documentSnapshot exists");
-                        myName = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserName();
-                        nameOrThemePlace.setText(myName);
-                    }
-                }
-            });
         } else {
             String themeArr[] = eventViewHolder.itemView.getContext().getResources().getStringArray(R.array.event_theme);
             int themeIndex = sosEvent.getThemeIndex();
