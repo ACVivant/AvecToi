@@ -13,7 +13,7 @@
             android:parentActivityName=".MainActivity"></activity>
 
         <service
-            android:name=".NotificationHeroService"
+            android:name=".notification.NotificationHeroService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
