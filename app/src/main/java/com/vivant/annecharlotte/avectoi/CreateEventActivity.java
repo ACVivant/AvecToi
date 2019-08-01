@@ -1,5 +1,6 @@
 package com.vivant.annecharlotte.avectoi;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
+import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.sql.Timestamp;
@@ -55,6 +57,8 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     private String eventId;
 
     private String userId;
+    @Nullable
+    private User modelCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +113,8 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         // CAR
         carSwitch = (Switch) findViewById(R.id.event_car_switch);
 
+        this.getCurrentUserFromFirestore();
+
     }
 
     @Override
@@ -157,6 +163,15 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         dateText.setText(dateToShow);
     }
 
+    private void getCurrentUserFromFirestore(){
+        UserHelper.getUser(getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                modelCurrentUser = documentSnapshot.toObject(User.class);
+            }
+        });
+    }
+
     public void saveData() {
         descriptionToSave = description.getText().toString();
         themeToSave = themeSpinner.getSelectedItemPosition();
@@ -178,8 +193,8 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
 
     public void createEvent() {
         Log.d(TAG, "createEvent");
-        eventId = userId + dateToday;
-        SosEventHelper.createEvent(themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, userId, dateToday, dateToSave, carToSave).addOnFailureListener(this.onFailureListener());
+
+        SosEventHelper.createEvent(themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, modelCurrentUser, dateToday, dateToSave, carToSave).addOnFailureListener(this.onFailureListener());
         finish();
     }
 

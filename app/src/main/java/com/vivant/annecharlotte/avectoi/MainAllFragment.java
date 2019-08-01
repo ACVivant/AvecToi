@@ -37,12 +37,6 @@ public class MainAllFragment extends Fragment {
     private RecyclerView recyclerView;
     private Context context;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
- //   private OnFragmentInteractionListener mListener;
-
     public MainAllFragment() {
         // Required empty public constructor
     }
@@ -58,13 +52,6 @@ public class MainAllFragment extends Fragment {
         // Inflate the layout for this fragment
         context = getContext();
         view = inflater.inflate(R.layout.fragment_main_all, container, false);
-        /*Caused by: android.view.InflateException: Binary XML file line #2: RecyclerView has no LayoutManager androidx.recyclerview.widget.RecyclerView{dc8e489 VFED..... ......I. 0,0-0,0 #7f0900cb app:id/events_fragment_recycler_view}, adapter:null, layout:null, context:com.vivant.annecharlotte.avectoi.MainActivity@dd3b03
-     Caused by: java.lang.IllegalStateException: RecyclerView has no LayoutManager androidx.recyclerview.widget.RecyclerView{dc8e489 VFED..... ......I. 0,0-0,0 #7f0900cb app:id/events_fragment_recycler_view}, adapter:null, layout:null, context:com.vivant.annecharlotte.avectoi.MainActivity@dd3b03
-        at androidx.recyclerview.widget.RecyclerView.generateLayoutParams(RecyclerView.java:4304)
-        at android.view.LayoutInflater.inflate(LayoutInflater.java:502)
-        at android.view.LayoutInflater.inflate(LayoutInflater.java:423)
-        at com.vivant.annecharlotte.avectoi.MainAllFragment.onCreateView(MainAllFragment.java:60)*/
-
         recyclerView = view.findViewById(R.id.events_fragment_recycler_view);
 
         setupRecyclerView();

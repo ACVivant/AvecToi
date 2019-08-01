@@ -1,4 +1,4 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.notifications;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -24,6 +24,8 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.vivant.annecharlotte.avectoi.R;
+import com.vivant.annecharlotte.avectoi.WelcomeActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
@@ -82,6 +84,9 @@ public class NotificationHeroService extends FirebaseMessagingService {
         stringMissionTab[15] = getResources().getString(R.string.create_adminSP);
 
 
+        //---------------------------
+        // On va essayer de traiter ça avec Firebase CLoud Function
+        //---------------------------------------------------------
 
         // On récupère la liste des événements pour lesquels j'ai des nouveaux héros - dont la date d'acceptation est aujourd'hui et l'userAskId moi-même
        List<Integer> herosIndex= getMyHeros();
