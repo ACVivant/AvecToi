@@ -152,6 +152,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent2 = new Intent(MainActivity.this, UserEventsActivity.class);
                 startActivity(intent2);
                 return true;
+            case R.id.drawer_quit:
+                return true;
             case R.id.drawer_allusers:
                 return true;
             case R.id.drawer_invitation:

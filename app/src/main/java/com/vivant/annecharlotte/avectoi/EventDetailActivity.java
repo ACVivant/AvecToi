@@ -117,10 +117,17 @@ public class EventDetailActivity extends BaseActivity {
     }
 
     public void updateEvent(List<User> list) {
+        List<String> listId = new ArrayList<>();   // Pour pouvoir gérer les query (en particulier dans les tableaux, ca ne marche pas avec des formats comme User d'où une copie des id pour avoir un tableau sur lequel on peut filtrer
+        for (User item : list) {
+            listId.add(item.getUid());
+        }
+        SosEventHelper.updateUserHerosIdList(listId, eventId);
         SosEventHelper.updateUserHerosList(list, eventId);
+
         Date today = new Date();
         SosEventHelper.updateDateHeroOk(today, eventId);
         SosEventHelper.updateUserHerosNotFound(toFindHeros - 1, eventId);
+
 
         if (toFindHeros - 1 == 0) {
             SosEventHelper.updateMissionOk(true, eventId);
@@ -192,7 +199,7 @@ public class EventDetailActivity extends BaseActivity {
                     toFindHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHeroNotFound();
                     eventNumberWaitedTV.setText(String.valueOf(toFindHeros));
 
-                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroIdList();
+                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroList();
 
                     //CAR
                     boolean car = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getCar();

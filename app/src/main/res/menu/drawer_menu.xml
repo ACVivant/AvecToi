@@ -13,6 +13,10 @@
                 android:id="@+id/drawer_myevents"
                 android:icon="@drawable/ic_needhelp"
                 android:title="@string/drawer_innedhelp_events" />
+            <item
+                android:id="@+id/drawer_quit"
+                android:icon="@drawable/ic_quit"
+                android:title="@string/drawer_quit" />
         </menu>
     </item>
 
@@ -28,4 +32,6 @@
                 android:title="@string/drawer_sponsorship_invitation" />
         </menu>
     </item>
+
+
 </menu>

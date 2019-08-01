@@ -18,6 +18,7 @@
     <string name="drawer_sponsorship">"Et les autres aussi!"</string>
     <string name="drawer_users">"Annuaire des super héros"</string>
     <string name="drawer_sponsorship_invitation">"Inviter à rejoindre Super Moi"</string>
+    <string name="drawer_quit">"Me déconnecter"</string>
     <string name="navigation_drawer_open">"Ouvrir le menu"</string>
     <string name="navigation_drawer_close">"Fermer le menu"</string>
 

@@ -26,6 +26,7 @@ import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -77,10 +78,10 @@ public class NotificationEventsService extends FirebaseMessagingService {
 
 
         //---------------------------
-        // On va essayer de traiter ça avec Firebase CLoud Function
+        // On va essayer de traiter ça avec Firebase Cloud Function
         //---------------------------------------------------------
 
-        // On récupère la liste des événements pour lesquels j'ai des nouveaux héros - dont la date d'acceptation est aujourd'hui et l'userAskId moi-même
+    /*    // On récupère la liste des événements pour lesquels j'ai des nouveaux héros - dont la date d'acceptation est aujourd'hui et l'userAskId moi-même
         List<Integer> herosIndex= getMyHeros();
 
 
@@ -90,31 +91,32 @@ public class NotificationEventsService extends FirebaseMessagingService {
             e.printStackTrace();
         }
 
-        textHero = createTextNotificationHero(herosIndex);
+        textHero = createTextNotificationHero(herosIndex);*/
 
 
 
         // On récupère la liste des nouvelles missions mises en ligne et correspondent à nos super pouvoirs
 
-        List<Integer> eventsIndex= getNewEvent();
+/*        List<Integer> eventsIndex= getNewEvent();
         try {   // Il faut absolument que je comprenne comment éviter ça... et capter le retour de firebase dans le Main Thread
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         textEvent = createTextNotificationEvent(eventsIndex);
-        Log.d(TAG, "onMessageReceived: textEvent " + textEvent);
+        Log.d(TAG, "onMessageReceived: textEvent " + textEvent);*/
 
         // On envoie la notification
-        sendVisualNotification(textHero, textEvent);
+        //sendVisualNotification(textHero, textEvent);
 
+        getNewEvent();
     }
 
     //---------------------------------------------------------------
     // GET INFOS
     //---------------------------------------------------------------
 
-    public List<Integer> getMyHeros() {
+  /*  public List<Integer> getMyHeros() {
         Log.d(TAG, "getMyHeros");
         Log.d(TAG, "getMyHeros: yesterday " +yesterday);
 
@@ -140,17 +142,19 @@ public class NotificationEventsService extends FirebaseMessagingService {
 
         return listHeros;
     }
+*/
+    private void getNewEvent() {
+      //  private List<Integer> getNewEvent() {
 
-    private List<Integer> getNewEvent() {
-
-            /*Calendar calendar = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
             calendar.add(Calendar.HOUR, -24);
             yesterday = calendar.getTime();
 
-            eventsRef.whereGreaterThan("dateCreated", yesterday)   // Ca aurait été cool que ça marche...
+/*            eventsRef.whereGreaterThan("dateCreated", yesterday)   // Ca aurait été cool que ça marche...
                     .get()*/
 
-        eventsRef.get()
+        eventsRef.whereGreaterThan("dateCreated", yesterday)
+                .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -173,18 +177,20 @@ public class NotificationEventsService extends FirebaseMessagingService {
                                 }
                             });
                             Log.d(TAG, "getNewEvent: listNewEvents" + listNewEvents.toString());
+
+                            sendVisualNotification(createTextNotificationEvent(listNewEvents));
                         }
                     }
                 });
 
-        return listNewEvents;
+       // return listNewEvents;
     }
 
     //---------------------------------------------------------------------------
     // NOTIFICATION DESIGN
     //---------------------------------------------------------------------------
 
-    private String createTextNotificationHero(List<Integer> list) {
+ /*   private String createTextNotificationHero(List<Integer> list) {
         Log.d(TAG, "createTextNotificationHero: list " + list.toString());
         Log.d(TAG, "createTextNotificationHero: list.size " +list.size());
         String textToDisplay = "";
@@ -207,7 +213,7 @@ public class NotificationEventsService extends FirebaseMessagingService {
 
         }
         return textToDisplay;
-    }
+    }*/
 
     private String createTextNotificationEvent(List<Integer> list) {
         String textToDisplay = "";
@@ -231,9 +237,11 @@ public class NotificationEventsService extends FirebaseMessagingService {
         return textToDisplay;
     }
 
-    private void sendVisualNotification(String message1, String message2) {
+    private void sendVisualNotification(String message1) {
+        //private void sendVisualNotification(String message1, String message2) {
 
-        if (displayHero || displayEvent) {
+
+       /* if (displayHero || displayEvent) {
             String message = "";
             if (displayHero && !displayEvent) {
                 message = message1;
@@ -243,8 +251,11 @@ public class NotificationEventsService extends FirebaseMessagingService {
             }
             if (displayHero && displayEvent) {
                 message = message1 + "  //  " + message2;
-            }
+            }*/
 
+
+       if (displayEvent) {
+           String message = message1;
             Log.d(TAG, "sendVisualNotification: message " + message);
 
             Log.d(TAG, "sendVisualNotification");

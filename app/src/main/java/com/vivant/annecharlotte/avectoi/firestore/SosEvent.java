@@ -19,7 +19,11 @@ public class SosEvent {
     private String town;
     private String description;
     private User userAsk;
+    private String userAskId;
+    @Nullable
     private List<User> userHeroList;
+    @Nullable
+    private List<String> userHeroIdList;
     private int numberHeroWanted;
     private int numberHeroNotFound;
     private boolean missionOK;
@@ -35,11 +39,13 @@ public class SosEvent {
         this.numberHeroNotFound = numberHeroWanted;
         this.missionOK = false;
         this.userAsk = userAsk;
+        this.userAskId = userAsk.getUid();
         this.dateCreated = dateCreated;
         this.dateNeed = dateNeed;
         this.dateHeroOk = null;
         this.car = car;
         this.userHeroList = new ArrayList<>();
+        this.userHeroIdList = new ArrayList<>();
     }
 
     public int getThemeIndex() {
@@ -98,12 +104,28 @@ public class SosEvent {
         this.userAsk = userAsk;
     }
 
-public List<User> getUserHeroIdList() {
+    public String getUserAskId() {
+        return userAskId;
+    }
+
+    public void setUserAskId(String userAskId) {
+        this.userAskId = userAskId;
+    }
+
+    public List<User> getUserHeroList() {
     return userHeroList;
 }
 
-    public void setUserHeroIdList(List<User> userHeroList) {
+    public void setUserHeroList(List<User> userHeroList) {
         this.userHeroList = userHeroList;
+    }
+
+    public List<String> getUserHeroIdList() {
+        return userHeroIdList;
+    }
+
+    public void setUserHeroIdList(List<String> userHeroIdList) {
+        this.userHeroIdList = userHeroIdList;
     }
 
     public int getNumberHeroWanted() {

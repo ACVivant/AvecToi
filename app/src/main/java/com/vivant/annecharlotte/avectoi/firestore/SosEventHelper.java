@@ -89,6 +89,10 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).update("userHeroList", userHeroList);
     }
 
+    public static Task<Void> updateUserHerosIdList(List<String> userHeroIdList, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("userHeroIdList", userHeroIdList);
+    }
+
     public static Task<Void> updateUserHerosNotFound(int nbHeros, String eventId) {
         return SosEventHelper.getEventsCollection().document(eventId).update("numberHeroNotFound", nbHeros);
     }

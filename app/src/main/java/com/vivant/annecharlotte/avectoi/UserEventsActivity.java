@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -17,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
+import com.vivant.annecharlotte.avectoi.firestore.User;
+import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 public class UserEventsActivity extends BaseActivity{
 
@@ -29,6 +32,7 @@ public class UserEventsActivity extends BaseActivity{
     private EventSmallAdapter adapterHero;
     private EventSmallAdapter adapterNeed;
     private String userId;
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,8 @@ public class UserEventsActivity extends BaseActivity{
         setContentView(R.layout.activity_user_events);
 
         userId = this.getCurrentUser().getUid();
+
+        getCurrentUserFromFirestore();
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
 
@@ -54,6 +60,15 @@ public class UserEventsActivity extends BaseActivity{
     @Override
     public int getFragmentLayout() {
         return R.layout.activity_user_events;
+    }
+
+    private void getCurrentUserFromFirestore(){
+        UserHelper.getUser(getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                currentUser = documentSnapshot.toObject(User.class);
+            }
+        });
     }
 
     public void launchUserProfil() {
@@ -92,6 +107,7 @@ public class UserEventsActivity extends BaseActivity{
         Log.d(TAG, "setupIneedhelpRecyclerView: userId " +userId);
         Query queryNeed = SosEventHelper.getAllEventsFromToday().whereEqualTo("userAskId", userId);
 
+       // Query queryNeed = SosEventHelper.getAllEventsFromToday().whereEqualTo("userAsk", currentUser);
         FirestoreRecyclerOptions<SosEvent> optionsNeed = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(queryNeed, SosEvent.class)
                 .build();
