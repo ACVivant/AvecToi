@@ -10,9 +10,13 @@
                 android:icon="@drawable/ic_account_circle"
                 android:title="@string/drawer_profil_description" />
             <item
-                android:id="@+id/drawer_myevents"
+                android:id="@+id/drawer_ineedhelp"
                 android:icon="@drawable/ic_needhelp"
                 android:title="@string/drawer_innedhelp_events" />
+            <item
+                android:id="@+id/drawer_iamhero"
+                android:icon="@drawable/ic_star"
+                android:title="@string/drawer_iamhero_events" />
             <item
                 android:id="@+id/drawer_quit"
                 android:icon="@drawable/ic_quit"

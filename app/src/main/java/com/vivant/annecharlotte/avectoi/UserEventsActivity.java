@@ -1,6 +1,7 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,19 +31,25 @@ public class UserEventsActivity extends BaseActivity{
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
 
-    private EventSmallAdapter adapterHero;
-    private EventSmallAdapter adapterNeed;
+    private EventSmallAdapter adapter;
     private String userId;
+    private String fromHeroOrNeed;
     private User currentUser;
+
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_events);
 
+        fromHeroOrNeed = getIntent().getStringExtra(MainActivity.FROM_ID);
+
         userId = this.getCurrentUser().getUid();
 
         getCurrentUserFromFirestore();
+
+        title = findViewById(R.id.iamhero_title);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
 
@@ -53,8 +61,7 @@ public class UserEventsActivity extends BaseActivity{
             }
         });
 
-        setupIamheroRecyclerView();
-        setupIneedhelpRecyclerView();
+        setupRecyclerView();
     }
 
     @Override
@@ -76,22 +83,34 @@ public class UserEventsActivity extends BaseActivity{
         startActivity(intent);
     }
 
-    public void setupIamheroRecyclerView() {
+    public void setupRecyclerView() {
         Log.d(TAG, "setupIamHeroRecyclerView: userId " + userId);
-        Query queryHero = SosEventHelper.getAllEventsFromToday().whereArrayContains("userHeroIdList", userId);
+        Query query;
+        String INDEX;
+        if (fromHeroOrNeed.equals(NEED_INDEX)) {
+            title.setText(R.string.ineedhelp_title);
+            title.setBackground(getResources().getDrawable(R.color.colorSecondary));
+            query = SosEventHelper.getAllEventsFromToday().whereEqualTo("userAskId", userId);
+            INDEX  = NEED_INDEX;
+        } else {
+            title.setText(R.string.iamhero_title);
+            title.setBackground(getResources().getDrawable(R.color.colorPrimary));
+            query = SosEventHelper.getAllEventsFromToday().whereArrayContains("userHeroIdList", userId);
+            INDEX = HERO_INDEX;
+        }
 
-        FirestoreRecyclerOptions<SosEvent> optionsHero = new FirestoreRecyclerOptions.Builder<SosEvent>()
-                .setQuery(queryHero, SosEvent.class)
+        FirestoreRecyclerOptions<SosEvent> options = new FirestoreRecyclerOptions.Builder<SosEvent>()
+                .setQuery(query, SosEvent.class)
                 .build();
 
-        adapterHero = new EventSmallAdapter(optionsHero, HERO_INDEX);
+        adapter = new EventSmallAdapter(options, INDEX);
 
         RecyclerView recyclerView = findViewById(R.id.iamhero_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapterHero);
+        recyclerView.setAdapter(adapter);
 
-        adapterHero.setOnItemClickListener(new EventSmallAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new EventSmallAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
@@ -101,48 +120,17 @@ public class UserEventsActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
-    }
-
-    public void setupIneedhelpRecyclerView() {
-        Log.d(TAG, "setupIneedhelpRecyclerView: userId " +userId);
-        Query queryNeed = SosEventHelper.getAllEventsFromToday().whereEqualTo("userAskId", userId);
-
-       // Query queryNeed = SosEventHelper.getAllEventsFromToday().whereEqualTo("userAsk", currentUser);
-        FirestoreRecyclerOptions<SosEvent> optionsNeed = new FirestoreRecyclerOptions.Builder<SosEvent>()
-                .setQuery(queryNeed, SosEvent.class)
-                .build();
-
-        adapterNeed = new EventSmallAdapter(optionsNeed, NEED_INDEX);
-
-        RecyclerView recyclerView = findViewById(R.id.ineedhelp_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapterNeed);
-
-        adapterNeed.setOnItemClickListener(new EventSmallAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                String id = documentSnapshot.getId();
-                Intent intent = new Intent(UserEventsActivity.this, EventDetailActivity.class);
-                Log.d(TAG, "onItemClick: eventId " +id);
-                intent.putExtra(MainActivity.EVENT_ID, id);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        adapterNeed.startListening();
-        adapterHero.startListening();
+        adapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        adapterNeed.stopListening();
-        adapterHero.stopListening();
+        adapter.stopListening();
     }
 }

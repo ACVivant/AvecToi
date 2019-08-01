@@ -5,7 +5,7 @@
     <string name="welcome_title_with">"avec la paroisse Saint-Sébastien"</string>
 
     <!-- Welcome -->
-    <string name="main_activity_description">"L'appli qui révèle nos super-pouvoirs!"</string>
+    <string name="main_activity_description">"L'appli qui révèle vos super-pouvoirs!"</string>
     <string name="connexion">"C'est parti!"</string>
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
     <string name="error_no_internet">"Pas de connexion internet"</string>
@@ -14,7 +14,8 @@
     <!-- Drawer Menu -->
     <string name="drawer_profil_title">"Moi, bon et beau"</string>
     <string name="drawer_profil_description">"Ma fiche descriptive"</string>
-    <string name="drawer_innedhelp_events">"Mes missions"</string>
+    <string name="drawer_innedhelp_events">"J'ai demandé de l'aide"</string>
+    <string name="drawer_iamhero_events">"J'ai proposé mon aide"</string>
     <string name="drawer_sponsorship">"Et les autres aussi!"</string>
     <string name="drawer_users">"Annuaire des super héros"</string>
     <string name="drawer_sponsorship_invitation">"Inviter à rejoindre Super Moi"</string>

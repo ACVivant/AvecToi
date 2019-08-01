@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private static final String TAG = "MainActivity";
     public static final String EVENT_ID = "EventId";
     public static final String QUERY_ID = "QueryId";
+    public static final String FROM_ID = "FromId";
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView  navigationView;
@@ -97,29 +98,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // CONFIGURATION
     // ---------------------
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG, "onCreateOptionsMenu: ");
-        //Inflate the menu and add it to the top Toolbar
-            getMenuInflater().inflate(R.menu.main_activity_menu, menu);
-
-        return true;
-    }
-
-    // On va pouvoir supprimer ce menu
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Log.d(TAG, "onOptionsItemSelected: ");
-        switch (item.getItemId()) {
-
-            case R.id.main_my_events:
-                Intent intent = new Intent(MainActivity.this, UserEventsActivity.class);
-                startActivity(intent);
-                return true;
-        }
-        return false;
-    }
-
     // Configure toolbar
     private void configureDrawerToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -148,9 +126,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(MainActivity.this, CreateUserActivity.class);
                 startActivity(intent);
                 return true;
-            case R.id.drawer_myevents:
+            case R.id.drawer_ineedhelp:
                 Intent intent2 = new Intent(MainActivity.this, UserEventsActivity.class);
+                intent2.putExtra(FROM_ID,UserEventsActivity.NEED_INDEX);
                 startActivity(intent2);
+                return true;
+            case R.id.drawer_iamhero:
+                Intent intent3 = new Intent(MainActivity.this, UserEventsActivity.class);
+                intent3.putExtra(FROM_ID,UserEventsActivity.HERO_INDEX);
+                startActivity(intent3);
                 return true;
             case R.id.drawer_quit:
                 return true;
