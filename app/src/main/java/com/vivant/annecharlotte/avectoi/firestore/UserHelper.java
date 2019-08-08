@@ -57,6 +57,11 @@ public class UserHelper {
             return UserHelper.getUsersCollection().document(uid).update("username", username);
         }
 
+    // --- UPDATE TOKEN---
+    public static Task<Void> updateUserToken(String usertoken, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("userToken", usertoken);
+    }
+
     // --- UPDATE SUPER POWER LIST---
     public static Task<Void> updateUserSPList(List<Integer> userSPList, String userId) {
         return UserHelper.getUsersCollection().document(userId).update("userSPList", userSPList);
@@ -85,4 +90,9 @@ public class UserHelper {
         public static Query getAllUsers(){
             return UserHelper.getUsersCollection().orderBy("userName", Query.Direction.ASCENDING);
         }
+
+        // -- GET USER TOKEN --
+    public static String getUserToken(String uid) {
+            return UserHelper.getUserToken(uid);
+    }
 }

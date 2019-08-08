@@ -1,8 +1,5 @@
 package com.vivant.annecharlotte.avectoi;
 
-//import androidx.appcompat.app.AppCompatActivity;
-//import butterknife.OnClick;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;

@@ -25,7 +25,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
@@ -313,6 +317,7 @@ public void saveData() {
                             Log.d(TAG, "onSuccess: documentSnapshot exists");
                             updateSuperPower(userId);
                             updateTelAndTown(userId);
+                            updateToken(userId);
                         }
                     }
                 });
@@ -322,7 +327,19 @@ public void saveData() {
         }
 }
 
-public void updateSuperPower(String uid) {
+    private void updateToken(String uid) {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(CreateUserActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                Log.e("newToken",newToken);
+                UserHelper.updateUserToken(newToken, userId);
+            }
+        });
+
+    }
+
+    public void updateSuperPower(String uid) {
         listUserSPInt = new ArrayList<>();
         for (int i=0;i<listUserSP.size();i++) {
             listUserSPInt.add(Integer.parseInt(listUserSP.get(i)));

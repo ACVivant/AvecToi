@@ -22,6 +22,8 @@ public class User {
     private String userTown;
     @Nullable
     private String userDescription;
+    @Nullable
+    private String userToken;
 
     private List<Integer> userSPList;
 
@@ -36,6 +38,7 @@ public class User {
         this.userDescription = null;
         this.userTown = null;
         this.userSPList = new ArrayList<>();
+        this.userToken = null;
     }
 
     public String getUid() {
@@ -72,6 +75,15 @@ public class User {
 
     public void setUserEmail(@Nullable String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    @Nullable
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(@Nullable String userToken) {
+        this.userToken = userToken;
     }
 
     @Nullable

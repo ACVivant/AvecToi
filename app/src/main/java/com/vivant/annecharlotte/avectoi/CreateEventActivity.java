@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;

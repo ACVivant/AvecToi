@@ -44,6 +44,7 @@ dependencies {
 
     // FIREBASE MESSAGING
     implementation 'com.google.firebase:firebase-messaging:19.0.1'
+    implementation 'com.google.firebase:firebase-database:18.0.1'
 
     //BUTTERKNIFE
     //implementation 'com.jakewharton:butterknife:10.1.0'

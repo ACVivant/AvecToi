@@ -9,6 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:stopWithTask="false">
+            <intent-filter>
+
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <service
             android:name=".notifications.NotificationHeroService"
             android:enabled="true"
@@ -21,15 +30,6 @@
         <activity
             android:name=".UserEventsActivity"
             android:parentActivityName=".MainActivity" />
-
-        <service
-            android:name=".EventDetailActivity$NotificationHeroService"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
         <activity
             android:name=".EventDetailActivity"

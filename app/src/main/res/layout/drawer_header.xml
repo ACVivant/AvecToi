@@ -50,7 +50,6 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark"
             android:text="@string/create_name"
             android:textColor="@android:color/white"
             android:layout_marginStart="16dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintTop_toTopOf="@+id/header_photo"
             app:layout_constraintBottom_toBottomOf="@+id/header_photo"
             app:layout_constraintStart_toEndOf="@+id/header_photo"/>

@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.EventLog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,11 +25,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
@@ -78,6 +84,7 @@ public class EventDetailActivity extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         eventId = getIntent().getStringExtra(MainActivity.EVENT_ID);
+        FirebaseMessaging.getInstance().subscribeToTopic(eventId);
 
         UserHelper.getUser(getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -115,6 +122,8 @@ public class EventDetailActivity extends BaseActivity {
                 .setNegativeButton("Non", null)
                 .show();
     }
+
+
 
     public void updateEvent(List<User> list) {
         List<String> listId = new ArrayList<>();   // Pour pouvoir gérer les query (en particulier dans les tableaux, ca ne marche pas avec des formats comme User d'où une copie des id pour avoir un tableau sur lequel on peut filtrer
