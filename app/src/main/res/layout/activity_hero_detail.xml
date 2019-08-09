@@ -36,11 +36,29 @@
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:gravity="center_vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
+            <ImageButton
+                android:id="@+id/hero_phone_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_phone"
+                android:background="@drawable/button_background2"
+                android:padding="6dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/default_margin"
+                />
+
+            <ImageButton
+                android:id="@+id/hero_email_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_email"
+                android:background="@drawable/button_background2"
+                android:padding="6dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/default_margin"
+                />
 
         </LinearLayout>
 

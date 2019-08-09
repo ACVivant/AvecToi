@@ -1,6 +1,7 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +54,7 @@ public class EventDetailActivity extends BaseActivity {
     private TextView eventDateCreatedTV;
 
     private FloatingActionButton validate;
+    ConstraintLayout userInfos;
 
     //private List<String> listHeros = new ArrayList<>();
     private List<User> listHeros = new ArrayList<>();
@@ -171,12 +173,13 @@ public class EventDetailActivity extends BaseActivity {
         userNameTV = findViewById(R.id.detail_event_userName);
         userTelTV = findViewById(R.id.detail_event_userTel);
         userEmailTV = findViewById(R.id.detail_event_userEmail);
+        userInfos = findViewById(R.id.detail_event_user_ask_infos);
 
         recyclerView = findViewById(R.id.event_user_heros_rv);
 
         validate = findViewById(R.id.add_new_hero_button);
 
-        userPhotoIV.setOnClickListener(new View.OnClickListener() {
+        userInfos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EventDetailActivity.this, HeroDetailActivity.class);

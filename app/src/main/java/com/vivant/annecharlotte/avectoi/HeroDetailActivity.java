@@ -1,18 +1,27 @@
 package com.vivant.annecharlotte.avectoi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -32,10 +41,13 @@ import java.util.Objects;
 public class HeroDetailActivity extends BaseActivity {
 
     private static final String TAG = "HeroDetailActivity";
+    private static final int REQUEST_CALL = 1;
     private String userId;
 
     private ImageView userPhoto;
     private TextView userName, userEmail, userTel, userTown, userDescription, noReference;
+    private ImageButton phoneBtn;
+    private ImageButton mailBtn;
 
     private Button[] buttonTab = new Button[16];
     private boolean[] booleanTab = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
@@ -47,6 +59,9 @@ public class HeroDetailActivity extends BaseActivity {
     private RecyclerView recyclerView;
 
     private Context context;
+    private String userPhoneNumber;
+    private String fromEmail;
+    private String toEmail;
 
     List<String> listUserSP = new ArrayList<>();
     List<Integer> listUserSPInt = new ArrayList<>();
@@ -75,6 +90,21 @@ public class HeroDetailActivity extends BaseActivity {
         userDescription = findViewById(R.id.hero_detail_description);
         noReference = findViewById(R.id.hero_no_ref);
         recyclerView = findViewById(R.id.hero_ref_rv);
+        phoneBtn = findViewById(R.id.hero_phone_btn);
+        mailBtn = findViewById(R.id.hero_email_btn);
+        
+        phoneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makePhoneCall();
+            }
+        });
+        mailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
 
         buttonTab[0] = findViewById(R.id.hero_detail_SP_ironing);
         buttonTab[1] = findViewById(R.id.hero_detail_SP_household);
@@ -95,6 +125,7 @@ public class HeroDetailActivity extends BaseActivity {
 
     }
 
+
     private void updateView(String uid) {
         UserHelper.getUser(uid).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -105,6 +136,9 @@ public class HeroDetailActivity extends BaseActivity {
                 userEmail.setText(user.getUserEmail());
                 userTown.setText(user.getUserTown());
                 userDescription.setText(user.getUserDescription());
+
+                userPhoneNumber =  user.getUserPhone();
+                toEmail = user.getUserEmail();
 
                 if (user.getUrlPicture() != null) {
                     Glide.with(HeroDetailActivity.this)
@@ -159,5 +193,45 @@ public class HeroDetailActivity extends BaseActivity {
         recyclerView.setLayoutManager(layoutManager);
         HeroAdapter adapter = new HeroAdapter(this, mNames, mImages, mUserAskId);
         recyclerView.setAdapter(adapter);
+    }
+
+
+    private void makePhoneCall() {
+        if (userPhoneNumber.trim().length()>0) {
+            if(ContextCompat.checkSelfPermission(HeroDetailActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(HeroDetailActivity.this, new String[] {Manifest.permission.CALL_PHONE},REQUEST_CALL);
+
+            } else {
+                String dial = "tel:"+userPhoneNumber;
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+            }
+
+        } else {
+            Toast.makeText(HeroDetailActivity.this, "Nous n'avons pas le numéro", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode==REQUEST_CALL) {
+            if (grantResults.length>0 &&grantResults[0]==PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall();
+            } else {
+                Toast.makeText(HeroDetailActivity.this, "Nous n'avons pas la permission", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private void sendEmail() {
+    String subjectEmail = getResources().getString(R.string.app_name);
+    String[] recipient = {toEmail};
+
+        Log.d(TAG, "sendEmail: to " + toEmail);
+    Intent intent = new Intent(Intent.ACTION_SEND);
+    intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+    intent.putExtra(Intent.EXTRA_SUBJECT, subjectEmail);
+
+    intent.setType("message/rfc822");
+    startActivity(Intent.createChooser(intent, "Quelle messagerie voulez-vous utiliser?"));
     }
 }
