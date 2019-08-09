@@ -67,6 +67,11 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(userId).update("userSPList", userSPList);
     }
 
+    // --- UPDATE REFERENCES LIST---
+    public static Task<Void> updateEventHeroRefList(List<SosEvent> eventHeroRefList, String userId) {
+        return UserHelper.getUsersCollection().document(userId).update("eventHeroRefList", eventHeroRefList);
+    }
+
     // --- UPDATE PHONE, TOWN AND DESCRIPTION---
 
     public static Task<Void> updateTel(String tel, String uid) {
@@ -95,4 +100,5 @@ public class UserHelper {
     public static String getUserToken(String uid) {
             return UserHelper.getUserToken(uid);
     }
+
 }

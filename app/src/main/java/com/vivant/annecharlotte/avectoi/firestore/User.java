@@ -24,6 +24,8 @@ public class User {
     private String userDescription;
     @Nullable
     private String userToken;
+    @Nullable
+    private List<SosEvent> eventHeroRefList;
 
     private List<Integer> userSPList;
 
@@ -39,6 +41,7 @@ public class User {
         this.userTown = null;
         this.userSPList = new ArrayList<>();
         this.userToken = null;
+        this.eventHeroRefList = new ArrayList<>();
     }
 
     public String getUid() {
@@ -102,6 +105,13 @@ public class User {
 
     public void setUserDescription(@Nullable String userDescription) {
         this.userDescription = userDescription;
+    }
+
+    @Nullable
+    public List<SosEvent> getEventHeroRefList() { return eventHeroRefList;}
+
+    public void setEventHeroRefList(@Nullable List<SosEvent> eventHeroRefList) {
+        this.eventHeroRefList = eventHeroRefList;
     }
 
     public List<Integer> getUserSPList() { return userSPList; }

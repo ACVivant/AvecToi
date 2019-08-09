@@ -1,20 +1,12 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.NotificationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.RingtoneManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.EventLog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,18 +17,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
@@ -51,14 +33,16 @@ import java.util.Objects;
 public class EventDetailActivity extends BaseActivity {
 
     private static final String TAG = "EventDetailActivity";
+    public static final String NO_PHOTO = "noPhoto";
 
     private String eventId;
+    private String userId;
 
     private Button eventBtn;
     private TextView eventDateTV;
     private TextView eventTownTV;
     private TextView eventDescriptionTV;
-    private TextView eventNumberAskedTV;
+    private TextView eventNumberAlreadyTV;
     private TextView eventNumberWaitedTV;
     private TextView eventCarTV;
 
@@ -74,7 +58,14 @@ public class EventDetailActivity extends BaseActivity {
     private List<User> listHeros = new ArrayList<>();
     //private String userHeroId;
     private User userHero;
+    private SosEvent thisEvent;
     private int toFindHeros;
+
+    // RecyclerView
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mHeroId = new ArrayList<>();
+    private RecyclerView recyclerView;
 
 
     @Override
@@ -84,12 +75,17 @@ public class EventDetailActivity extends BaseActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         eventId = getIntent().getStringExtra(MainActivity.EVENT_ID);
-        FirebaseMessaging.getInstance().subscribeToTopic(eventId);
 
         UserHelper.getUser(getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 userHero = documentSnapshot.toObject(User.class);
+            }
+        });
+        SosEventHelper.getEvent(eventId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                thisEvent = documentSnapshot.toObject(SosEvent.class);
             }
         });
 
@@ -116,6 +112,7 @@ public class EventDetailActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         updateEvent(list);
+                        updateMyRef();
                         finish();
                     }
                 })
@@ -123,6 +120,18 @@ public class EventDetailActivity extends BaseActivity {
                 .show();
     }
 
+    public void updateMyRef() {
+        UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    List<SosEvent> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
+                    userRefList.add(thisEvent);
+                    UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());
+                }
+            }
+        });
+    }
 
 
     public void updateEvent(List<User> list) {
@@ -153,9 +162,9 @@ public class EventDetailActivity extends BaseActivity {
         eventDateTV = findViewById(R.id.detail_event_date);
         eventTownTV = findViewById(R.id.detail_event_town);
         eventDescriptionTV = findViewById(R.id.detail_event_description);
-        eventNumberAskedTV = findViewById(R.id.detail_event_number_asked);
+        eventNumberAlreadyTV = findViewById(R.id.detail_event_number_already_heros);
         eventNumberWaitedTV = findViewById(R.id.detail_event_number_notfound);
-        eventCarTV = findViewById(R.id.detail_event_car);
+        eventCarTV = findViewById(R.id.detail_event_car_possible);
         eventDateCreatedTV = findViewById(R.id.detail_event_created);
 
         userPhotoIV = findViewById(R.id.detail_event_user_photo);
@@ -163,7 +172,19 @@ public class EventDetailActivity extends BaseActivity {
         userTelTV = findViewById(R.id.detail_event_userTel);
         userEmailTV = findViewById(R.id.detail_event_userEmail);
 
+        recyclerView = findViewById(R.id.event_user_heros_rv);
+
         validate = findViewById(R.id.add_new_hero_button);
+
+        userPhotoIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EventDetailActivity.this, HeroDetailActivity.class);
+                intent.putExtra(HeroAdapter.HERO_ID, userId);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -176,6 +197,7 @@ public class EventDetailActivity extends BaseActivity {
                     userNameTV.setText(userAsk.getUserName());
                     userTelTV.setText(userAsk.getUserPhone());
                     userEmailTV.setText(userAsk.getUserEmail());
+                    userId = userAsk.getUid();
 
                     if (userAsk.getUrlPicture() != null) {
                         Glide.with(EventDetailActivity.this)
@@ -202,13 +224,27 @@ public class EventDetailActivity extends BaseActivity {
                     eventDescriptionTV.setText(Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getDescription());
 
                     //HEROS
-                    int totalHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHeroWanted();
-                    eventNumberAskedTV.setText(String.valueOf(totalHeros));
+                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroList();
+                    eventNumberAlreadyTV.setText(String.valueOf(listHeros.size()));
 
                     toFindHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHeroNotFound();
                     eventNumberWaitedTV.setText(String.valueOf(toFindHeros));
 
-                    listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroList();
+                    for (int i=0; i<listHeros.size();i++) {
+                        mNames.add(listHeros.get(i).getUserName());
+                        mHeroId.add(listHeros.get(i).getUid());
+                        if (listHeros.get(i).getUrlPicture()!=null) {
+                            mImages.add(listHeros.get(i).getUrlPicture());
+                        } else {
+                            mImages.add(NO_PHOTO);
+                        }
+                    }
+
+                    if(mNames.size()>0) {
+                        initRecyclerView();
+                    } else {
+                        recyclerView.setVisibility(View.GONE);
+                    }
 
                     //CAR
                     boolean car = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getCar();
@@ -294,5 +330,13 @@ public class EventDetailActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private void initRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        HeroAdapter adapter = new HeroAdapter(this, mNames, mImages, mHeroId);
+        recyclerView.setAdapter(adapter);
+
     }
 }

@@ -24,7 +24,7 @@
     <string name="navigation_drawer_close">"Fermer le menu"</string>
 
     <!-- CreateUser -->
-    <string name="create_name">"Name"</string>
+    <string name="create_name">"Nom"</string>
     <string name="create_email">"Email"</string>
     <string name="create_phone">"0606060606"</string>
     <string name="create_phone_intro">"Mon numéro de téléphone: "</string>
@@ -58,12 +58,21 @@
     <string name="phone_or_town_missing">"Il faut entrer un numéro de téléphone, une ville et une petite description."</string>
     <string name="SP_missing">"Il faut révéler au moins un super pouvoir."</string>
 
+    <!-- HeroDetail -->
+    <string name="hero_phone_intro">"Téléphone: "</string>
+    <string name="hero_description_title">"Qui est-il?"</string>
+    <string name="hero_SP">"Ses super pouvoirs"</string>
+    <string name="hero_community">"Habite à "</string>
+    <string name="hero_ref_intro">"Ce héros s'est déjà engagé auprès de: "</string>
+    <string name="hero_no_ref">"Pas encore d'engagement à son actif, mais ça va venir!!!"</string>
+
     <!-- CREATE EVENT -->
     <string name="create_event">"Créer une fiche mission"</string>
     <string name="event_theme_title">"C'est une mission de type&#8230;"</string>
     <string name="event_description_title">"En quelques lignes, votre mission sera: "</string>
     <string name="event_description">"Je décris en quelques lignes en quoi j'ai besoin d'aide et dans quelles conditions la mission pourra se dérouler."</string>
-    <string name="event_town_title">"Ville ou village où se déroulera la mission: "</string>
+    <string name="event_town_title">"Lieu où se déroulera la mission: "</string>
+    <string name="event_town_expl">"Notez le nom de la ville ou \"à domicile\" si la mission peut se faire chez le héros lui-même"</string>
     <string name="event_town">"Nom de la ville ou du village"</string>
     <string name="event_date">"Date de la mission"</string>
     <string name="event_numberHero">"Nombre de héros nécessaires"</string>
@@ -108,11 +117,10 @@
     <string name="detail_event_title">"Votre mission si vous l'acceptez&#8230;"</string>
     <string name="detail_event_title2">"Vous volerez au secours de: "</string>
     <string name="detail_event_validate">"Go! J'accomplis cette mission."</string>
-    <string name="detail_event_numer_heros_asked">"Nombre de héros souhaités: "</string>
-    <string name="detail_event_numer_heros_not_found">"Nombre de héros encore à trouver: "</string>
-    <string name="detail_event_car">"Si besoin, le transport est assuré: "</string>
-    <string name="detail_event_car_yes">"Oui"</string>
-    <string name="detail_event_car_no">"Non"</string>
+    <string name="detail_event_number_heros_already">"Héros déjà volontaires: "</string>
+    <string name="detail_event_number_heros_not_found">"Nombre de héros encore à trouver: "</string>
+    <string name="detail_event_car_yes">"Si besoin, le transport est assuré."</string>
+    <string name="detail_event_car_no">"Le transport ne peut pas être assuré."</string>
     <string name="detail_event_date_created_intro">"Création de la fiche: "</string>
     <string name="detail_event_confirmation_title">"Confirmation"</string>
     <string name="detail_event_hero_confirmation">"Vous confirmez que vous proposez d'assurer cette mission?"</string>

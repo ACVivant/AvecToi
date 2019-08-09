@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HeroDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/hero_detail_login_infos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/default_margin">
+
+            <ImageView
+                android:id="@+id/hero_detail_face"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/vignetteheros"
+                android:paddingHorizontal="@dimen/default_margin"
+                />
+
+                <TextView
+                    android:id="@+id/hero_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/default_margin"
+                    android:text="@string/create_name"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hero_detail_user_infos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hero_detail_login_infos">
+
+            <LinearLayout
+                android:id="@+id/hero_detail_infos_complete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorSecondary"
+                android:orientation="vertical"
+                android:padding="@dimen/default_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:text="@string/create_email"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    <TextView
+                        android:id="@+id/hero_detail_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|end"
+                        android:text="@string/create_email"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hero_detail_name" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:text="@string/hero_phone_intro"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    <TextView
+                        android:id="@+id/hero_detail_tel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|end"
+                        android:text="@string/create_phone"
+                        android:inputType="phone"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:text="@string/hero_community"
+                        android:textColor="@android:color/white"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+                    <TextView
+                        android:id="@+id/hero_detail_town"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/event_town"
+                        android:textColor="@android:color/white"
+                        android:gravity="right|end"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:id="@+id/hero_detail_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_description_hint"
+                    android:textColor="@android:color/white"
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/hero_ref_intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_margin"
+                android:text="@string/hero_ref_intro"
+                android:textColor="@color/colorSecondary"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hero_detail_infos_complete" />
+
+            <TextView
+                android:id="@+id/hero_no_ref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_margin"
+                android:text="@string/hero_no_ref"
+                app:layout_constraintTop_toBottomOf="@id/hero_ref_intro"
+                app:layout_constraintStart_toStartOf="@id/hero_ref_intro"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hero_ref_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/hero_no_ref">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/hero_detail_intro_SP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_margin"
+                android:text="@string/hero_SP"
+                android:textColor="@color/colorSecondary"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hero_ref_rv" />
+
+
+            <Button
+                android:id="@+id/hero_detail_SP_ironing"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_ironing"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_ironingSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hero_detail_intro_SP" />
+
+            <Button
+                android:id="@+id/hero_detail_SP_household"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_household"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_householdSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_ironing"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_ironing"
+                android:layout_marginStart="@dimen/default_margin" />
+
+            <Button
+                android:id="@+id/hero_detail_SP_shopping"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_shopping"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_shoppingSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_household"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_household"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_cooking"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_cooking"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_cookingSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_shopping"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_shopping"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_driving"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_driving"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_driveSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/hero_detail_SP_ironing"
+                app:layout_constraintTop_toBottomOf="@+id/hero_detail_SP_ironing"
+                android:layout_marginTop="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_gardening"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_gardening"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_gardeningSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_driving"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_driving"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_diy"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_diy"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_diySP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_gardening"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_gardening"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_works"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_works"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_worksSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_diy"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_diy"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_relocation"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_relocation"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_relocationSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/hero_detail_SP_driving"
+                app:layout_constraintTop_toBottomOf="@+id/hero_detail_SP_driving"
+                android:layout_marginTop="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_reading"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_reading"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_readingSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_relocation"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_relocation"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_babysitting"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_babysitting"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_babysittingSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_reading"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_reading"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_sewing"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_sewing"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_sewingSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_babysitting"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_babysitting"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_flowering"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_flower"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_flowerSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@+id/hero_detail_SP_relocation"
+                app:layout_constraintTop_toBottomOf="@+id/hero_detail_SP_relocation"
+                android:layout_marginTop="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_tutoring"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_tutoring"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_tutoringSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_flowering"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_flowering"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_company"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_compagny"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_companySP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_tutoring"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_tutoring"
+                android:layout_marginStart="@dimen/default_margin"/>
+
+            <Button
+                android:id="@+id/hero_detail_SP_admin"
+                android:layout_width="86dp"
+                android:layout_height="86dp"
+                android:background="@drawable/button_background"
+                android:drawableTop="@drawable/ic_admin"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/create_adminSP"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@+id/hero_detail_SP_company"
+                app:layout_constraintTop_toTopOf="@+id/hero_detail_SP_company"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/hero_detail_intro_img"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:src="@drawable/heros3long"
+            app:layout_constraintTop_toBottomOf="@+id/hero_detail_user_infos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/default_margin"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
