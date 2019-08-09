@@ -53,8 +53,6 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
         eventViewHolder.townRV.setText(sosEvent.getTown());
 
         // Name
-
-        //String userAskId = sosEvent.getUserAskId();
         String myName = sosEvent.getUserAsk().getUserName();
         final TextView namePlace = eventViewHolder.nameRV;
         namePlace.setText(myName);

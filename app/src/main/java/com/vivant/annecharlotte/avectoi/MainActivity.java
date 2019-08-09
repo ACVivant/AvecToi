@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private EventAdapter adapter;
 
     final MainAllFragment fragmentAll = new MainAllFragment();
-    final MainAllFragment fragmentToFind = new MainAllFragment();
-
+    final MainAllFragment fragmentHerosToFind = new MainAllFragment();
+    private boolean switchFragmentToAll=true;
     final FragmentManager fm = getSupportFragmentManager();
-    Fragment active = fragmentToFind;
+    Fragment active = fragmentHerosToFind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick floatingFilter");
+                if (switchFragmentToAll) {
+                    fm.beginTransaction().replace(R.id.fragment_events_RV, fragmentAll, "2").commit();
+                    switchFragmentToAll=false;
+                    Log.d(TAG, "onClick: fragmentAll");
+
+                } else {
+                    fm.beginTransaction().replace(R.id.fragment_events_RV, fragmentHerosToFind, "1").commit();
+                    switchFragmentToAll=true;
+                    Log.d(TAG, "onClick: fragmentHerosToFind");
+                }
 
             }
         });
@@ -91,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         this.layoutLinks();
         updateUIWhenCreating();
 
-        fm.beginTransaction().add(R.id.fragment_events_RV, fragmentToFind, "1").commit();
+        fm.beginTransaction().add(R.id.fragment_events_RV, fragmentHerosToFind, "1").commit();
     }
 
 // ---------------------

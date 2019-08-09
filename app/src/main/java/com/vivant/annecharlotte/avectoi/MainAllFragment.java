@@ -36,6 +36,7 @@ public class MainAllFragment extends Fragment {
     private View view;
     private RecyclerView recyclerView;
     private Context context;
+    private String whichIndex;
 
     public MainAllFragment() {
         // Required empty public constructor
@@ -52,6 +53,8 @@ public class MainAllFragment extends Fragment {
         // Inflate the layout for this fragment
         context = getContext();
         view = inflater.inflate(R.layout.fragment_main_all, container, false);
+        whichIndex = getTag();
+        Log.d(TAG, "onCreateView: index " + whichIndex);
         recyclerView = view.findViewById(R.id.events_fragment_recycler_view);
 
         setupRecyclerView();
@@ -71,11 +74,15 @@ public class MainAllFragment extends Fragment {
 
     public void setupRecyclerView() {
 
-        //Query query = eventsRef.orderBy("dateNeed", Query.Direction.ASCENDING);
-        //Query query = eventsRef.whereGreaterThan("numberHeroNotFound",0);
         Log.d(TAG, "setupRecyclerView");
+        Query query;
+        if (whichIndex.equals("1")) {
+            query = SosEventHelper.getAllEventsFromToday().whereEqualTo("missionOK", false);
+        } else {
+            query = SosEventHelper.getAllEventsFromToday();
+        }
 
-        Query query = SosEventHelper.getAllEventsFromToday().whereEqualTo("missionOK", false);
+
 
         FirestoreRecyclerOptions<SosEvent> options = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(query, SosEvent.class)
@@ -112,30 +119,4 @@ public class MainAllFragment extends Fragment {
         super.onStop();
         adapter.stopListening();
     }
-
-
-   /* @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-           }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-*/
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-/*    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }*/
 }
