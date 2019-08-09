@@ -52,6 +52,9 @@ dependencies {
 
     //GLIDE
     implementation 'jp.wasabeef:glide-transformations:3.3.0'
+
+    //CARDVIEW
+    implementation 'com.android.support:cardview-v7:28.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

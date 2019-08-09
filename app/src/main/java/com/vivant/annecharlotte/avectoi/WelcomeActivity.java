@@ -25,10 +25,10 @@ public class WelcomeActivity extends BaseActivity {
     // 1 - Identifier for Sign-In Activity
     private static final int RC_SIGN_IN_EMAIL = 123;
     private static final String TAG = "WelcomeActivity";
-    private static final String USER_PHOTO = "userPhotoUrl";
-    private static final String USER_NAME = "userName";
-    private static final String USER_ID = "userId";
-    private static final String USER_EMAIL = "userEmail";
+    public static final String USER_PHOTO = "userPhotoUrl";
+    public static final String USER_NAME = "userName";
+    public static final String USER_ID = "userId";
+    public static final String USER_EMAIL = "userEmail";
 
     public String userId;
 
@@ -100,11 +100,10 @@ public class WelcomeActivity extends BaseActivity {
                             if (documentSnapshot.exists()) {  // Si l'utilisateur a déjà un compte
                                 Log.d(TAG, "onSuccess: documentSnapshot exists");
                                 startMainActivity();
-                               // startCreateUserActivity();
                             } else {
                                 // CREATE USER
                                 createUserInFirestore();
-                                startCreateUserActivity();
+                                startCharteActivity();
                             }
                         }
                     });
@@ -143,12 +142,8 @@ public class WelcomeActivity extends BaseActivity {
         UserHelper.createUser(uid, username, userEmail, urlPicture).addOnFailureListener(this.onFailureListener());
     }
 
-    private void startCreateUserActivity() {
-        Intent intent = new Intent(this, CreateUserActivity.class);
-        intent.putExtra(USER_PHOTO, (Objects.requireNonNull(this.getCurrentUser()).getPhotoUrl() != null) ? Objects.requireNonNull(this.getCurrentUser().getPhotoUrl()).toString() : null);
-        intent.putExtra(USER_NAME,Objects.requireNonNull(this.getCurrentUser().getDisplayName()));
-        intent.putExtra(USER_ID,this.getCurrentUser().getUid());
-        intent.putExtra(USER_EMAIL, this.getCurrentUser().getEmail());
+    private void startCharteActivity() {
+        Intent intent = new Intent(this, CharteActivity.class);
         startActivity(intent);
     }
 
