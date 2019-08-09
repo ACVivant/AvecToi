@@ -2,6 +2,7 @@ package com.vivant.annecharlotte.avectoi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,7 +26,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,15 +39,18 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
+import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "MainActivity";
     public static final String EVENT_ID = "EventId";
     public static final String QUERY_ID = "QueryId";
     public static final String FROM_ID = "FromId";
+    private static final int DELETE_USER_TASK = 20;
+
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView  navigationView;
@@ -104,6 +111,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fm.beginTransaction().add(R.id.fragment_events_RV, fragmentHerosToFind, "1").commit();
     }
 
+    @Override
+    public int getFragmentLayout() {
+        return R.layout.fragment_main_all;
+    }
+
 // ---------------------
     // CONFIGURATION
     // ---------------------
@@ -147,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent3);
                 return true;
             case R.id.drawer_quit:
+                deleteUSer();
                 return true;
             case R.id.drawer_allusers:
                 return true;
@@ -156,6 +169,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    //---------------------------------------------------------------
+    // Delete User Account
+    //---------------------------------------------------------------
+    private void deleteUSer() {
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.delete_account_message)
+                .setPositiveButton(R.string.delete_account_validation, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        deleteUserFromFirebase();
+                    }
+                })
+                .setNegativeButton(R.string.delete_account_reset, null)
+                .show();
+    }
+
+    private void deleteUserFromFirebase(){
+        if (this.getCurrentUser() != null) {
+            UserHelper.updateUsername(getResources().getString(R.string.deleted_account),getCurrentUser().getUid() );
+            UserHelper.updateTel("0000000000", getCurrentUser().getUid());
+            UserHelper.updateEmail(getResources().getString(R.string.deleted_account), getCurrentUser().getUid());
+            UserHelper.updatePhoto(EventDetailActivity.NO_PHOTO, getCurrentUser().getUid());
+
+            AuthUI.getInstance()
+                    .delete(this)
+                    .addOnSuccessListener(this, this.updateUIAfterRESTRequestsCompleted(DELETE_USER_TASK));
+        }
+    }
+
+    private OnSuccessListener<Void> updateUIAfterRESTRequestsCompleted(final int origin){
+        return new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                finish();
+                }
+        };
+    }
+
+    //----------------------------
+    // UPDATE UI
+    //---------------------------
     @Override
     public void onBackPressed() {
         // 5 - Handle back click to close menu
@@ -165,10 +220,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
-    //----------------------------
-    // UPDATE UI
-    //---------------------------
 
     protected void layoutLinks() {
         userName = navigationView.getHeaderView(0).findViewById(R.id.header_name);

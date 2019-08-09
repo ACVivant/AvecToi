@@ -54,7 +54,7 @@ public class UserHelper {
 
         // --- UPDATE NAME---
         public static Task<Void> updateUsername(String username, String uid) {
-            return UserHelper.getUsersCollection().document(uid).update("username", username);
+            return UserHelper.getUsersCollection().document(uid).update("userName", username);
         }
 
     // --- UPDATE TOKEN---
@@ -84,6 +84,14 @@ public class UserHelper {
 
     public static Task<Void> updateDescription(String description, String uid) {
         return UserHelper.getUsersCollection().document(uid).update("userDescription", description);
+    }
+
+    public static Task<Void> updateEmail(String email, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("userEmail", email);
+    }
+
+    public static Task<Void> updatePhoto(String photo, String uid) {
+        return UserHelper.getUsersCollection().document(uid).update("urlPicture", photo);
     }
 
         // --- DELETE ---
