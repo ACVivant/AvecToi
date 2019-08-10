@@ -173,7 +173,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/detail_event_user_ask_infos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
             android:background="@color/colorSecondaryVeryTransparent"
             android:padding="@dimen/default_margin">
@@ -185,7 +185,6 @@
                 android:background="@drawable/border_shape"
                 android:src="@drawable/vignetteheros"
                 android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 />
@@ -197,30 +196,11 @@
                 android:text="@string/create_name"
                 android:textColor="@color/colorSecondary"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginLeft="@dimen/default_margin"
                 app:layout_constraintTop_toTopOf="@id/detail_event_user_photo"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <TextView
-                android:id="@+id/detail_event_userTel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/create_phone"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_marginTop="@dimen/default_margin"
-                app:layout_constraintTop_toBottomOf="@id/detail_event_userName"
+                app:layout_constraintBottom_toBottomOf="@+id/detail_event_user_photo"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
-
-            <TextView
-            android:id="@+id/detail_event_userEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/create_email"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="@dimen/default_margin"
-            app:layout_constraintTop_toBottomOf="@id/detail_event_userTel"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+                app:layout_constraintStart_toStartOf="@id/detail_event_user_photo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout

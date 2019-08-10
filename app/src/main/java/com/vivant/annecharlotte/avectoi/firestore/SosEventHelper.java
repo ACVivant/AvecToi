@@ -63,6 +63,10 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).update("dateNeed", dateNeed);
     }
 
+    public static Task<Void> updateEventDateCreated(Date date, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("dateCreated", date);
+    }
+
     public static Task<Void> updateEventTown(String town, String eventId) {
         return SosEventHelper.getEventsCollection().document(eventId).update("town", town);
     }
@@ -75,8 +79,12 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).update("userHeroId", heroId);
     }
 
-    public static Task<Void> updateEventNumberHero(int numberHero, String eventId) {
-        return SosEventHelper.getEventsCollection().document(eventId).update("numberHero", numberHero);
+    public static Task<Void> updateEventNumberHeroWanted(int numberHero, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("numberHeroWanted", numberHero);
+    }
+
+    public static Task<Void> updateEventNumberHeroStillToFind(int numberHero, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("numberHeroNotFound", numberHero);
     }
 
     public static Task<Void> updateEventUserAskId(String userAskId, String eventId) {

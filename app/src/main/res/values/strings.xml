@@ -123,9 +123,10 @@
     <string name="detail_event_validate">"Go! J'accomplis cette mission."</string>
     <string name="detail_event_number_heros_already">"Héros déjà volontaires: "</string>
     <string name="detail_event_number_heros_not_found">"Nombre de héros encore à trouver: "</string>
+    <string name="detail_event_number_heros_total_to_find">"Nombre de héros total"</string>
     <string name="detail_event_car_yes">"Si besoin, le transport est assuré."</string>
     <string name="detail_event_car_no">"Le transport ne peut pas être assuré."</string>
-    <string name="detail_event_date_created_intro">"Création de la fiche: "</string>
+    <string name="detail_event_date_created_intro">"Mise à jour de la fiche: "</string>
     <string name="detail_event_confirmation_title">"Confirmation"</string>
     <string name="detail_event_hero_confirmation">"Vous confirmez que vous proposez d'assurer cette mission?"</string>
 
@@ -136,6 +137,11 @@
     <!-- USER EVENTS ACTIVITY -->
     <string name="iamhero_title">"Je me suis engagé(e) à voler au secours de "</string>
     <string name="ineedhelp_title">"J'ai demandé de l'aide pour "</string>
+
+    <!-- UPDATE EVENT -->
+    <string name="update_expl_text">"Vous pouvez modifier la description de l'événement, le nombre de héros cherchés et supprimer un héros qui s'était proposé. Les autres modifications changent trop les caractéristiques de la mission. Pour les changer vous devrez donc supprimer cette mission et en recréer une autre... et chercher de nouveaux héros"</string>
+    <string name="update_hero_delete_text">"Vous allez supprimer ce héros de la liste."</string>
+    <string name="update_hero_delete_title">"Attention!"</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

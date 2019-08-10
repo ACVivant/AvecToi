@@ -28,6 +28,7 @@ public class UserEventsActivity extends BaseActivity{
     private static final String TAG = "UserEventsActivity";
     public static final String HERO_INDEX = "iamheroIndex";
     public static final String NEED_INDEX = "inededhelpIndex";
+    public static final String ALL_INDEX = "alleventsIndex";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
 
@@ -53,13 +54,13 @@ public class UserEventsActivity extends BaseActivity{
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
 
-        FloatingActionButton floatingActionButton = findViewById(R.id.modify_profil);
+        /*FloatingActionButton floatingActionButton = findViewById(R.id.modify_profil);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchUserProfil();
             }
-        });
+        });*/
 
         setupRecyclerView();
     }
@@ -116,7 +117,8 @@ public class UserEventsActivity extends BaseActivity{
                 String id = documentSnapshot.getId();
                 Intent intent = new Intent(UserEventsActivity.this, EventDetailActivity.class);
                 Log.d(TAG, "onItemClick: eventId " +id);
-                intent.putExtra(MainActivity.EVENT_ID, id);
+                intent.putExtra(MainActivity.EVENT_ID, id);  // De quel événement s'agit-il?
+                intent.putExtra(MainActivity.FROM_ID, fromHeroOrNeed);  // Est-ce que la fiche descriptive est appellée depuis le récapitulatif de l'utilisateur?
                 startActivity(intent);
             }
         });

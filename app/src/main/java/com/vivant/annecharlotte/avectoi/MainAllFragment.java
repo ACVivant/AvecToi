@@ -102,6 +102,7 @@ public class MainAllFragment extends Fragment {
                 Intent intent = new Intent(getContext(), EventDetailActivity.class);
                 Log.d(TAG, "onItemClick: eventId " +id);
                 intent.putExtra(EVENT_ID, id);
+                intent.putExtra(MainActivity.FROM_ID, UserEventsActivity.ALL_INDEX);
                 startActivity(intent);
             }
         });

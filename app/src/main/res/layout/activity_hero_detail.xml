@@ -74,7 +74,7 @@
                 android:id="@+id/hero_detail_infos_complete"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorSecondary"
+                android:background="@color/colorPrimaryVeryTransparent"
                 android:orientation="vertical"
                 android:padding="@dimen/default_margin"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,6 @@
                         android:layout_gravity="center_vertical"
                         android:paddingEnd="@dimen/default_margin"
                         android:text="@string/create_email"
-                        android:textColor="@android:color/white"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                     <TextView
@@ -100,7 +99,6 @@
                         android:layout_height="wrap_content"
                         android:gravity="right|end"
                         android:text="@string/create_email"
-                        android:textColor="@android:color/white"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/hero_detail_name" />
@@ -117,7 +115,6 @@
                         android:layout_gravity="center_vertical"
                         android:paddingEnd="@dimen/default_margin"
                         android:text="@string/hero_phone_intro"
-                        android:textColor="@android:color/white"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                     <TextView
@@ -127,7 +124,6 @@
                         android:gravity="right|end"
                         android:text="@string/create_phone"
                         android:inputType="phone"
-                        android:textColor="@android:color/white"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
                 </LinearLayout>
 
@@ -142,7 +138,6 @@
                         android:layout_gravity="center_vertical"
                         android:paddingEnd="@dimen/default_margin"
                         android:text="@string/hero_community"
-                        android:textColor="@android:color/white"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
                     <TextView
@@ -150,19 +145,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/event_town"
-                        android:textColor="@android:color/white"
                         android:gravity="right|end"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
                 </LinearLayout>
-
-
 
                 <TextView
                     android:id="@+id/hero_detail_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/create_description_hint"
-                    android:textColor="@android:color/white"
                     android:inputType="textMultiLine"
                     android:layout_marginTop="8dp"
                     android:gravity="center_horizontal"/>
@@ -174,9 +165,9 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_margin"
                 android:text="@string/hero_ref_intro"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hero_detail_infos_complete" />
 
@@ -204,9 +195,9 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/default_margin"
                 android:text="@string/hero_SP"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hero_ref_rv" />
 
