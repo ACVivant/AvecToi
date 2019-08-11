@@ -203,7 +203,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         return new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-
                 finish();
                 }
         };
