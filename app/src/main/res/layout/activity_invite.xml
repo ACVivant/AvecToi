@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InviteActivity">
+
+    <ImageView
+        android:id="@+id/invite_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/invite_explanation_text"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_large_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="texte d'invitation à écrire"
+        android:layout_below="@+id/invite_logo"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/invite_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lancer l'invitation"
+        android:layout_above="@+id/invite_hero_img"
+        android:layout_marginBottom="@dimen/default_large_margin"
+        android:background="@drawable/button_background"
+        android:padding="@dimen/default_margin"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/invite_hero_img"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/heros3long"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

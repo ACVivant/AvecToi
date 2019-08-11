@@ -164,6 +164,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.drawer_allusers:
                 return true;
             case R.id.drawer_invitation:
+                inviteUser();
                 return true;
         }
         return false;
@@ -250,6 +251,15 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     public void launchCreate() {
         Intent intent = new Intent(this, CreateEventActivity.class);
+        startActivity(intent);
+    }
+
+    //--------------------------
+    // Invite User
+    //--------------------------
+
+    public void inviteUser() {
+        Intent intent = new Intent(this, InviteActivity.class);
         startActivity(intent);
     }
 }
