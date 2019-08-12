@@ -10,6 +10,7 @@
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
     <string name="error_no_internet">"Pas de connexion internet"</string>
     <string name="error_authentication_canceled">"Authentificaiton annulée"</string>
+    <string name="error_you_need_invitation">"Il faut une invitation pour pouvoir créer un compte et utiliser Super Moi"</string>
 
     <!-- Drawer Menu -->
     <string name="drawer_profil_title">"Moi, bon et beau"</string>

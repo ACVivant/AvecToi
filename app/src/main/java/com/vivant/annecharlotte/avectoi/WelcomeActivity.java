@@ -1,5 +1,6 @@
 package com.vivant.annecharlotte.avectoi;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -28,7 +29,6 @@ import java.util.Arrays;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 
 public class WelcomeActivity extends BaseActivity{
 
@@ -58,7 +58,7 @@ public class WelcomeActivity extends BaseActivity{
         mainActivityLayout = findViewById(R.id.welcome_activity_layout);
 
         createOK = false;
-        context = getBaseContext();
+        context = getApplicationContext();
 
         loginBtn = findViewById(R.id.mainactivity_button_already_user);
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,9 +82,11 @@ public class WelcomeActivity extends BaseActivity{
                                 Log.d(TAG, "onSuccess: deepLink " + deepLink.toString());
                                 Log.d(TAG, "onSuccess: un lien a été reçu");
                                 createOK=true;
+                                Log.d(TAG, "onSuccess: createOK " + createOK);
                             } else {
                                 Log.d(TAG, "onSuccess: il n'y a pas de lien");
                                 createOK = false;
+                                Log.d(TAG, "onSuccess: createOK " + createOK);
                             }
                         }
                     })
@@ -147,12 +149,16 @@ public class WelcomeActivity extends BaseActivity{
                             } else {
                                 // CREATE USER
                                 if (createOK) {
+                                    Log.d(TAG, "onSuccess: createOK " + createOK);
                                     createUserInFirestore();
                                     startCharteActivity();
                                 } else {
-                                    Toast.makeText(context, "Invitation nécessaire", Toast.LENGTH_LONG).show();
-
-                                    androidx.appcompat.app.AlertDialog dialog = new AlertDialog.Builder(context)
+                                    Log.d(TAG, "onSuccess: createOK " + createOK);
+                                    //Toast.makeText(context, "Invitation nécessaire", Toast.LENGTH_LONG).show();
+                                    showSnackBar(mainActivityLayout, getResources().getString(R.string.error_you_need_invitation));
+                                    AuthUI.getInstance()
+                                            .delete(context);
+                                   /* androidx.appcompat.app.AlertDialog dialog = new AlertDialog.Builder(context)
                                             .setTitle("Dommage")
                                             .setMessage("Cette application en peut être utilisée que sur invitation. Si vous en avez reçu, lancez la depuis le lien.")
                                             .setPositiveButton("J'ai compris", new DialogInterface.OnClickListener() {
@@ -162,7 +168,7 @@ public class WelcomeActivity extends BaseActivity{
                                                             .delete(context);
                                                 }
                                             })
-                                            .show();
+                                            .show();*/
                                 }
                             }
                         }
