@@ -6,7 +6,8 @@
 
     <!-- Welcome -->
     <string name="main_activity_description">"L'appli qui révèle vos super-pouvoirs!"</string>
-    <string name="connexion">"C'est parti!"</string>
+    <string name="connexion">"J'ai déjà un compte"</string>
+    <string name="new_user">"Je voudrais créer un compte"</string>
     <string name="error_unknown_error">"Une erreur inconnue s'est produite&#8230;"</string>
     <string name="error_no_internet">"Pas de connexion internet"</string>
     <string name="error_authentication_canceled">"Authentificaiton annulée"</string>

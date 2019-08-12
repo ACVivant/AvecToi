@@ -48,6 +48,7 @@ public class WelcomeActivity extends BaseActivity{
 
     //FOR DESIGN
     private Button loginBtn;
+    private Button newAccountBtn;
     private FrameLayout mainActivityLayout;
 
     @Override
@@ -65,6 +66,18 @@ public class WelcomeActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 startSignInActivityEmail();
+            }
+        });
+
+        newAccountBtn = findViewById(R.id.mainactivity_button_new_user);
+        newAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (createOK) {
+                    startSignInActivityEmail();
+                } else {
+                    showSnackBar(mainActivityLayout, getResources().getString(R.string.error_you_need_invitation));
+                }
             }
         });
 

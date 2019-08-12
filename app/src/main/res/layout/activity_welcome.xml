@@ -30,7 +30,7 @@
             android:layout_marginHorizontal="@dimen/default_margin"
             android:background="@color/colorPrimaryTransparent"
             android:gravity="center_horizontal"
-            android:paddingTop="@dimen/default_margin"
+            android:paddingTop="4dp"
             android:text="@string/app_name"
             android:textColor="@android:color/white"
             android:textSize="@dimen/default_welcome_title_size"
@@ -78,7 +78,7 @@
             android:background="@color/colorPrimaryTransparent"
             android:paddingBottom="@dimen/default_margin"
             android:layout_gravity="center_horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/mainactivity_button_already_user"
+            app:layout_constraintBottom_toTopOf="@+id/mainactivity_button_new_user"
             android:layout_marginHorizontal="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,5 +99,18 @@
             android:padding="@dimen/default_margin"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <Button
+            android:id="@+id/mainactivity_button_new_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_user"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/default_title2_size"
+            android:background="@color/colorSecondary"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_margin="@dimen/default_margin"
+            android:padding="@dimen/default_margin"
+            app:layout_constraintBottom_toTopOf="@+id/mainactivity_button_already_user"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
