@@ -78,7 +78,7 @@
     <string name="event_town">"Nom de la ville ou du village"</string>
     <string name="event_date">"Date de la mission"</string>
     <string name="event_numberHero">"Nombre de héros nécessaires"</string>
-    <string name="event_car">"Je peux aller chercher le(s) super héros."</string>
+    <string name="event_car">"Je peux assurer le transport."</string>
     <string name="event_validate">"Enregistrer"</string>
     <string name="event_reset">"Annuler"</string>
     <string name="event_info_missing">"Il faut remplir tous les champs."</string>

@@ -171,17 +171,6 @@ public class WelcomeActivity extends BaseActivity{
                                     showSnackBar(mainActivityLayout, getResources().getString(R.string.error_you_need_invitation));
                                     AuthUI.getInstance()
                                             .delete(context);
-                                   /* androidx.appcompat.app.AlertDialog dialog = new AlertDialog.Builder(context)
-                                            .setTitle("Dommage")
-                                            .setMessage("Cette application en peut être utilisée que sur invitation. Si vous en avez reçu, lancez la depuis le lien.")
-                                            .setPositiveButton("J'ai compris", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    AuthUI.getInstance()
-                                                            .delete(context);
-                                                }
-                                            })
-                                            .show();*/
                                 }
                             }
                         }
