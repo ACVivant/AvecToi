@@ -176,9 +176,21 @@ public class HeroDetailActivity extends BaseActivity {
                 }
 
                 // Références
-                List<SosEvent> listEventRef = user.getEventHeroRefList();
+              //  List<SosEvent> listEventRef = user.getEventHeroRefList();
+                List<User> listEventRef = user.getEventHeroRefList();
 
                 for (int i=0; i<listEventRef.size(); i++) {
+                    mNames.add(listEventRef.get(i).getUserName());
+                    mUserAskId.add(listEventRef.get(i).getUid());
+
+                    if (listEventRef.get(i).getUrlPicture()!=null) {
+                        mImages.add(listEventRef.get(i).getUrlPicture());
+                    } else {
+                        mImages.add(EventDetailActivity.NO_PHOTO);
+                    }
+                }
+
+                /*for (int i=0; i<listEventRef.size(); i++) {
                     mNames.add(listEventRef.get(i).getUserAsk().getUserName());
                     mUserAskId.add(listEventRef.get(i).getUserAsk().getUid());
 
@@ -187,7 +199,7 @@ public class HeroDetailActivity extends BaseActivity {
                     } else {
                         mImages.add(EventDetailActivity.NO_PHOTO);
                     }
-                }
+                }*/
 
                 if(mNames.size()>0) {
                     noReference.setVisibility(View.GONE);

@@ -68,7 +68,11 @@ public class UserHelper {
     }
 
     // --- UPDATE REFERENCES LIST---
-    public static Task<Void> updateEventHeroRefList(List<SosEvent> eventHeroRefList, String userId) {
+/*    public static Task<Void> updateEventHeroRefList(List<SosEvent> eventHeroRefList, String userId) {
+        return UserHelper.getUsersCollection().document(userId).update("eventHeroRefList", eventHeroRefList);
+    }*/
+
+    public static Task<Void> updateEventHeroRefList(List<User> eventHeroRefList, String userId) {
         return UserHelper.getUsersCollection().document(userId).update("eventHeroRefList", eventHeroRefList);
     }
 

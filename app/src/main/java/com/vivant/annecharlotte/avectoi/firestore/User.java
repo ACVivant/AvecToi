@@ -25,7 +25,8 @@ public class User {
     @Nullable
     private String userToken;
     @Nullable
-    private List<SosEvent> eventHeroRefList;
+    //private List<SosEvent> eventHeroRefList;
+    private List<User> eventHeroRefList;
 
     private List<Integer> userSPList;
 
@@ -107,10 +108,17 @@ public class User {
         this.userDescription = userDescription;
     }
 
-    @Nullable
+/*    @Nullable
     public List<SosEvent> getEventHeroRefList() { return eventHeroRefList;}
 
     public void setEventHeroRefList(@Nullable List<SosEvent> eventHeroRefList) {
+        this.eventHeroRefList = eventHeroRefList;
+    }*/
+
+    @Nullable
+    public List<User> getEventHeroRefList() { return eventHeroRefList;}
+
+    public void setEventHeroRefList(@Nullable List<User> eventHeroRefList) {
         this.eventHeroRefList = eventHeroRefList;
     }
 

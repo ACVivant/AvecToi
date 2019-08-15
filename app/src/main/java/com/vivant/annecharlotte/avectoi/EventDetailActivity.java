@@ -122,7 +122,15 @@ public class EventDetailActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         updateEvent(list);
-                        updateMyRef();
+                        UserHelper.getUser(thisEvent.getUserAskId()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                if (documentSnapshot.exists()) {
+                                    User userAsk = Objects.requireNonNull(documentSnapshot.toObject(User.class));
+                                    updateMyRef(userAsk);
+                                }
+                            }
+                        });
                         finish();
                     }
                 })
@@ -130,13 +138,18 @@ public class EventDetailActivity extends BaseActivity {
                 .show();
     }
 
-    public void updateMyRef() {
+
+
+    public void updateMyRef(final User userAsk) {
         UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
-                    List<SosEvent> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
+                    /*List<SosEvent> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
                     userRefList.add(thisEvent);
+                    UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());*/
+                    List<User> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
+                    userRefList.add(userAsk);
                     UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());
                 }
             }
