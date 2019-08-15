@@ -27,6 +27,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
@@ -71,6 +73,16 @@ public class HeroDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_hero_detail);
 
         userId = getIntent().getStringExtra(HeroAdapter.HERO_ID);
+
+        Log.d(TAG, "onCreate: newToken après");
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this,  new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                Log.e("newToken",newToken);
+            }
+        });
+
 
         layoutLinks();
         updateView(userId);

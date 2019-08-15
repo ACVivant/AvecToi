@@ -24,6 +24,7 @@ public class SosEvent {
     private List<User> userHeroList;
     @Nullable
     private List<String> userHeroIdList;
+    @Nullable String deletedHeroToken;
     private int numberHeroWanted;
     private int numberHeroNotFound;
     private boolean missionOK;
@@ -46,6 +47,7 @@ public class SosEvent {
         this.car = car;
         this.userHeroList = new ArrayList<>();
         this.userHeroIdList = new ArrayList<>();
+        this.deletedHeroToken = null;
     }
 
     public int getThemeIndex() {
@@ -127,6 +129,11 @@ public class SosEvent {
     public void setUserHeroIdList(List<String> userHeroIdList) {
         this.userHeroIdList = userHeroIdList;
     }
+
+    public String getDeletedHeroToken()
+    { return deletedHeroToken;}
+
+    public void setDeletedHeroToken(String deletedHeroToken) { this.deletedHeroToken = deletedHeroToken;}
 
     public int getNumberHeroWanted() {
         return numberHeroWanted;

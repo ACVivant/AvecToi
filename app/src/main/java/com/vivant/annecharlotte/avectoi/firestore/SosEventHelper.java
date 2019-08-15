@@ -101,6 +101,10 @@ public class SosEventHelper {
         return SosEventHelper.getEventsCollection().document(eventId).update("userHeroIdList", userHeroIdList);
     }
 
+    public static Task<Void> updateDeletedHeroToken(String deletedHeroToken, String eventId) {
+        return SosEventHelper.getEventsCollection().document(eventId).update("deletedHeroToken", deletedHeroToken);
+    }
+
     public static Task<Void> updateUserHerosNotFound(int nbHeros, String eventId) {
         return SosEventHelper.getEventsCollection().document(eventId).update("numberHeroNotFound", nbHeros);
     }

@@ -53,6 +53,7 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
 
     private String descriptionToSave;
     private int newNumberHeros;
+    private int alreadyNumberHeros;
     private String heroToDeleteId;
     private List<String> herosToDeleteList;
     private Date dateToday;
@@ -129,6 +130,7 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
                     //HEROS
                     listHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroList();
                     listHerosId = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getUserHeroIdList();
+                    alreadyNumberHeros = listHerosId.size();
 
                     totalHeros = Objects.requireNonNull(documentSnapshot.toObject(SosEvent.class)).getNumberHeroWanted();
                     eventNumberWaited.setText(String.valueOf(totalHeros));
@@ -252,7 +254,7 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         newNumberHeros = Integer.parseInt(eventNumberWaited.getText().toString());
         userId = this.getCurrentUser().getUid();
         dateToday = new Date();
-        toFindHeros = newNumberHeros-mNames.size()+1;
+        toFindHeros = newNumberHeros-alreadyNumberHeros;
         updateEvent();
     }
 
@@ -260,7 +262,7 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         Log.d(TAG, "createEvent");
         Log.d(TAG, "updateEvent: description " + descriptionToSave);
         Log.d(TAG, "updateEvent: newNumberHeros " + newNumberHeros);
-        Log.d(TAG, "updateEvent: toFindHeros " + toFindHeros);
+        Log.d(TAG, "updateEvent:newToken toFindHeros " + toFindHeros);
         Log.d(TAG, "updateEvent: dateToday " + dateToday);
 
         SosEventHelper.updateEventDescription(descriptionToSave, eventId);
@@ -268,8 +270,9 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         SosEventHelper.updateEventNumberHeroStillToFind(toFindHeros, eventId);
         SosEventHelper.updateEventDateCreated(dateToday, eventId);
 
-        if (newNumberHeros - 1 == 0) {
-            SosEventHelper.updateMissionOk(true, eventId);
+        if (newNumberHeros>alreadyNumberHeros) {
+            Log.d(TAG, "updateEvent: newNumberHeros " + newNumberHeros);
+            SosEventHelper.updateMissionOk(false, eventId);
         }
 
         Intent intent = new Intent(UpdateEventActivity.this, MainActivity.class);
@@ -296,11 +299,17 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
                // listHeros.remove(userToDelete); // Cette ligne n'a aucun effet
                 Log.d(TAG, "onSuccess: position " + position);
                 listHeros.remove(position);
-
                 SosEventHelper.updateUserHerosList(listHeros, eventId);
+
+                String tokenToDelete = userToDelete.getUserToken();
+                Log.d(TAG, "onSuccess:newToken  tokenToDelete " + tokenToDelete );
+                SosEventHelper.updateDeletedHeroToken(tokenToDelete, eventId);
+
+                alreadyNumberHeros -=1;
+
+                saveData();
             }
         });
-        toFindHeros +=1;
-        saveData();
+
     }
 }
