@@ -14,7 +14,7 @@
     <string name="error_you_need_invitation">"Il faut une invitation pour pouvoir créer un compte et utiliser Super Moi"</string>
 
     <!-- Drawer Menu -->
-    <string name="drawer_profil_title">"Moi, bon et beau"</string>
+    <string name="drawer_profil_title">"Moi, bon et fort"</string>
     <string name="drawer_profil_description">"Ma fiche descriptive"</string>
     <string name="drawer_innedhelp_events">"J'ai demandé de l'aide"</string>
     <string name="drawer_iamhero_events">"J'ai proposé mon aide"</string>

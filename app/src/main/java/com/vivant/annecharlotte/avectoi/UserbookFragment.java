@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -22,21 +21,19 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
+import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 
-public class MainAllFragment extends Fragment {
+public class UserbookFragment extends Fragment {
+    private static final String TAG = "UserbookFragment";
 
-    private static final String TAG = "MainAllFragment";
-    public static final String EVENT_ID = "EventId";
-
-    private EventAdapter adapter;
+    private UserbookAdapter adapter;
     private View view;
     private RecyclerView recyclerView;
     private Context context;
-    private String whichIndex;
 
-    public MainAllFragment() {
+    public UserbookFragment() {
         // Required empty public constructor
     }
 
@@ -51,8 +48,6 @@ public class MainAllFragment extends Fragment {
         // Inflate the layout for this fragment
         context = getContext();
         view = inflater.inflate(R.layout.fragment_main_all, container, false);
-        whichIndex = getTag();
-        Log.d(TAG, "onCreateView: index " + whichIndex);
         recyclerView = view.findViewById(R.id.events_fragment_recycler_view);
 
         setupRecyclerView();
@@ -63,7 +58,6 @@ public class MainAllFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     // ------------------------
@@ -75,37 +69,17 @@ public class MainAllFragment extends Fragment {
         Log.d(TAG, "setupRecyclerView");
         Query query;
 
-        if (whichIndex.equals("1")) {
-            query = SosEventHelper.getAllEventsFromToday().whereEqualTo("missionOK", false);
-        } else {
-            query = SosEventHelper.getAllEventsFromToday();
-        }
+        query = UserHelper.getAllUsers();
 
-
-
-        FirestoreRecyclerOptions<SosEvent> options = new FirestoreRecyclerOptions.Builder<SosEvent>()
-                .setQuery(query, SosEvent.class)
+        FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
+                .setQuery(query, User.class)
                 .build();
 
-        adapter = new EventAdapter(options);
+        adapter = new UserbookAdapter(options);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                String id = documentSnapshot.getId();
-                //Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getContext(), EventDetailActivity.class);
-                Log.d(TAG, "onItemClick: eventId " +id);
-                intent.putExtra(EVENT_ID, id);
-                intent.putExtra(MainActivity.FROM_ID, UserEventsActivity.ALL_INDEX);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override

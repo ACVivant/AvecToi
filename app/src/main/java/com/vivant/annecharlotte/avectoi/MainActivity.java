@@ -176,6 +176,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 deleteUSer();
                 return true;
             case R.id.drawer_allusers:
+                openUserbook();
                 return true;
             case R.id.drawer_invitation:
                 inviteUser();
@@ -275,4 +276,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         Intent intent = new Intent(this, InviteActivity.class);
         startActivity(intent);
     }
+
+    //--------------------------
+    // Userbook
+    //--------------------------
+
+    public void openUserbook() {
+        Intent intent = new Intent(this, UserbookActivity.class);
+        startActivity(intent);
+    }
 }
+
