@@ -2,9 +2,11 @@
     <string name="app_name">Super Moi</string>
 
     <!-- A PERSONNALISER -->
-    <string name="welcome_title_with">"avec la paroisse Saint-Sébastien"</string>
+    <string name="welcome_title_with">"Paroisse Saint-Sébastien"</string>
+    <string name="welcome_introduction">"Petit texte personnalisé présentant la communauté&#8230; 150 caractères environ ce n'est pas mal si vous voulez qu'il soit lu et que ça rentre dans la case!"</string>
 
-    <!-- Welcome -->
+       <!-- Welcome -->
+    <string name="with">"avec"</string>
     <string name="main_activity_description">"L'appli qui révèle vos super-pouvoirs!"</string>
     <string name="connexion">"J'ai déjà un compte"</string>
     <string name="new_user">"Je voudrais créer un compte"</string>
@@ -12,6 +14,13 @@
     <string name="error_no_internet">"Pas de connexion internet"</string>
     <string name="error_authentication_canceled">"Authentificaiton annulée"</string>
     <string name="error_you_need_invitation">"Il faut une invitation pour pouvoir créer un compte et utiliser Super Moi"</string>
+
+    <!-- Charte activity -->
+    <string name="charte1_title">"A tous, on peut tout!</string>
+    <string name="charte2_title">"Nous avons tous des super pouvoirs"</string>
+    <string name="charte2_text">"Super Moi fonctionne sur le principe de la réciprocité. Vous pouvez demander de l'aide autant que vous voulez, à condition d'être prêt à rendre service aussi!!!"</string>
+    <string name="charte3_title">"Un super héros ne fait jamais défaut"</string>
+    <string name="charte3_text">"N'oubliez pas d'aller effectivement rendre le service pour lequel vous vous êtes engagé ou de prévenir le plus tôt possible si vous avez un empêchement.</string>
 
     <!-- Drawer Menu -->
     <string name="drawer_profil_title">"Moi, bon et fort"</string>
@@ -145,6 +154,9 @@
     <string name="update_hero_delete_text">"Vous allez supprimer ce héros de la liste."</string>
     <string name="update_hero_delete_title">"Attention!"</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- INVITE ACTIVITY-->
+    <string name="invite_text">"Vous connaissez quelqu'un qui aimerait rejoindre Super Moi et en qui vous avez toute confiance? Vous souhaitez proposer à quelqu'un de rejoindre Super Moi? Le pouvoir est entre vos mains!!!"</string>
+    <string name="invite_text2">"N'oubliez pas que Super Moi est une application de proximité qui cherche à mettre en lien des gens appartenant à la même communauté. N'invitez que des personnes correspondant à cette description.</string>
+    <string name="invite_text3"> "Il vous suffit de cliquer sur le bouton. Votre invité recevra un lien qui lui permettra de créer son compte sur Super Moi et de révéler ses Supers Pouvoirs!!!"</string>
+
 </resources>

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/invite_logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/logo"
         android:layout_centerHorizontal="true"
         />
@@ -18,13 +18,38 @@
         android:id="@+id/invite_explanation_text"
         android:layout_marginRight="@dimen/default_margin"
         android:layout_marginLeft="@dimen/default_margin"
-        android:layout_marginTop="@dimen/default_large_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="texte d'invitation à écrire"
+        android:text="@string/invite_text"
         android:layout_below="@+id/invite_logo"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorSecondary"/>
 
+    <TextView
+        android:id="@+id/invite_explanation_text2"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invite_text2"
+        android:layout_below="@+id/invite_explanation_text"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+    <TextView
+        android:id="@+id/invite_explanation_text3"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invite_text3"
+        android:layout_below="@+id/invite_explanation_text2"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
     <Button
         android:id="@+id/invite_btn"
         android:layout_width="wrap_content"

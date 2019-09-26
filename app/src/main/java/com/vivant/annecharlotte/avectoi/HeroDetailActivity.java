@@ -74,6 +74,8 @@ public class HeroDetailActivity extends BaseActivity {
 
         userId = getIntent().getStringExtra(HeroAdapter.HERO_ID);
 
+        Log.d(TAG, "onCreate: userId " + userId);
+
         Log.d(TAG, "onCreate: newToken après");
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this,  new OnSuccessListener<InstanceIdResult>() {
             @Override
@@ -139,6 +141,7 @@ public class HeroDetailActivity extends BaseActivity {
 
 
     private void updateView(String uid) {
+        Log.d(TAG, "updateView: uid " + uid);
         UserHelper.getUser(uid).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -179,14 +182,17 @@ public class HeroDetailActivity extends BaseActivity {
               //  List<SosEvent> listEventRef = user.getEventHeroRefList();
                 List<User> listEventRef = user.getEventHeroRefList();
 
-                for (int i=0; i<listEventRef.size(); i++) {
-                    mNames.add(listEventRef.get(i).getUserName());
-                    mUserAskId.add(listEventRef.get(i).getUid());
 
-                    if (listEventRef.get(i).getUrlPicture()!=null) {
-                        mImages.add(listEventRef.get(i).getUrlPicture());
-                    } else {
-                        mImages.add(EventDetailActivity.NO_PHOTO);
+                if (listEventRef.get(0)!= null) {
+                    for (int i = 0; i < listEventRef.size(); i++) {
+                        mNames.add(listEventRef.get(i).getUserName());
+                        mUserAskId.add(listEventRef.get(i).getUid());
+
+                        if (listEventRef.get(i).getUrlPicture() != null) {
+                            mImages.add(listEventRef.get(i).getUrlPicture());
+                        } else {
+                            mImages.add(EventDetailActivity.NO_PHOTO);
+                        }
                     }
                 }
 

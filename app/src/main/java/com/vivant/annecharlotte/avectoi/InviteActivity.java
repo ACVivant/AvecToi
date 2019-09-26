@@ -26,6 +26,8 @@ public class InviteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite);
 
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
         inviteBtn = findViewById(R.id.invite_btn);
         inviteBtn.setOnClickListener(new View.OnClickListener() {
             @Override

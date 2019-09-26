@@ -37,9 +37,9 @@ public class CharteActivity extends AppCompatActivity {
         });
 
         models = new ArrayList<>();
-        models.add(new CharteModel(R.drawable.logo, "logo", "texte 1"));
-        models.add(new CharteModel(R.drawable.vignetteheros, "titre2", "texte 2"));
-        models.add(new CharteModel(R.drawable.heros2vertical, "titre3", "texte 3"));
+        models.add(new CharteModel(R.drawable.logo, getResources().getString(R.string.welcome_introduction), getResources().getString(R.string.charte1_title)));
+        models.add(new CharteModel(R.drawable.superpouvoirs, getResources().getString(R.string.charte2_text), getResources().getString(R.string.charte2_title)));
+        models.add(new CharteModel(R.drawable.engagement, getResources().getString(R.string.charte3_text), getResources().getString(R.string.charte3_title)));
 
         adapter = new CharteAdapter(models, this);
 

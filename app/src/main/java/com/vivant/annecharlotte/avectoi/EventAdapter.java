@@ -166,7 +166,6 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION && listener !=null) {
                         listener.onItemClick(getSnapshots().getSnapshot(position), position);
-
                     }
                 }
             });

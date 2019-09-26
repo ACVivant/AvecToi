@@ -207,6 +207,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             UserHelper.updateTel("0000000000", getCurrentUser().getUid());
             UserHelper.updateEmail(getResources().getString(R.string.deleted_account), getCurrentUser().getUid());
             UserHelper.updatePhoto(EventDetailActivity.NO_PHOTO, getCurrentUser().getUid());
+            UserHelper.updateAccount(false, getCurrentUser().getUid());
 
             AuthUI.getInstance()
                     .delete(this)

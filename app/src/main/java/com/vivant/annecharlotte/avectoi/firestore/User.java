@@ -30,6 +30,10 @@ public class User {
 
     private List<Integer> userSPList;
 
+    private Boolean activeAccount;
+
+
+
     public User() { }
 
     public User(String uid, String userName, String userEmail, String urlPicture) {
@@ -43,6 +47,7 @@ public class User {
         this.userSPList = new ArrayList<>();
         this.userToken = null;
         this.eventHeroRefList = new ArrayList<>();
+        this.activeAccount = true;
     }
 
     public String getUid() {
@@ -125,5 +130,10 @@ public class User {
     public List<Integer> getUserSPList() { return userSPList; }
 
     public void setUserSPList(List<Integer> userSPList) { this.userSPList = userSPList; }
+
+    public Boolean getActiveAccount() {return activeAccount;}
+    public void setActiveAccount(Boolean activeAccount) {
+        this.activeAccount = activeAccount;
+    }
 
 }

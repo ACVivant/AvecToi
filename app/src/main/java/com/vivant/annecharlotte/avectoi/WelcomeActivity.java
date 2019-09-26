@@ -16,13 +16,19 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.util.Arrays;
@@ -45,6 +51,7 @@ public class WelcomeActivity extends BaseActivity{
     private String userId;
     private boolean createOK;
     private Context context;
+    private User userHero;
 
     //FOR DESIGN
     private Button loginBtn;
@@ -73,6 +80,7 @@ public class WelcomeActivity extends BaseActivity{
         newAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (createOK) {
                     startSignInActivityEmail();
                 } else {
@@ -109,6 +117,25 @@ public class WelcomeActivity extends BaseActivity{
                             Log.w(TAG, "getDynamicLink:onFailure", e);
                         }
                     });
+
+            // Pour le premier utilisateur, on récupère la liste des utilisateurs. Si elle est vide l'inscription est posible sans invitation
+       UserHelper.getAllUsers().whereEqualTo("activeAccount", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    int i=0;
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d(TAG, document.getId() + " => " + document.getData());
+                        i+=1;
+                    }
+                    if (i==0) createOK = true;
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                    createOK = true;
+                }
+            }
+        });;
+
         }
 
     @Override

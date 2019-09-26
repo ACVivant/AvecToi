@@ -31,6 +31,8 @@ public class UserbookAdapter extends FirestoreRecyclerAdapter<User, UserbookAdap
     //Variables
     private Context mContext;
 
+    private OnItemClickListener listener;
+
     public UserbookAdapter(@NonNull FirestoreRecyclerOptions<User> options) {
         super(options);
         Log.d(TAG, "UserbookAdapter called");
@@ -42,6 +44,14 @@ public class UserbookAdapter extends FirestoreRecyclerAdapter<User, UserbookAdap
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_userbook, parent, false);
         mContext = parent.getContext();
         return new UserbookAdapter.UserbookViewHolder(v);
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -72,6 +82,16 @@ public class UserbookAdapter extends FirestoreRecyclerAdapter<User, UserbookAdap
 
             nameRV = itemView.findViewById(R.id.userbook_rv_name);
             imageRV = itemView.findViewById(R.id.userbook_rv_image);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener !=null) {
+                        listener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
     }
 }

@@ -98,6 +98,10 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(uid).update("urlPicture", photo);
     }
 
+    public static  Task<Void> updateAccount(Boolean active, String uid) {
+        return  UserHelper.getUsersCollection().document(uid).update("activeAccount", active);
+    }
+
         // --- DELETE ---
         public static Task<Void> deleteUser(String uid) {
             return UserHelper.getUsersCollection().document(uid).delete();

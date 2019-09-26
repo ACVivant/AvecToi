@@ -69,7 +69,7 @@ public class UserbookFragment extends Fragment {
         Log.d(TAG, "setupRecyclerView");
         Query query;
 
-        query = UserHelper.getAllUsers();
+        query = UserHelper.getAllUsers().whereEqualTo("activeAccount", true);
 
         FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
                 .setQuery(query, User.class)
@@ -80,6 +80,20 @@ public class UserbookFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
+
+
+
+        adapter.setOnItemClickListener(new UserbookAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String id = documentSnapshot.getId();
+                //Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getContext(), HeroDetailActivity.class);
+                Log.d(TAG, "onItemClick: userId " +id);
+                intent.putExtra(HeroAdapter.HERO_ID, id);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/item_charte_image"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="350dp"
                 android:src="@drawable/logo"
                 android:scaleType="fitCenter"
                 android:padding="@dimen/default_margin"/>
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorSecondary"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginLeft="16dp"
                 android:text="Introduction"
                 android:textSize="16dp"
@@ -44,7 +44,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:maxLines="3"
+                android:maxLines="5"
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:text="petit texte de présentation"/>
