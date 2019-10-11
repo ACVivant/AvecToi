@@ -12,6 +12,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,7 +45,10 @@ import com.google.firebase.iid.InstanceIdResult;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
+import com.vivant.annecharlotte.avectoi.notifications.AlarmNotification;
+import com.vivant.annecharlotte.avectoi.notifications.AlertReceiver;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -76,7 +82,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
        FloatingActionButton floatingActionButtonCreate = findViewById(R.id.add_new_event_button);
         floatingActionButtonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,14 +109,16 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             }
         });
 
-
         this.configureDrawerLayout();
         this.configureNavigationView();
         this.configureDrawerToolbar();
         this.layoutLinks();
         updateUIWhenCreating();
 
-        fm.beginTransaction().add(R.id.fragment_events_RV, fragmentHerosToFind, "1").commit();
+        startAlarm();
+
+        fm.beginTransaction().replace(R.id.fragment_events_RV, fragmentAll, "2").commit();
+        switchFragmentToAll=false;
     }
 
     @Override
@@ -285,6 +292,22 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void openUserbook() {
         Intent intent = new Intent(this, UserbookActivity.class);
         startActivity(intent);
+    }
+
+    public void startAlarm() {
+        Log.d(TAG, "startAlarm ");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.set(Calendar.MINUTE, 6);
+        calendar.set(Calendar.SECOND, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        // send notification each day
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),1000 * 60 * 60 * 24 ,pendingIntent);
     }
 }
 

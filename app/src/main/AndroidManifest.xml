@@ -23,17 +23,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name=".MyFirebaseMessagingService"
+            android:name=".notifications.MyFirebaseMessagingService"
             android:exported="false"
             android:stopWithTask="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".notifications.NotificationHeroService"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity
             android:name=".UserEventsActivity"
@@ -70,6 +66,8 @@
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoTitle" />
+
+        <receiver android:name=".notifications.AlertReceiver"/>
     </application>
 
 </manifest>
