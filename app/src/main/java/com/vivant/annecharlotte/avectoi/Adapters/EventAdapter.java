@@ -1,4 +1,4 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Adapters;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -10,17 +10,10 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.vivant.annecharlotte.avectoi.R;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
-import com.vivant.annecharlotte.avectoi.firestore.User;
-import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

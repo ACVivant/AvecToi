@@ -19,8 +19,9 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.messaging.FirebaseMessaging;
+import com.vivant.annecharlotte.avectoi.Adapters.HeroAdapter;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
+import com.vivant.annecharlotte.avectoi.firestore.BaseActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.User;
@@ -145,9 +146,6 @@ public class EventDetailActivity extends BaseActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if (documentSnapshot.exists()) {
-                    /*List<SosEvent> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
-                    userRefList.add(thisEvent);
-                    UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());*/
                     List<User> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
                     userRefList.add(userAsk);
                     UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());

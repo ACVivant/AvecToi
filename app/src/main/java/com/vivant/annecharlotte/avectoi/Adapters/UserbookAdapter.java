@@ -1,12 +1,10 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Adapters;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
-import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
+import com.vivant.annecharlotte.avectoi.R;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 
 import androidx.annotation.NonNull;

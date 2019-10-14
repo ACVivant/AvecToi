@@ -1,8 +1,7 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -14,15 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
+import com.vivant.annecharlotte.avectoi.Adapters.EventAdapter;
+import com.vivant.annecharlotte.avectoi.EventDetailActivity;
+import com.vivant.annecharlotte.avectoi.MainActivity;
+import com.vivant.annecharlotte.avectoi.R;
+import com.vivant.annecharlotte.avectoi.UserEventsActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
-import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 
 public class MainAllFragment extends Fragment {

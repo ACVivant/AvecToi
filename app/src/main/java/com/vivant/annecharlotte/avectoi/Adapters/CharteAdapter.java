@@ -1,4 +1,4 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.vivant.annecharlotte.avectoi.R;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 
 /**

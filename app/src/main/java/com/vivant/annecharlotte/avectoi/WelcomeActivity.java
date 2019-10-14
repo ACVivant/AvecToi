@@ -1,8 +1,6 @@
 package com.vivant.annecharlotte.avectoi;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,8 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
@@ -20,15 +16,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.vivant.annecharlotte.avectoi.firestore.User;
+import com.vivant.annecharlotte.avectoi.firestore.BaseActivity;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.util.Arrays;
@@ -36,22 +30,16 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 
-public class WelcomeActivity extends BaseActivity{
+public class WelcomeActivity extends BaseActivity {
 
     //FOR DATA
-    // 1 - Identifier for Sign-In Activity
     private static final int RC_SIGN_IN_EMAIL = 123;
     private static final String TAG = "WelcomeActivity";
-    public static final String USER_PHOTO = "userPhotoUrl";
-    public static final String USER_NAME = "userName";
     public static final String USER_ID = "userId";
-    public static final String USER_EMAIL = "userEmail";
-    private static final int DELETE_USER_TASK = 30;
 
     private String userId;
     private boolean createOK;
     private Context context;
-    private User userHero;
 
     //FOR DESIGN
     private Button loginBtn;
@@ -89,7 +77,7 @@ public class WelcomeActivity extends BaseActivity{
             }
         });
 
-            // On gère si l'utilisateur s'est connecté via un lien Firebase
+            // Connexion with depplink or not?
 
             FirebaseDynamicLinks.getInstance()
                     .getDynamicLink(getIntent())
@@ -101,13 +89,10 @@ public class WelcomeActivity extends BaseActivity{
                             if (pendingDynamicLinkData != null) {
                                 deepLink = pendingDynamicLinkData.getLink();
                                 Log.d(TAG, "onSuccess: deepLink " + deepLink.toString());
-                                Log.d(TAG, "onSuccess: un lien a été reçu");
                                 createOK=true;
-                                Log.d(TAG, "onSuccess: createOK " + createOK);
                             } else {
-                                Log.d(TAG, "onSuccess: il n'y a pas de lien");
+                                Log.d(TAG, "onSuccess: no deepLink");
                                 createOK = false;
-                                Log.d(TAG, "onSuccess: createOK " + createOK);
                             }
                         }
                     })
@@ -118,7 +103,8 @@ public class WelcomeActivity extends BaseActivity{
                         }
                     });
 
-            // Pour le premier utilisateur, on récupère la liste des utilisateurs. Si elle est vide l'inscription est posible sans invitation
+            // First user can connect without deeplink
+            // First user can connect without deeplink
        UserHelper.getAllUsers().whereEqualTo("activeAccount", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -134,7 +120,7 @@ public class WelcomeActivity extends BaseActivity{
                     createOK = true;
                 }
             }
-        });;
+        });
 
         }
 
@@ -194,7 +180,6 @@ public class WelcomeActivity extends BaseActivity{
                                     startCharteActivity();
                                 } else {
                                     Log.d(TAG, "onSuccess: createOK " + createOK);
-                                    //Toast.makeText(context, "Invitation nécessaire", Toast.LENGTH_LONG).show();
                                     showSnackBar(mainActivityLayout, getResources().getString(R.string.error_you_need_invitation));
                                     AuthUI.getInstance()
                                             .delete(context);

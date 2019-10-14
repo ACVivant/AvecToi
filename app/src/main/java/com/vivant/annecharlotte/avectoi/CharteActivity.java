@@ -7,12 +7,13 @@ import android.animation.ArgbEvaluator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
+
+import com.vivant.annecharlotte.avectoi.Adapters.CharteAdapter;
+import com.vivant.annecharlotte.avectoi.Adapters.CharteModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class CharteActivity extends AppCompatActivity {
 
@@ -44,7 +45,6 @@ public class CharteActivity extends AppCompatActivity {
         adapter = new CharteAdapter(models, this);
 
         viewPager = (ViewPager) findViewById(R.id.charte_viewpager);
-        //viewPager.findViewById(R.id.charte_viewpager);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(130,0,130,0);
 

@@ -1,29 +1,27 @@
 package com.vivant.annecharlotte.avectoi;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.vivant.annecharlotte.avectoi.Adapters.EventSmallAdapter;
+import com.vivant.annecharlotte.avectoi.firestore.BaseActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
-public class UserEventsActivity extends BaseActivity{
+public class UserEventsActivity extends BaseActivity {
 
     private static final String TAG = "UserEventsActivity";
     public static final String HERO_INDEX = "iamheroIndex";

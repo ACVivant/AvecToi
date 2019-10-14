@@ -1,7 +1,5 @@
 package com.vivant.annecharlotte.avectoi;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,16 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.vivant.annecharlotte.avectoi.Adapters.UpdateAdapter;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
+import com.vivant.annecharlotte.avectoi.firestore.BaseActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.User;

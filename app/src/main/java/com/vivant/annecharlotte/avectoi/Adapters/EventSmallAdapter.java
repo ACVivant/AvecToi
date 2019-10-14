@@ -1,27 +1,19 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Adapters;
 
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.vivant.annecharlotte.avectoi.R;
+import com.vivant.annecharlotte.avectoi.UserEventsActivity;
 import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
-import com.vivant.annecharlotte.avectoi.firestore.User;
-import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -47,7 +39,7 @@ public class EventSmallAdapter extends FirestoreRecyclerAdapter<SosEvent, EventS
 
         Log.d(TAG, "onBindViewHolder: ");
 
-        if (from==UserEventsActivity.NEED_INDEX) {
+        if (from== UserEventsActivity.NEED_INDEX) {
             eventViewHolder.eventCV.setCardBackgroundColor(eventViewHolder.itemView.getContext().getResources().getColor(R.color.colorSecondaryVeryTransparent));
             eventViewHolder.themeRV.setBackgroundColor(eventViewHolder.itemView.getContext().getResources().getColor(R.color.colorSecondary));
         } else {

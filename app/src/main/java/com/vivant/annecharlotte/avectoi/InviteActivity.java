@@ -49,8 +49,6 @@ public class InviteActivity extends AppCompatActivity {
         Uri dynamicLinkUri = dynamicLink.getUri();
         Log.d(TAG, "createLink: dynamicLink " + dynamicLinkUri.toString());
 
-        //https://supertoi.page.link?apn=com.vivant.annecharlotte.avectoi&link=https%3A%2F%2Fwww.lesretoques.com%2F
-
         Task<ShortDynamicLink> shortLinkTask = FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setLongLink( dynamicLinkUri)
                 .buildShortDynamicLink()

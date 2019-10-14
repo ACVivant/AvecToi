@@ -1,11 +1,9 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,12 +23,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.messaging.FirebaseMessaging;
+import com.vivant.annecharlotte.avectoi.Fragments.DatePickerFragment;
+import com.vivant.annecharlotte.avectoi.firestore.BaseActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
-import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;

@@ -51,9 +51,11 @@ public class NotificationResult {
     private List<Integer> listNewEvents = new ArrayList<>();
     String textHero = "";
     String textEvent ="";
+    Date today;
     Date yesterday;
     Date tomorrow;
     Date eventDate;
+    Calendar calendar1;
 
     boolean displayHero = false;
     boolean displayEvent = false;
@@ -84,6 +86,9 @@ public class NotificationResult {
     stringMissionTab[14] = mContext.getResources().getString(R.string.create_companySP);
     stringMissionTab[15] = mContext.getResources().getString(R.string.create_adminSP);
 
+        calendar1 = Calendar.getInstance();
+        today = calendar1.getTime();
+
     displayEvent=getNewEvent();
         try {   // Il faut absolument que je comprenne comment éviter ça... et capter le retour de firebase dans le Main Thread
             Thread.sleep(2000);
@@ -96,12 +101,7 @@ public class NotificationResult {
     } catch (InterruptedException e) {
         e.printStackTrace();
     }
-    //textEvent = createTextNotificationEvent(displayEvent, displayTomorrow, context);
-        Log.d(TAG, "NotificationResult: displayEvent " + displayEvent + "displayTomorrow " + displayTomorrow);
-        Log.d(TAG, "onMessageReceived: textEvent " + textEvent);
 
-    // On envoie la notification
-    //sendVisualNotification(textEvent, context);
 }
 
     private boolean getNewEvent() {
@@ -113,9 +113,6 @@ public class NotificationResult {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         int size = queryDocumentSnapshots.size();
                         Log.d(TAG, "onSuccess: il y a " + size +" événements");
-
-                        final Calendar calendar1 = Calendar.getInstance();
-                        Date today = calendar1.getTime();
 
                         calendar1.add(Calendar.DAY_OF_YEAR, -1);
                         yesterday = calendar1.getTime();
@@ -162,9 +159,7 @@ public class NotificationResult {
 
     public boolean getTomorrowEvents() {
         Log.d(TAG, "getTomorrowEventss");
-        final Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_YEAR, +1);
-        tomorrow = calendar.getTime();
+        //final Calendar calendar = Calendar.getInstance();
         Log.d(TAG, "getMyHeros: tomorrow " +tomorrow);
 
         eventsRef.whereArrayContains("userHeroIdList", userId)
@@ -175,17 +170,15 @@ public class NotificationResult {
                         for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                             final SosEvent event = documentSnapshot.toObject(SosEvent.class);
                             eventDate = event.getDateNeed();
-                            calendar.get(Calendar.DAY_OF_YEAR);
-                            eventDate = calendar.getTime();
+                            //calendar.get(Calendar.DAY_OF_YEAR);
 
                             Log.d(TAG, "onSuccess: eventDate " + eventDate);
-                            Log.d(TAG, "onSuccess: tomorrow " + tomorrow);
-                            if (tomorrow.getTime() - eventDate.getTime()<100800000) {   // (de 20h aujourd'hui à minuit demain)
+                            if (eventDate.getTime() -today.getTime() <1000*60*60*28 && eventDate.getTime() -today.getTime()> 1000*60*60*4) {   // (de minuit aujourd'hui à minuit demain avec une notif à 20h)
                                 displayTomorrow = true;
                             }
                             Log.d(TAG, "onSuccess: displayTomorrow " + displayTomorrow);
                         }
-                        createTextNotificationEvent(displayEvent, displayTomorrow, mContext);
+                        createTextNotificationEvent(displayEvent, displayTomorrow);
                     }
                 });
 
@@ -195,7 +188,7 @@ public class NotificationResult {
     // NOTIFICATION DESIGN
     //---------------------------------------------------------------------------
 
-    private String createTextNotificationEvent(boolean displayEv, boolean displayTom, Context context) {
+    private void createTextNotificationEvent(boolean displayEv, boolean displayTom) {
         Log.d(TAG, "createTextNotificationEvent: displayEv " + displayEv);
         Log.d(TAG, "createTextNotificationEvent: displayTom " + displayTom);
         String textToDisplay = "";
@@ -209,17 +202,12 @@ public class NotificationResult {
         }
 
         Log.d(TAG, "createTextNotificationEvent: " + textToDisplay);
-        sendVisualNotification(textToDisplay, mContext);
-        return textToDisplay;
+        if (displayEv || displayTom) {sendVisualNotification(textToDisplay);}
     }
 
-    private void sendVisualNotification(String message1, Context context) {
+    private void sendVisualNotification(String message1) {
 
         Log.d(TAG, "sendVisualNotification: message " + message1);
-
-        /*NotificationHelper notificationHelper = new NotificationHelper(mContext);
-        NotificationCompat.Builder nb = notificationHelper.getChannelNotification("Super Moi", message1);
-        notificationHelper.getManager().notify(1, nb.build());*/
 
         Intent openAppIntent = new Intent(mContext, WelcomeActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, openAppIntent, 0);

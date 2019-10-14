@@ -1,7 +1,6 @@
 package com.vivant.annecharlotte.avectoi;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,11 +12,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,14 +26,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.vivant.annecharlotte.avectoi.Utils.DateFormat;
-import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
-import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
+import com.vivant.annecharlotte.avectoi.Adapters.HeroAdapter;
+import com.vivant.annecharlotte.avectoi.firestore.BaseActivity;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -179,7 +174,6 @@ public class HeroDetailActivity extends BaseActivity {
                 }
 
                 // Références
-              //  List<SosEvent> listEventRef = user.getEventHeroRefList();
                 List<User> listEventRef = user.getEventHeroRefList();
 
 
@@ -195,17 +189,6 @@ public class HeroDetailActivity extends BaseActivity {
                         }
                     }
                 }
-
-                /*for (int i=0; i<listEventRef.size(); i++) {
-                    mNames.add(listEventRef.get(i).getUserAsk().getUserName());
-                    mUserAskId.add(listEventRef.get(i).getUserAsk().getUid());
-
-                    if (listEventRef.get(i).getUserAsk().getUrlPicture()!=null) {
-                        mImages.add(listEventRef.get(i).getUserAsk().getUrlPicture());
-                    } else {
-                        mImages.add(EventDetailActivity.NO_PHOTO);
-                    }
-                }*/
 
                 if(mNames.size()>0) {
                     noReference.setVisibility(View.GONE);
@@ -237,7 +220,7 @@ public class HeroDetailActivity extends BaseActivity {
             }
 
         } else {
-            Toast.makeText(HeroDetailActivity.this, "Nous n'avons pas le numéro", Toast.LENGTH_LONG).show();
+            Toast.makeText(HeroDetailActivity.this, getResources().getString(R.string.tel_missing), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -247,7 +230,7 @@ public class HeroDetailActivity extends BaseActivity {
             if (grantResults.length>0 &&grantResults[0]==PackageManager.PERMISSION_GRANTED) {
                 makePhoneCall();
             } else {
-                Toast.makeText(HeroDetailActivity.this, "Nous n'avons pas la permission", Toast.LENGTH_LONG).show();
+                Toast.makeText(HeroDetailActivity.this, getResources().getString(R.string.permission_needed), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -262,6 +245,6 @@ public class HeroDetailActivity extends BaseActivity {
     intent.putExtra(Intent.EXTRA_SUBJECT, subjectEmail);
 
     intent.setType("message/rfc822");
-    startActivity(Intent.createChooser(intent, "Quelle messagerie voulez-vous utiliser?"));
+    startActivity(Intent.createChooser(intent, getResources().getString(R.string.send_email)));
     }
 }

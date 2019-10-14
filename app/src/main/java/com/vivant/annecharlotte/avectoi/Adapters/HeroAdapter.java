@@ -1,4 +1,4 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.vivant.annecharlotte.avectoi.EventDetailActivity;
+import com.vivant.annecharlotte.avectoi.HeroDetailActivity;
+import com.vivant.annecharlotte.avectoi.R;
 
 import java.util.ArrayList;
 

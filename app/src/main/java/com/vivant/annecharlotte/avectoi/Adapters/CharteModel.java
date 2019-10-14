@@ -1,4 +1,4 @@
-package com.vivant.annecharlotte.avectoi;
+package com.vivant.annecharlotte.avectoi.Adapters;
 
 /**
  * Created by Anne-Charlotte Vivant on 09/08/2019.

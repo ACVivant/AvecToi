@@ -13,14 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".UserbookActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".InviteActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".UpdateEventActivity" />
-        <activity android:name=".HeroDetailActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UpdateEventActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HeroDetailActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CharteActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name=".notifications.MyFirebaseMessagingService"
@@ -33,16 +38,20 @@
 
         <activity
             android:name=".UserEventsActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".EventDetailActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CreateEventActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".CreateUserActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoTitle">
@@ -65,7 +74,8 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoTitle" />
+            android:theme="@style/AppTheme.NoTitle"
+            android:screenOrientation="portrait"/>
 
         <receiver android:name=".notifications.AlertReceiver"/>
     </application>
