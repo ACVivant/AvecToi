@@ -156,7 +156,7 @@ public class EventDetailActivity extends BaseActivity {
 
     public void updateView(String eid) {
         if (fromIndex.equals(UserEventsActivity.NEED_INDEX)) {
-            validate.setImageResource(R.drawable.ic_tutoring);
+            validate.setImageResource(R.drawable.ic_topic_13);
         } else {
             if (fromIndex.equals(UserEventsActivity.ALL_INDEX)) {
                 validate.setImageResource(R.drawable.ic_done);
@@ -235,67 +235,67 @@ public class EventDetailActivity extends BaseActivity {
                     switch (themeIndex) {
                         case 0:
                             eventBtn.setText(themeArray[0]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_ironing), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_0), null, null);
                             return;
                         case 1:
                             eventBtn.setText(themeArray[1]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_household), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_1), null, null);
                             return;
                         case 2:
                             eventBtn.setText(themeArray[2]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_shopping), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_2), null, null);
                             return;
                         case 3:
                             eventBtn.setText(themeArray[3]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_cooking), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_3), null, null);
                             return;
                         case 4:
                             eventBtn.setText(themeArray[4]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_driving), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_4), null, null);
                             return;
                         case 5:
                             eventBtn.setText(themeArray[5]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_gardening), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_5), null, null);
                             return;
                         case 6:
                             eventBtn.setText(themeArray[6]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_diy), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_6), null, null);
                             return;
                         case 7:
                             eventBtn.setText(themeArray[7]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_works), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_7), null, null);
                             return;
                         case 8:
                             eventBtn.setText(themeArray[8]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_relocation), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_8), null, null);
                             return;
                         case 9:
                             eventBtn.setText(themeArray[9]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_reading), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_9), null, null);
                             return;
                         case 10:
                             eventBtn.setText(themeArray[10]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_babysitting), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_10), null, null);
                             return;
                         case 11:
                             eventBtn.setText(themeArray[11]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_sewing), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_11), null, null);
                             return;
                         case 12:
                             eventBtn.setText(themeArray[12]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_flower), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_12), null, null);
                             return;
                         case 13:
                             eventBtn.setText(themeArray[13]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_tutoring), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_13), null, null);
                             return;
                         case 14:
                             eventBtn.setText(themeArray[14]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_compagny), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_14), null, null);
                             return;
                         case 15:
                             eventBtn.setText(themeArray[15]);
-                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_admin), null, null);
+                            eventBtn.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_topic_15), null, null);
                             return;
                         default:
                             eventBtn.setText(getResources().getString(R.string.app_name));

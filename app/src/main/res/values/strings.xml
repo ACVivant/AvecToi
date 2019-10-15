@@ -1,8 +1,49 @@
 <resources>
-    <!-- A PERSONNALISER -->
+    <!-- To personnalize (all communities)-->
     <string name="app_name">Super Moi - Communauté</string>
     <string name="welcome_title_with">"Paroisse Saint-Sébastien"</string>
     <string name="welcome_introduction">"Petit texte personnalisé présentant la communauté&#8230; 150 caractères environ ce n'est pas mal si vous voulez qu'il soit lu et que ça rentre dans la case!"</string>
+
+    <!-- To adapt if you want to adapt super powers // change strings:  create_SP_? / event_theme[?] and drawables: ic_topic_? -->
+    <string name="create_SP_0">"Faire du repassage"</string>
+    <string name="create_SP_1">"Faire le ménage"</string>
+    <string name="create_SP_2">"Faire les courses"</string>
+    <string name="create_SP_3">"Faire la cuisine"</string>
+    <string name="create_SP_4">"Faire des conduites"</string>
+    <string name="create_SP_5">"Entretenir le jardin"</string>
+    <string name="create_SP_6">"Faire des bricolages"</string>
+    <string name="create_SP_7">"Faire des travaux"</string>
+    <string name="create_SP_8">"Aider à déménager"</string>
+    <string name="create_SP_9">"Faire la lecture"</string>
+    <string name="create_SP_10">"Garder des enfants"</string>
+    <string name="create_SP_11">"Faire de la couture"</string>
+    <string name="create_SP_12">"Faire des bouquets"</string>
+    <string name="create_SP_13">"Aider à faire ses devoirs"</string>
+    <string name="create_SP_14">"Tenir compagnie"</string>
+    <string name="create_SP_15">"Faire des démarches admin."</string>
+
+    <string-array name="event_theme">
+        <item>"Faire du repassage"</item>
+        <item>"Faire le ménage"</item>
+        <item>"Faire les courses"</item>
+        <item>"Faire la cuisine"</item>
+        <item>"Faire des conduites"</item>
+        <item>"Entretenir le jardin"</item>
+        <item>"Faire des bricolages"</item>
+        <item>"Faire des travaux"</item>
+        <item>"Aider à déménager"</item>
+        <item>"Faire la lecture"</item>
+        <item>"Garder des enfants"</item>
+        <item>"Faire de la couture"</item>
+        <item>"Faire des bouquets</item>
+        <item>"Aider à faire ses devoirs"</item>
+        <item>"Tenir compagnie"</item>
+        <item>"Faire des démarches admin."</item>
+    </string-array>
+
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- not to change -->
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
        <!-- Welcome -->
     <string name="app_title">Super Moi</string>
@@ -41,32 +82,13 @@
     <string name="create_phone_expl">"Il ne sera visible que par la personne que vous aurez proposé d'aider."</string>
     <string name="create_description_title">"Qui suis-je?"</string>
     <string name="create_description_hint">"Je raconte en quelques mots qui je suis."</string>
-    <string name="create_SP">"Mes super pouvoirs"</string>
-    <string name="create_householdSP">"Faire le ménage"</string>
-    <string name="create_shoppingSP">"Faire les courses"</string>
-    <string name="create_cookingSP">"Faire la cuisine"</string>
-    <string name="create_driveSP">"Faire des conduites"</string>
-    <string name="create_ironingSP">"Faire du repassage"</string>
-    <string name="create_gardeningSP">"Entretenir le jardin"</string>
-    <string name="create_diySP">"Faire des bricolages"</string>
-    <string name="create_worksSP">"Faire des travaux"</string>
-    <string name="create_relocationSP">"Aider à déménager"</string>
-    <string name="create_readingSP">"Faire la lecture"</string>
-    <string name="create_companySP">"Tenir compagnie"</string>
-    <string name="create_babysittingSP">"Garder des enfants"</string>
-    <string name="create_tutoringSP">"Aider à faire ses devoirs"</string>
-    <string name="create_sewingSP">"Faire de la couture"</string>
-    <string name="create_adminSP">"Faire des démarches admin."</string>
-    <string name="create_flowerSP">"Faire des bouquets"</string>
     <string name="create_validate">"C'est parti!</string>
-
     <string name="info_no_email_found">"Aucune adresse email"</string>
     <string name="info_no_username_found">"Aucun nom d'utilisateur"</string>
-
     <string name="create_community">"J'habite à "</string>
-
     <string name="phone_or_town_missing">"Il faut entrer un numéro de téléphone, une ville et une petite description."</string>
     <string name="SP_missing">"Il faut révéler au moins un super pouvoir."</string>
+    <string name="create_SP">"Mes super pouvoirs"</string>
 
     <!-- HeroDetail -->
     <string name="hero_phone_intro">"Téléphone: "</string>
@@ -93,29 +115,6 @@
     <string name="event_validate">"Enregistrer"</string>
     <string name="event_reset">"Annuler"</string>
     <string name="event_info_missing">"Il faut remplir tous les champs."</string>
-
-    <string-array name="event_theme">
-        <item>"Faire du repassage"</item>
-        <item>"Faire le ménage"</item>
-        <item>"Faire les courses"</item>
-        <item>"Faire la cuisine"</item>
-
-        <item>"Faire des conduites"</item>
-        <item>"Entretenir le jardin"</item>
-        <item>"Faire des bricolages"</item>
-        <item>"Faire des travaux"</item>
-
-        <item>"Aider à déménager"</item>
-        <item>"Faire la lecture"</item>
-        <item>"Garder des enfants"</item>
-        <item>"Faire de la couture"</item>
-
-        <item>"Faire des bouquets</item>
-        <item>"Aider à faire ses devoirs"</item>
-        <item>"Tenir compagnie"</item>
-        <item>"Faire des démarches admin."</item>
-
-    </string-array>
 
     <!-- CARD EVENT -->
     <string name="SOS_CV_intro">"Pour: "</string>

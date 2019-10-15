@@ -59,7 +59,13 @@ public class NotificationResult {
 
         userId = UserHelper.getCurrentUserId();
 
-        stringMissionTab[0] = mContext.getResources().getString(R.string.create_ironingSP);
+        String[] themeArray = mContext.getResources().getStringArray(R.array.event_theme);
+
+        for (int i=0; i<16; i++) {
+            stringMissionTab[i] = themeArray[i];
+        }
+
+        /*stringMissionTab[0] = mContext.getResources().getString(R.string.create_ironingSP);
         stringMissionTab[1] = mContext.getResources().getString(R.string.create_householdSP);
         stringMissionTab[2] = mContext.getResources().getString(R.string.create_shoppingSP);
         stringMissionTab[3] = mContext.getResources().getString(R.string.create_cookingSP);
@@ -74,7 +80,7 @@ public class NotificationResult {
         stringMissionTab[12] = mContext.getResources().getString(R.string.create_flowerSP);
         stringMissionTab[13] = mContext.getResources().getString(R.string.create_tutoringSP);
         stringMissionTab[14] = mContext.getResources().getString(R.string.create_companySP);
-        stringMissionTab[15] = mContext.getResources().getString(R.string.create_adminSP);
+        stringMissionTab[15] = mContext.getResources().getString(R.string.create_adminSP);*/
 
         // We will compare dates of events with today date
         calendar1 = Calendar.getInstance();
@@ -104,9 +110,6 @@ public class NotificationResult {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        int size = queryDocumentSnapshots.size();
-                        Log.d(TAG, "onSuccess: il y a " + size +" événements");
-
                         calendar1.add(Calendar.DAY_OF_YEAR, -1);
                         yesterday = calendar1.getTime();
 
