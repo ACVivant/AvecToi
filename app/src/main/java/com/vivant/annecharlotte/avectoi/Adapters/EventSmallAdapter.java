@@ -1,6 +1,5 @@
 package com.vivant.annecharlotte.avectoi.Adapters;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,11 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Created by Anne-Charlotte Vivant on 25/07/2019.
+ * Adapter of recyclerview of activity with  resumed events list (UserEventsActivity)
  */
 public class EventSmallAdapter extends FirestoreRecyclerAdapter<SosEvent, EventSmallAdapter.EventSmallViewHolder> {
 
     private OnItemClickListener listener;
-
     private static final String TAG = "EventSmallAdapter";
     private String from;
 
@@ -37,8 +35,7 @@ public class EventSmallAdapter extends FirestoreRecyclerAdapter<SosEvent, EventS
     @Override
     protected void onBindViewHolder(@NonNull EventSmallViewHolder eventViewHolder, int i, @NonNull SosEvent sosEvent) {
 
-        Log.d(TAG, "onBindViewHolder: ");
-
+        // Determination of which events we have to show (events created by user or where he accepted to help)
         if (from== UserEventsActivity.NEED_INDEX) {
             eventViewHolder.eventCV.setCardBackgroundColor(eventViewHolder.itemView.getContext().getResources().getColor(R.color.colorSecondaryVeryTransparent));
             eventViewHolder.themeRV.setBackgroundColor(eventViewHolder.itemView.getContext().getResources().getColor(R.color.colorSecondary));
@@ -50,7 +47,6 @@ public class EventSmallAdapter extends FirestoreRecyclerAdapter<SosEvent, EventS
         //Date
         DateFormat myFormat = new DateFormat();
         final String myDate = myFormat.getRegisteredDate(sosEvent.getDateNeed());
-        Log.d(TAG, "onBindViewHolder: myDate " + myDate);
         eventViewHolder.dateRV.setText(myDate);
 
         // Town

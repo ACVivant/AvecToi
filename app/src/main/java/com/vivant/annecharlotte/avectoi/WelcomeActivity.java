@@ -30,6 +30,9 @@ import java.util.Objects;
 
 import androidx.annotation.NonNull;
 
+/**
+ * welcome screen
+ */
 public class WelcomeActivity extends BaseActivity {
 
     //FOR DATA
@@ -77,8 +80,7 @@ public class WelcomeActivity extends BaseActivity {
             }
         });
 
-            // Connexion with depplink or not?
-
+            // Connexion with deeplink or not?
             FirebaseDynamicLinks.getInstance()
                     .getDynamicLink(getIntent())
                     .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
@@ -104,7 +106,6 @@ public class WelcomeActivity extends BaseActivity {
                     });
 
             // First user can connect without deeplink
-            // First user can connect without deeplink
        UserHelper.getAllUsers().whereEqualTo("activeAccount", true).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -121,7 +122,6 @@ public class WelcomeActivity extends BaseActivity {
                 }
             }
         });
-
         }
 
     @Override
@@ -158,11 +158,8 @@ public class WelcomeActivity extends BaseActivity {
     private void handleResponseAfterSignIn(int requestCode, int resultCode, Intent data){
         IdpResponse response = IdpResponse.fromResultIntent(data);
 
-        Log.d(TAG, "handleResponseAfterSignIn");
         if (requestCode == RC_SIGN_IN_EMAIL) {
             if (resultCode == RESULT_OK) { // SUCCESS
-                Log.d(TAG, "handleResponseAfterSignIn: Success");
-
 
                 if (isCurrentUserLogged()) {
                     userId = this.getCurrentUser().getUid();
@@ -170,16 +167,13 @@ public class WelcomeActivity extends BaseActivity {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             if (documentSnapshot.exists()) {  // Si l'utilisateur a déjà un compte
-                                Log.d(TAG, "onSuccess: documentSnapshot exists");
                                 startMainActivity();
                             } else {
                                 // CREATE USER
                                 if (createOK) {
-                                    Log.d(TAG, "onSuccess: createOK " + createOK);
                                     createUserInFirestore();
                                     startCharteActivity();
                                 } else {
-                                    Log.d(TAG, "onSuccess: createOK " + createOK);
                                     showSnackBar(mainActivityLayout, getResources().getString(R.string.error_you_need_invitation));
                                     AuthUI.getInstance()
                                             .delete(context);
@@ -213,7 +207,6 @@ public class WelcomeActivity extends BaseActivity {
     // Http request that create user in firestore
 
     private void createUserInFirestore(){
-        Log.d(TAG, "createUserInFirestore");
         String urlPicture = (Objects.requireNonNull(this.getCurrentUser()).getPhotoUrl() != null) ? Objects.requireNonNull(this.getCurrentUser().getPhotoUrl()).toString() : null;
         String username = this.getCurrentUser().getDisplayName();
         String uid = this.getCurrentUser().getUid();

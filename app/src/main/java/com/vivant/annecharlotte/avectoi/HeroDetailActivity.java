@@ -35,6 +35,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Display user details
+ */
+
 public class HeroDetailActivity extends BaseActivity {
 
     private static final String TAG = "HeroDetailActivity";
@@ -55,13 +59,12 @@ public class HeroDetailActivity extends BaseActivity {
     private ArrayList<String> mUserAskId = new ArrayList<>();
     private RecyclerView recyclerView;
 
-    private Context context;
     private String userPhoneNumber;
-    private String fromEmail;
     private String toEmail;
 
-    List<String> listUserSP = new ArrayList<>();
-    List<Integer> listUserSPInt = new ArrayList<>();
+    private List<String> listUserSP = new ArrayList<>();
+    private List<Integer> listUserSPInt = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +72,6 @@ public class HeroDetailActivity extends BaseActivity {
 
         userId = getIntent().getStringExtra(HeroAdapter.HERO_ID);
 
-        Log.d(TAG, "onCreate: userId " + userId);
-
-        Log.d(TAG, "onCreate: newToken après");
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this,  new OnSuccessListener<InstanceIdResult>() {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
@@ -89,6 +89,10 @@ public class HeroDetailActivity extends BaseActivity {
     public int getFragmentLayout() {
         return R.layout.activity_hero_detail;
     }
+
+    //--------------------------
+    // Update UI
+    //--------------------------
 
     private void layoutLinks() {
         userPhoto = findViewById(R.id.hero_detail_face);
@@ -131,12 +135,10 @@ public class HeroDetailActivity extends BaseActivity {
         buttonTab[13] = findViewById(R.id.hero_detail_SP_tutoring);
         buttonTab[14] = findViewById(R.id.hero_detail_SP_company);
         buttonTab[15] = findViewById(R.id.hero_detail_SP_admin);
-
     }
 
-
     private void updateView(String uid) {
-        Log.d(TAG, "updateView: uid " + uid);
+
         UserHelper.getUser(uid).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -157,7 +159,7 @@ public class HeroDetailActivity extends BaseActivity {
                             .into(userPhoto);
                 }
 
-                //SP
+                //Super Power
                 listUserSPInt = user.getUserSPList();
 
                 for (int i=0; i<listUserSPInt.size(); i++) {
@@ -173,9 +175,8 @@ public class HeroDetailActivity extends BaseActivity {
                     }
                 }
 
-                // Références
+                // References
                 List<User> listEventRef = user.getEventHeroRefList();
-
 
                 if (listEventRef.get(0)!= null) {
                     for (int i = 0; i < listEventRef.size(); i++) {
@@ -208,7 +209,11 @@ public class HeroDetailActivity extends BaseActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    //-------------------------------------
+    // Phone call and email
+    //-------------------------------------
 
+    // Phone call
     private void makePhoneCall() {
         if (userPhoneNumber.trim().length()>0) {
             if(ContextCompat.checkSelfPermission(HeroDetailActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED) {
@@ -224,6 +229,7 @@ public class HeroDetailActivity extends BaseActivity {
         }
     }
 
+    // Permissions
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode==REQUEST_CALL) {
@@ -235,11 +241,11 @@ public class HeroDetailActivity extends BaseActivity {
         }
     }
 
+    // Email
     private void sendEmail() {
     String subjectEmail = getResources().getString(R.string.app_name);
     String[] recipient = {toEmail};
 
-        Log.d(TAG, "sendEmail: to " + toEmail);
     Intent intent = new Intent(Intent.ACTION_SEND);
     intent.putExtra(Intent.EXTRA_EMAIL, recipient);
     intent.putExtra(Intent.EXTRA_SUBJECT, subjectEmail);

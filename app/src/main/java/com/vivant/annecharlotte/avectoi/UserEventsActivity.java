@@ -21,14 +21,15 @@ import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
+/**
+ * List of user events
+ */
 public class UserEventsActivity extends BaseActivity {
 
     private static final String TAG = "UserEventsActivity";
     public static final String HERO_INDEX = "iamheroIndex";
     public static final String NEED_INDEX = "inededhelpIndex";
     public static final String ALL_INDEX = "alleventsIndex";
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference eventsRef = db.collection("events");
 
     private EventSmallAdapter adapter;
     private String userId;
@@ -43,23 +44,11 @@ public class UserEventsActivity extends BaseActivity {
         setContentView(R.layout.activity_user_events);
 
         fromHeroOrNeed = getIntent().getStringExtra(MainActivity.FROM_ID);
-
         userId = this.getCurrentUser().getUid();
-
         getCurrentUserFromFirestore();
-
         title = findViewById(R.id.iamhero_title);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
-
-        /*FloatingActionButton floatingActionButton = findViewById(R.id.modify_profil);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchUserProfil();
-            }
-        });*/
-
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         setupRecyclerView();
     }
 
@@ -77,13 +66,8 @@ public class UserEventsActivity extends BaseActivity {
         });
     }
 
-    public void launchUserProfil() {
-        Intent intent = new Intent(UserEventsActivity.this ,CreateUserActivity.class);
-        startActivity(intent);
-    }
-
     public void setupRecyclerView() {
-        Log.d(TAG, "setupIamHeroRecyclerView: userId " + userId);
+        // We have to adjust view on origin of click (need help or offer help)
         Query query;
         String INDEX;
         if (fromHeroOrNeed.equals(NEED_INDEX)) {
@@ -114,9 +98,8 @@ public class UserEventsActivity extends BaseActivity {
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
                 Intent intent = new Intent(UserEventsActivity.this, EventDetailActivity.class);
-                Log.d(TAG, "onItemClick: eventId " +id);
-                intent.putExtra(MainActivity.EVENT_ID, id);  // De quel événement s'agit-il?
-                intent.putExtra(MainActivity.FROM_ID, fromHeroOrNeed);  // Est-ce que la fiche descriptive est appellée depuis le récapitulatif de l'utilisateur?
+                intent.putExtra(MainActivity.EVENT_ID, id);  // Which event we want to show
+                intent.putExtra(MainActivity.FROM_ID, fromHeroOrNeed);  // origin of click
                 startActivity(intent);
             }
         });

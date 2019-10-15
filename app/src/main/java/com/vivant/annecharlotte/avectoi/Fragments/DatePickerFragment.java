@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 /**
- * Created by Anne-Charlotte Vivant on 24/07/2019.
+ * Date Picker for creation of events
  */
 public class DatePickerFragment extends DialogFragment {
     @NonNull

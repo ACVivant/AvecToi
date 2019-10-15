@@ -1,9 +1,6 @@
 package com.vivant.annecharlotte.avectoi.firestore;
 
-import android.util.Log;
-
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -12,10 +9,9 @@ import com.google.firebase.firestore.Query;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 /**
- * Created by Anne-Charlotte Vivant on 24/07/2019.
+ * methods to implement firebase database events collection
  */
 public class SosEventHelper {
 
@@ -28,7 +24,6 @@ public class SosEventHelper {
     }
 
     // --- CREATE ---
-
     public static Task<DocumentReference> createEvent(int themeIndex, String description, String town, int numberHero, User userAsk, Date dateCreated, Date dateNeed,boolean car) {
         SosEvent eventToCreate = new SosEvent(themeIndex, description, town, numberHero, userAsk, dateCreated, dateNeed, car);
         return SosEventHelper.getEventsCollection().add(eventToCreate);

@@ -1,7 +1,7 @@
 package com.vivant.annecharlotte.avectoi.Adapters;
 
 /**
- * Created by Anne-Charlotte Vivant on 09/08/2019.
+ * Model for items of the Charte Activity
  */
 public class CharteModel {
 

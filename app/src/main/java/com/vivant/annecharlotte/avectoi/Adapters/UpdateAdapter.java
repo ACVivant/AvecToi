@@ -20,12 +20,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Anne-Charlotte Vivant on 09/08/2019.
+ * Adapter for recyclerview with list of voluntaries in UpdateEvent Activity
  */
 public class UpdateAdapter extends RecyclerView.Adapter<UpdateAdapter.ViewHolder>{
 
     private static final String TAG = "UpdateAdapter";
-    public static final String HERO_ID = "HeroDetailId";
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();

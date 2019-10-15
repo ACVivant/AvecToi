@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by Anne-Charlotte Vivant on 25/07/2019.
+ * Format date
  */
 public class DateFormat {
 

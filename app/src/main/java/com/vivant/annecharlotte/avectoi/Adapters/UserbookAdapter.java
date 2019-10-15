@@ -1,7 +1,6 @@
 package com.vivant.annecharlotte.avectoi.Adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,19 +19,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Created by Anne-Charlotte Vivant on 25/09/2019.
+ * Adapter for list of heros in UserBook Activity
  */
 public class UserbookAdapter extends FirestoreRecyclerAdapter<User, UserbookAdapter.UserbookViewHolder> {
 
     private static final String TAG = "UserbookAdapter";
-    //Variables
     private Context mContext;
-
     private OnItemClickListener listener;
 
     public UserbookAdapter(@NonNull FirestoreRecyclerOptions<User> options) {
         super(options);
-        Log.d(TAG, "UserbookAdapter called");
     }
 
     @NonNull
@@ -53,9 +49,6 @@ public class UserbookAdapter extends FirestoreRecyclerAdapter<User, UserbookAdap
 
     @Override
     protected void onBindViewHolder(@NonNull UserbookAdapter.UserbookViewHolder userViewHolder, int i, @NonNull User user) {
-
-        Log.d(TAG, "onBindViewHolder: ");
-
 
         // Name
         String myName = user.getUserName();

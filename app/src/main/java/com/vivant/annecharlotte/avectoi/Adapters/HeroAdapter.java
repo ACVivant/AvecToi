@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Anne-Charlotte Vivant on 09/08/2019.
+ * Adapter for recyclerview with list of heros (resumed items) - EventDetail Activity, HeroDetail Activity
  */
 public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.ViewHolder>{
 
@@ -49,10 +49,10 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         if (!mImages.get(position).equals(EventDetailActivity.NO_PHOTO)) {
-        Glide.with(mContext)
-                .asBitmap()
-                .load(mImages.get(position))
-                .into(holder.image);
+            Glide.with(mContext)
+                    .asBitmap()
+                    .load(mImages.get(position))
+                    .into(holder.image);
         }
 
         holder.name.setText(mNames.get(position));

@@ -39,11 +39,13 @@ import com.vivant.annecharlotte.avectoi.notifications.AlertReceiver;
 
 import java.util.Calendar;
 
+/**
+ * manage main activity
+ */
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "MainActivity";
     public static final String EVENT_ID = "EventId";
-    public static final String QUERY_ID = "QueryId";
     public static final String FROM_ID = "FromId";
     private static final int DELETE_USER_TASK = 20;
 
@@ -54,16 +56,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private ImageView userPhoto;
     private TextView userName;
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference eventsRef = db.collection("events");
-
-    private EventAdapter adapter;
-
     final MainAllFragment fragmentAll = new MainAllFragment();
     final MainAllFragment fragmentHerosToFind = new MainAllFragment();
     private boolean switchFragmentToAll=true;
     final FragmentManager fm = getSupportFragmentManager();
-    Fragment active = fragmentHerosToFind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

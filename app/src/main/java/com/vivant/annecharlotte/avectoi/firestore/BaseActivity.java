@@ -2,20 +2,19 @@ package com.vivant.annecharlotte.avectoi.firestore;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+
+/**
+ * Activity used for Firebase interactions
+ */
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -30,18 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public abstract int getFragmentLayout();
-
-
-    // --------------------
-    // UI
-    // --------------------
-
-    protected void configureToolbar(){
-        ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setDisplayHomeAsUpEnabled(true);
-        }
-    }
 
     // --------------------
     // ERROR HANDLER
@@ -67,5 +54,4 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Boolean isCurrentUserLogged(){
         return (this.getCurrentUser() != null); }
-
 }

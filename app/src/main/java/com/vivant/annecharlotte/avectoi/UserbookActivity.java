@@ -8,11 +8,13 @@ import android.os.Bundle;
 
 import com.vivant.annecharlotte.avectoi.Fragments.UserbookFragment;
 
+/**
+ * List of users activity
+ */
 public class UserbookActivity extends AppCompatActivity {
 
     final UserbookFragment fragmentUserbook = new UserbookFragment();
     final FragmentManager fm = getSupportFragmentManager();
-    Fragment active = fragmentUserbook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

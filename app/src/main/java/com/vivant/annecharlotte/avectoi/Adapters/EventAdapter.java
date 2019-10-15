@@ -1,7 +1,6 @@
 package com.vivant.annecharlotte.avectoi.Adapters;
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,23 +18,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
- * Created by Anne-Charlotte Vivant on 25/07/2019.
+ * Adapter of recyclerview of activity with  detail events list (MainActivity)
  */
 public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapter.EventViewHolder> {
 
     private OnItemClickListener listener;
-
     private static final String TAG = "EventAdapter";
 
     public EventAdapter(@NonNull FirestoreRecyclerOptions<SosEvent> options) {
         super(options);
-        Log.d(TAG, "EventAdapter called");
     }
 
     @Override
     protected void onBindViewHolder(@NonNull EventViewHolder eventViewHolder, int i, @NonNull SosEvent sosEvent) {
-
-        Log.d(TAG, "onBindViewHolder: ");
 
         //Date
         DateFormat myFormat = new DateFormat();
@@ -69,7 +64,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<SosEvent, EventAdapte
         switch (themeIndex) {
             case 0: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_ironing);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
-            return;
+                return;
             case 1: top = eventViewHolder.itemView.getContext().getResources().getDrawable(R.drawable.ic_household);
                 eventViewHolder.themeRV.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
                 return;

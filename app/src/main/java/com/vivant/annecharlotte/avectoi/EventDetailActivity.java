@@ -32,6 +32,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Display event details
+ */
 public class EventDetailActivity extends BaseActivity {
 
     private static final String TAG = "EventDetailActivity";
@@ -53,11 +56,9 @@ public class EventDetailActivity extends BaseActivity {
     private TextView eventDateCreatedTV;
 
     private FloatingActionButton validate;
-    ConstraintLayout userInfos;
+    private ConstraintLayout userInfos;
 
-    //private List<String> listHeros = new ArrayList<>();
     private List<User> listHeros = new ArrayList<>();
-    //private String userHeroId;
     private User userHero;
     private SosEvent thisEvent;
     private int toFindHeros;
@@ -76,9 +77,9 @@ public class EventDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_event_detail);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
+        // get index to know which event to show
         eventId = getIntent().getStringExtra(MainActivity.EVENT_ID);
         fromIndex = getIntent().getStringExtra(MainActivity.FROM_ID);
-        Log.d(TAG, "onCreate: fromIndex " +fromIndex);
 
         UserHelper.getUser(getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -93,7 +94,6 @@ public class EventDetailActivity extends BaseActivity {
             }
         });
 
-        Log.d(TAG, "onCreate: eventId " + eventId);
 
         layoutlinks();
         updateView(eventId);
@@ -115,68 +115,14 @@ public class EventDetailActivity extends BaseActivity {
         });
     }
 
-    private void openDialog(final List<User> list) {
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.detail_event_confirmation_title)
-                .setMessage(R.string.detail_event_hero_confirmation)
-                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        updateEvent(list);
-                        UserHelper.getUser(thisEvent.getUserAskId()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                if (documentSnapshot.exists()) {
-                                    User userAsk = Objects.requireNonNull(documentSnapshot.toObject(User.class));
-                                    updateMyRef(userAsk);
-                                }
-                            }
-                        });
-                        finish();
-                    }
-                })
-                .setNegativeButton("Non", null)
-                .show();
-    }
-
-
-
-    public void updateMyRef(final User userAsk) {
-        UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-                    List<User> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
-                    userRefList.add(userAsk);
-                    UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());
-                }
-            }
-        });
-    }
-
-
-    public void updateEvent(List<User> list) {
-        List<String> listId = new ArrayList<>();   // Pour pouvoir gérer les query (en particulier dans les tableaux, ca ne marche pas avec des formats comme User d'où une copie des id pour avoir un tableau sur lequel on peut filtrer
-        for (User item : list) {
-            listId.add(item.getUid());
-        }
-        SosEventHelper.updateUserHerosIdList(listId, eventId);
-        SosEventHelper.updateUserHerosList(list, eventId);
-
-        Date today = new Date();
-        SosEventHelper.updateDateHeroOk(today, eventId);
-        SosEventHelper.updateUserHerosNotFound(toFindHeros - 1, eventId);
-
-
-        if (toFindHeros - 1 == 0) {
-            SosEventHelper.updateMissionOk(true, eventId);
-        }
-    }
-
     @Override
     public int getFragmentLayout() {
         return R.layout.activity_event_detail;
     }
+
+    //------------------------------
+    // Update UI
+    //-----------------------------
 
     public void layoutlinks() {
         eventBtn = findViewById(R.id.detail_event_button);
@@ -365,6 +311,70 @@ public class EventDetailActivity extends BaseActivity {
         recyclerView.setLayoutManager(layoutManager);
         HeroAdapter adapter = new HeroAdapter(this, mNames, mImages, mHeroId);
         recyclerView.setAdapter(adapter);
+    }
 
+    //---------------------------------
+    // Update data in Firebase
+    //---------------------------------
+
+// Update references of user when he accepts mission
+    public void updateMyRef(final User userAsk) {
+        UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    List<User> userRefList = Objects.requireNonNull(documentSnapshot.toObject(User.class)).getEventHeroRefList();
+                    userRefList.add(userAsk);
+                    UserHelper.updateEventHeroRefList(userRefList, userHero.getUid());
+                }
+            }
+        });
+    }
+
+// update event with new user engagement
+    public void updateEvent(List<User> list) {
+        List<String> listId = new ArrayList<>();   // We create a List of String to use filter in query
+        for (User item : list) {
+            listId.add(item.getUid());
+        }
+        SosEventHelper.updateUserHerosIdList(listId, eventId);
+        SosEventHelper.updateUserHerosList(list, eventId);
+
+        Date today = new Date();
+        SosEventHelper.updateDateHeroOk(today, eventId);
+        SosEventHelper.updateUserHerosNotFound(toFindHeros - 1, eventId);
+
+        if (toFindHeros - 1 == 0) {
+            SosEventHelper.updateMissionOk(true, eventId);
+        }
+    }
+
+    //-------------------------------------
+    // Dialog to confirm user engagement
+    //-------------------------------------
+
+    // Generate dialog window when user offers help
+    private void openDialog(final List<User> list) {
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.detail_event_confirmation_title)
+                .setMessage(R.string.detail_event_hero_confirmation)
+                .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        updateEvent(list);
+                        UserHelper.getUser(thisEvent.getUserAskId()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                if (documentSnapshot.exists()) {
+                                    User userAsk = Objects.requireNonNull(documentSnapshot.toObject(User.class));
+                                    updateMyRef(userAsk);
+                                }
+                            }
+                        });
+                        finish();
+                    }
+                })
+                .setNegativeButton("Non", null)
+                .show();
     }
 }

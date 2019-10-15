@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 /**
- * Created by Anne-Charlotte Vivant on 09/08/2019.
+ * Adapter for recyclerview of the Charte Activity
  */
 public class CharteAdapter extends PagerAdapter {
 

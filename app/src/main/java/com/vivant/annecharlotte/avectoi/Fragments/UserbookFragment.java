@@ -24,7 +24,6 @@ import com.vivant.annecharlotte.avectoi.R;
 import com.vivant.annecharlotte.avectoi.firestore.User;
 import com.vivant.annecharlotte.avectoi.firestore.UserHelper;
 
-
 public class UserbookFragment extends Fragment {
     private static final String TAG = "UserbookFragment";
 
@@ -33,6 +32,9 @@ public class UserbookFragment extends Fragment {
     private RecyclerView recyclerView;
     private Context context;
 
+    /**
+     * Fragment for Userbook Activity
+     */
     public UserbookFragment() {
         // Required empty public constructor
     }
@@ -65,31 +67,26 @@ public class UserbookFragment extends Fragment {
     // ------------------------
 
     public void setupRecyclerView() {
-
-        Log.d(TAG, "setupRecyclerView");
+        // We need only active accounts
         Query query;
-
         query = UserHelper.getAllUsers().whereEqualTo("activeAccount", true);
 
+        // iplementation of recyclerview
         FirestoreRecyclerOptions<User> options = new FirestoreRecyclerOptions.Builder<User>()
                 .setQuery(query, User.class)
                 .build();
 
         adapter = new UserbookAdapter(options);
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
 
-
-
+        // launch HeroDetailActivity on click on item
         adapter.setOnItemClickListener(new UserbookAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
-                //Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), HeroDetailActivity.class);
-                Log.d(TAG, "onItemClick: userId " +id);
                 intent.putExtra(HeroAdapter.HERO_ID, id);
                 startActivity(intent);
             }

@@ -15,14 +15,17 @@ import com.vivant.annecharlotte.avectoi.Adapters.CharteModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity for charte - launched only at the first use before creation of profil
+ */
 public class CharteActivity extends AppCompatActivity {
 
-    ViewPager viewPager;
-    CharteAdapter adapter;
-    List<CharteModel> models;
-    Integer[] colors = null;
-    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
-    Button okBtn;
+    private ViewPager viewPager;
+    private CharteAdapter adapter;
+    private List<CharteModel> models;
+    private Integer[] colors = null;
+    private ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+    private Button okBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +63,6 @@ public class CharteActivity extends AppCompatActivity {
                 } else {
                     viewPager.setBackgroundColor(colors[colors.length-1]);
                 }
-
             }
 
             @Override
@@ -73,7 +75,6 @@ public class CharteActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
 

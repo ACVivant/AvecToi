@@ -33,6 +33,9 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Activity for creating new event
+ */
 public class CreateEventActivity extends BaseActivity implements AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
     private static final String TAG = "CreateEventActivity";
 
@@ -52,7 +55,6 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     private boolean carToSave;
     private int themeToSave;
     private int numberOfHeroToSave=1;
-    private String eventId;
 
     private String userId;
     @Nullable
@@ -62,8 +64,7 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_event);
-
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close); // Pour mettre une petite croix à la place de la petite flèche en haut à gauche
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
         // NUMBER OF HEROS
         np = (NumberPicker) findViewById(R.id.np);
@@ -112,7 +113,6 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         carSwitch = (Switch) findViewById(R.id.event_car_switch);
 
         this.getCurrentUserFromFirestore();
-
     }
 
     @Override
@@ -170,13 +170,13 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         });
     }
 
+    // Store datas of new event
     public void saveData() {
         descriptionToSave = description.getText().toString();
         themeToSave = themeSpinner.getSelectedItemPosition();
         townToSave = town.getText().toString();
         carToSave = carSwitch.isChecked();
-        Log.d(TAG, "saveData: carToSave " + carToSave);
-        // la date de l'événement et le nombre de personnes sont déjà enregistrés via les méthodes d'affichage
+        // Date and number of users have already been registred in date picker and number picker display
 
         userId = this.getCurrentUser().getUid();
         dateToday = new Date();
@@ -186,17 +186,11 @@ public class CreateEventActivity extends BaseActivity implements AdapterView.OnI
         } else {
             createEvent();
         }
-
     }
 
+    // Creation f event in Firebase
     public void createEvent() {
-        Log.d(TAG, "createEvent");
-
         SosEventHelper.createEvent(themeToSave, descriptionToSave,townToSave, numberOfHeroToSave, modelCurrentUser, dateToday, dateToSave, carToSave).addOnFailureListener(this.onFailureListener());
         finish();
-    }
-
-    public void resetNewEvent() {
-        Toast.makeText(this, "annulation", Toast.LENGTH_LONG).show();
     }
 }

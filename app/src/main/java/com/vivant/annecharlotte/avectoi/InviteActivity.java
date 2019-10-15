@@ -16,6 +16,9 @@ import com.google.firebase.dynamiclinks.DynamicLink;
 import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 import com.google.firebase.dynamiclinks.ShortDynamicLink;
 
+/**
+ * manage invitation of a new user
+ */
 public class InviteActivity extends AppCompatActivity {
 
     private static final String TAG = "InviteActivity";
@@ -37,6 +40,7 @@ public class InviteActivity extends AppCompatActivity {
         });
     }
 
+    // Generate dynamic link
     private void createLink() {
         Log.e(TAG, "createLink: ");
         DynamicLink dynamicLink = FirebaseDynamicLinks.getInstance().createDynamicLink()
@@ -47,7 +51,6 @@ public class InviteActivity extends AppCompatActivity {
                 .buildDynamicLink();
 
         Uri dynamicLinkUri = dynamicLink.getUri();
-        Log.d(TAG, "createLink: dynamicLink " + dynamicLinkUri.toString());
 
         Task<ShortDynamicLink> shortLinkTask = FirebaseDynamicLinks.getInstance().createDynamicLink()
                 .setLongLink( dynamicLinkUri)
@@ -59,7 +62,6 @@ public class InviteActivity extends AppCompatActivity {
                             // Short link created
                             Uri shortLink = task.getResult().getShortLink();
                             Uri flowchartLink = task.getResult().getPreviewLink();
-                            Log.d(TAG, "onComplete: shortLink " + shortLink.toString());
 
                             Intent intent = new Intent();
                             intent.setAction(Intent.ACTION_SEND);

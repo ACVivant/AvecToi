@@ -7,7 +7,7 @@ import java.util.List;
 import androidx.annotation.Nullable;
 
 /**
- * Created by Anne-Charlotte Vivant on 24/07/2019.
+ * Class describing Events Collection
  */
 public class SosEvent {
 
@@ -115,8 +115,8 @@ public class SosEvent {
     }
 
     public List<User> getUserHeroList() {
-    return userHeroList;
-}
+        return userHeroList;
+    }
 
     public void setUserHeroList(List<User> userHeroList) {
         this.userHeroList = userHeroList;

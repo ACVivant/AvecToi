@@ -27,6 +27,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * manage update event activity
+ */
 public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.DeleteHeroListener{
     private static final String TAG = "UpdateEventActivity";
     public static final String NO_PHOTO = "noPhoto";
@@ -43,7 +46,6 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
 
     private List<User> listHeros = new ArrayList<>();
     private List<String> listHerosId = new ArrayList<>();
-    private User userHero;
     private SosEvent thisEvent;
     private int toFindHeros;
 
@@ -51,7 +53,6 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
     private int newNumberHeros;
     private int alreadyNumberHeros;
     private String heroToDeleteId;
-    private List<String> herosToDeleteList;
     private Date dateToday;
 
     // RecyclerView
@@ -79,8 +80,11 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         layoutlinks();
         updateView(eventId);
         initRecyclerView();
-
     }
+
+    //-----------------------------------
+    // Update UI
+    //-----------------------------------
 
     public void layoutlinks() {
         eventBtn = findViewById(R.id.update_event_button);
@@ -92,7 +96,6 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         eventNumberWaited = findViewById(R.id.update_event_number_total);
         recyclerView = findViewById(R.id.update_event_user_heros_rv);
 
-
         validate = findViewById(R.id.update_event_ok_button);
         delete = findViewById(R.id.update_event_delete_button);
 
@@ -102,7 +105,6 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
                 saveData();
             }
         });
-
     }
 
     public void updateView(String eid) {
@@ -238,11 +240,44 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         recyclerView.setLayoutManager(layoutManager);
         UpdateAdapter adapter = new UpdateAdapter(this, mNames, mImages, mHeroId);
         recyclerView.setAdapter(adapter);
+    }
 
+    @Override
+    public int getFragmentLayout() {
+        return R.layout.activity_update_event;
     }
 
     //---------------------------------------------------------
-    // Enregistrement des modifications
+    // Delete hero
+    //---------------------------------------------------------
+
+    @Override
+    public void heroToDelete(String userId, final int position) {
+        // User heros are stored twice: by id and by User, we have to delete twice
+        heroToDeleteId = userId;
+        listHerosId.remove(heroToDeleteId);
+        SosEventHelper.updateUserHerosIdList(listHerosId, eventId);
+
+        UserHelper.getUser(heroToDeleteId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                User userToDelete = Objects.requireNonNull(documentSnapshot.toObject(User.class));
+                listHeros.remove(position);
+                SosEventHelper.updateUserHerosList(listHeros, eventId);
+
+                String tokenToDelete = userToDelete.getUserToken();
+                SosEventHelper.updateDeletedHeroToken(tokenToDelete, eventId);
+
+                // update number of heros wanted
+                alreadyNumberHeros -=1;
+
+                saveData();
+            }
+        });
+    }
+
+    //---------------------------------------------------------
+    // Save update
     //---------------------------------------------------------
 
     public void saveData() {
@@ -255,11 +290,6 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
     }
 
     public void updateEvent() {
-        Log.d(TAG, "createEvent");
-        Log.d(TAG, "updateEvent: description " + descriptionToSave);
-        Log.d(TAG, "updateEvent: newNumberHeros " + newNumberHeros);
-        Log.d(TAG, "updateEvent:newToken toFindHeros " + toFindHeros);
-        Log.d(TAG, "updateEvent: dateToday " + dateToday);
 
         SosEventHelper.updateEventDescription(descriptionToSave, eventId);
         SosEventHelper.updateEventNumberHeroWanted(newNumberHeros, eventId);
@@ -267,45 +297,10 @@ public class UpdateEventActivity extends BaseActivity implements UpdateAdapter.D
         SosEventHelper.updateEventDateCreated(dateToday, eventId);
 
         if (newNumberHeros>alreadyNumberHeros) {
-            Log.d(TAG, "updateEvent: newNumberHeros " + newNumberHeros);
             SosEventHelper.updateMissionOk(false, eventId);
         }
 
         Intent intent = new Intent(UpdateEventActivity.this, MainActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public int getFragmentLayout() {
-        return R.layout.activity_update_event;
-    }
-
-    @Override
-    public void heroToDelete(String userId, final int position) {
-        Log.d(TAG, "heroToDelete: on passe par le listener " + userId);
-        // Les héros sont stockés deux fois : par leurs id et par User
-        heroToDeleteId = userId;
-        listHerosId.remove(heroToDeleteId);
-        SosEventHelper.updateUserHerosIdList(listHerosId, eventId);
-
-        UserHelper.getUser(heroToDeleteId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                User userToDelete = Objects.requireNonNull(documentSnapshot.toObject(User.class));
-               // listHeros.remove(userToDelete); // Cette ligne n'a aucun effet
-                Log.d(TAG, "onSuccess: position " + position);
-                listHeros.remove(position);
-                SosEventHelper.updateUserHerosList(listHeros, eventId);
-
-                String tokenToDelete = userToDelete.getUserToken();
-                Log.d(TAG, "onSuccess:newToken  tokenToDelete " + tokenToDelete );
-                SosEventHelper.updateDeletedHeroToken(tokenToDelete, eventId);
-
-                alreadyNumberHeros -=1;
-
-                saveData();
-            }
-        });
-
     }
 }

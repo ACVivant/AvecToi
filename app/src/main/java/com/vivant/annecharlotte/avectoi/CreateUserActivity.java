@@ -30,6 +30,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Create new user - launched only if user has accepted charte of application
+ */
 public class CreateUserActivity extends BaseActivity implements AdapterView.OnItemSelectedListener{
 
     private static final String TAG = "CreateUserActivity";
@@ -50,13 +53,13 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
 
     private Context context;
 
-    List<String> listUserSP = new ArrayList<>();
-    List<Integer> listUserSPInt = new ArrayList<>();
+    private List<String> listUserSP = new ArrayList<>();
+    private List<Integer> listUserSPInt = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate");
+
         setContentView(R.layout.activity_create_user);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
         context = this.getBaseContext();
@@ -71,8 +74,12 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         return R.layout.activity_create_user;
     }
 
+
+    //----------------------------------------
+    // Update UI
+    //----------------------------------------
+
     public void layoutLinks() {
-        Log.d(TAG, "layoutLinks");
         userImage = findViewById(R.id.create_face);
         userNameTV = findViewById(R.id.create_name);
         userEmailTV = findViewById(R.id.create_email);
@@ -211,24 +218,22 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         });
     }
 
+    // add or remove super power of user
     public boolean actionClick(boolean data, Button button, int sp) {
 
         if (!data) {
             button.setBackground(context.getResources().getDrawable(R.drawable.button_background2));
             listUserSP.add(String.valueOf(sp));
-            Log.d(TAG, "actionClick: listUserSP add " + listUserSP);
         } else {
             button.setBackground(context.getResources().getDrawable(R.drawable.button_background));
             listUserSP.remove(String.valueOf(sp));
-            Log.d(TAG, "actionClick: listUserSP remove " + listUserSP);
         }
         data =!data;
-        Log.d(TAG, "actionClick: data " +data);
         return data;
     }
 
+    //update UI when launching activity - datas stored in Firebase authentication (and now Firebase database)
 public void updateUIwhenCreating() {
-    Log.d(TAG, "updateUIwhenCreating");
 
     if (this.getCurrentUser() != null){
         //Get picture URL from Firebase
@@ -248,14 +253,13 @@ public void updateUIwhenCreating() {
         userNameTV.setText(username);
         userEmailTV.setText(email);
 
-        Log.d(TAG, "updateUIwhenCreating: userId " + userId);
         //Update views with super powers data
         launchSuperPowerData(userId);
     }
 }
 
+// update UI with datas stored in Firebase Databse
 public void launchSuperPowerData(String uid) {
-    Log.d(TAG, "launchSuperPowerData");
 
     UserHelper.getUser(uid).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
         @Override
@@ -267,16 +271,13 @@ public void launchSuperPowerData(String uid) {
                 }
                 for (int i=0; i<booleanTab.length; i++) {
                     if (listUserSP.contains(String.valueOf(i))) {
-                        Log.d(TAG, "onSuccess: contains");
                         buttonTab[i].setBackground(getResources().getDrawable(R.drawable.button_background2));
                         booleanTab[i]=true;
                     } else {
-                        Log.d(TAG, "onSuccess: not contains");
                         buttonTab[i].setBackground(getResources().getDrawable(R.drawable.button_background));
                         booleanTab[i]=false;
                     }
                 }
-                Log.d(TAG, "onSuccess: booleanData " + booleanTab);
             }
 
             String tel =  Objects.requireNonNull(documentSnapshot.toObject(User.class)).getUserPhone();
@@ -289,8 +290,12 @@ public void launchSuperPowerData(String uid) {
     });
 }
 
+    //----------------------------------------
+    // Store data
+    //----------------------------------------
+//save user profile data in Firebase
 public void saveData() {
-    Log.d(TAG, "saveData: userTel " + userTel.getText().toString());
+
         if (userTel.getText().toString().trim().equals("")||userTown.getText().toString().trim().equals("") || userDescription.getText().toString().trim().equals("") ||
         userTel.getText()==null || userTown.getText()==null || userDescription.getText() ==null) {
             Toast.makeText(this, R.string.phone_or_town_missing, Toast.LENGTH_LONG).show();
@@ -302,12 +307,10 @@ public void saveData() {
                 townData = userTown.getText().toString();
                 descriptionData = userDescription.getText().toString();
 
-                Log.d(TAG, "updateLikeInFirebase: idUser " + userId);
                 UserHelper.getUser(userId).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            Log.d(TAG, "onSuccess: documentSnapshot exists");
                             updateSuperPower(userId);
                             updateTelAndTown(userId);
                             updateToken(userId);
@@ -320,6 +323,7 @@ public void saveData() {
         }
 }
 
+// Save token (used for notifications)
     private void updateToken(String uid) {
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(CreateUserActivity.this,  new OnSuccessListener<InstanceIdResult>() {
             @Override
@@ -332,6 +336,7 @@ public void saveData() {
 
     }
 
+    // save user super power
     public void updateSuperPower(String uid) {
         listUserSPInt = new ArrayList<>();
         for (int i=0;i<listUserSP.size();i++) {
@@ -340,18 +345,25 @@ public void saveData() {
         UserHelper.updateUserSPList(listUserSPInt, uid);
 }
 
+// update user tel and town
 public void updateTelAndTown(String uid) {
         UserHelper.updateTel(telData, uid);
         UserHelper.updateTown(townData, uid);
         UserHelper.updateDescription(descriptionData, uid);
 }
 
+    //----------------------------------------
+    // Launch Main Activity
+    //----------------------------------------
 
 public void launchMainActivity() {
         Intent intent = new Intent(CreateUserActivity.this, MainActivity.class);
         startActivity(intent);
 }
 
+    //----------------------------------------
+    // Menu and adapter
+    //----------------------------------------
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 

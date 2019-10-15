@@ -25,7 +25,9 @@ import com.vivant.annecharlotte.avectoi.UserEventsActivity;
 import com.vivant.annecharlotte.avectoi.firestore.SosEvent;
 import com.vivant.annecharlotte.avectoi.firestore.SosEventHelper;
 
-
+/**
+ * Fragment for Main Activity
+ */
 public class MainAllFragment extends Fragment {
 
     private static final String TAG = "MainAllFragment";
@@ -57,50 +59,44 @@ public class MainAllFragment extends Fragment {
         recyclerView = view.findViewById(R.id.events_fragment_recycler_view);
 
         setupRecyclerView();
-
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     // ------------------------
     // RECYCLERVIEW
     // ------------------------
-
     public void setupRecyclerView() {
-
-        Log.d(TAG, "setupRecyclerView");
         Query query;
 
+        // Query are adapted according to necessity to show all events or only those which still need heros
+        // Index depends on click of user
         if (whichIndex.equals("1")) {
             query = SosEventHelper.getAllEventsFromToday().whereEqualTo("missionOK", false);
         } else {
             query = SosEventHelper.getAllEventsFromToday();
         }
 
-
-
+        // implementation of recyclerview
         FirestoreRecyclerOptions<SosEvent> options = new FirestoreRecyclerOptions.Builder<SosEvent>()
                 .setQuery(query, SosEvent.class)
                 .build();
 
         adapter = new EventAdapter(options);
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
 
+        // open EventDetailActivity on click on item
         adapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 String id = documentSnapshot.getId();
-                //Toast.makeText(MainActivity.this, "doc id " + id, Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), EventDetailActivity.class);
-                Log.d(TAG, "onItemClick: eventId " +id);
                 intent.putExtra(EVENT_ID, id);
                 intent.putExtra(MainActivity.FROM_ID, UserEventsActivity.ALL_INDEX);
                 startActivity(intent);
