@@ -161,7 +161,7 @@
 
 
         <Button
-            android:id="@+id/create_user_SP_ironing"
+            android:id="@+id/create_user_SP_0"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:layout_marginStart="@dimen/default_margin"
@@ -177,7 +177,7 @@
             app:layout_constraintTop_toBottomOf="@+id/create_user_intro_SP" />
 
         <Button
-            android:id="@+id/create_user_SP_household"
+            android:id="@+id/create_user_SP_1"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -186,12 +186,12 @@
             android:text="@string/create_SP_1"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_ironing"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_ironing"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_0"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_0"
             android:layout_marginStart="@dimen/default_margin" />
 
         <Button
-            android:id="@+id/create_user_SP_shopping"
+            android:id="@+id/create_user_SP_2"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -200,12 +200,12 @@
             android:text="@string/create_SP_2"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_household"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_household"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_1"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_1"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_cooking"
+            android:id="@+id/create_user_SP_3"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -214,12 +214,12 @@
             android:text="@string/create_SP_3"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_shopping"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_shopping"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_2"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_2"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_driving"
+            android:id="@+id/create_user_SP_4"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -228,12 +228,12 @@
             android:text="@string/create_SP_4"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/create_user_SP_ironing"
-            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_ironing"
+            app:layout_constraintStart_toStartOf="@+id/create_user_SP_0"
+            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_0"
             android:layout_marginTop="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_gardening"
+            android:id="@+id/create_user_SP_5"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -242,12 +242,12 @@
             android:text="@string/create_SP_5"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_driving"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_driving"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_4"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_4"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_diy"
+            android:id="@+id/create_user_SP_6"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -256,12 +256,12 @@
             android:text="@string/create_SP_6"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_gardening"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_gardening"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_5"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_5"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_works"
+            android:id="@+id/create_user_SP_7"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -270,12 +270,12 @@
             android:text="@string/create_SP_7"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_diy"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_diy"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_6"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_6"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_relocation"
+            android:id="@+id/create_user_SP_8"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -284,12 +284,12 @@
             android:text="@string/create_SP_8"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/create_user_SP_driving"
-            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_driving"
+            app:layout_constraintStart_toStartOf="@+id/create_user_SP_4"
+            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_4"
             android:layout_marginTop="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_reading"
+            android:id="@+id/create_user_SP_9"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -298,12 +298,12 @@
             android:text="@string/create_SP_9"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_relocation"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_relocation"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_8"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_8"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_babysitting"
+            android:id="@+id/create_user_SP_10"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -312,12 +312,12 @@
             android:text="@string/create_SP_10"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_reading"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_reading"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_9"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_9"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_sewing"
+            android:id="@+id/create_user_SP_11"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -326,12 +326,12 @@
             android:text="@string/create_SP_11"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_babysitting"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_babysitting"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_10"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_10"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_flowering"
+            android:id="@+id/create_user_SP_12"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -340,12 +340,12 @@
             android:text="@string/create_SP_12"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="@+id/create_user_SP_relocation"
-            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_relocation"
+            app:layout_constraintStart_toStartOf="@+id/create_user_SP_8"
+            app:layout_constraintTop_toBottomOf="@+id/create_user_SP_8"
             android:layout_marginTop="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_tutoring"
+            android:id="@+id/create_user_SP_13"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -354,12 +354,12 @@
             android:text="@string/create_SP_13"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_flowering"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_flowering"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_12"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_12"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_company"
+            android:id="@+id/create_user_SP_14"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -368,12 +368,12 @@
             android:text="@string/create_SP_14"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_tutoring"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_tutoring"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_13"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_13"
             android:layout_marginStart="@dimen/default_margin"/>
 
         <Button
-            android:id="@+id/create_user_SP_admin"
+            android:id="@+id/create_user_SP_15"
             android:layout_width="86dp"
             android:layout_height="86dp"
             android:background="@drawable/button_background"
@@ -382,8 +382,8 @@
             android:text="@string/create_SP_15"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            app:layout_constraintStart_toEndOf="@+id/create_user_SP_company"
-            app:layout_constraintTop_toTopOf="@+id/create_user_SP_company"
+            app:layout_constraintStart_toEndOf="@+id/create_user_SP_14"
+            app:layout_constraintTop_toTopOf="@+id/create_user_SP_14"
             android:layout_marginStart="@dimen/default_margin"
             android:layout_marginBottom="@dimen/default_margin"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

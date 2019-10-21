@@ -162,5 +162,5 @@
     <string name="invite_text">"Vous connaissez quelqu'un qui aimerait rejoindre Super Moi et en qui vous avez toute confiance? Vous souhaitez proposer à quelqu'un de rejoindre Super Moi? Le pouvoir est entre vos mains!!!"</string>
     <string name="invite_text2">"N'oubliez pas que Super Moi est une application de proximité qui cherche à mettre en lien des gens appartenant à la même communauté. N'invitez que des personnes correspondant à cette description.</string>
     <string name="invite_text3"> "Il vous suffit de cliquer sur le bouton. Votre invité recevra un lien qui lui permettra de créer son compte sur Super Moi et de révéler ses Supers Pouvoirs!!!"</string>
-
+    <string name="invite_btn">"Lancer l'invitation</string>
 </resources>

@@ -54,7 +54,7 @@
         android:id="@+id/invite_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lancer l'invitation"
+        android:text="@string/invite_btn"
         android:layout_above="@+id/invite_hero_img"
         android:layout_marginBottom="@dimen/default_large_margin"
         android:background="@drawable/button_background"

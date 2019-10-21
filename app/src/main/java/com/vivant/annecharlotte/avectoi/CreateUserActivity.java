@@ -88,22 +88,22 @@ public class CreateUserActivity extends BaseActivity implements AdapterView.OnIt
         userTown = findViewById(R.id.create_town);
         userDescription = findViewById(R.id.create_user_description);
 
-        buttonTab[0] = findViewById(R.id.create_user_SP_ironing);
-        buttonTab[1] = findViewById(R.id.create_user_SP_household);
-        buttonTab[2] = findViewById(R.id.create_user_SP_shopping);
-        buttonTab[3] = findViewById(R.id.create_user_SP_cooking);
-        buttonTab[4] = findViewById(R.id.create_user_SP_driving);
-        buttonTab[5] = findViewById(R.id.create_user_SP_gardening);
-        buttonTab[6] = findViewById(R.id.create_user_SP_diy);
-        buttonTab[7] = findViewById(R.id.create_user_SP_works);
-        buttonTab[8] = findViewById(R.id.create_user_SP_relocation);
-        buttonTab[9] = findViewById(R.id.create_user_SP_reading);
-        buttonTab[10] = findViewById(R.id.create_user_SP_babysitting);
-        buttonTab[11] = findViewById(R.id.create_user_SP_sewing);
-        buttonTab[12] = findViewById(R.id.create_user_SP_flowering);
-        buttonTab[13] = findViewById(R.id.create_user_SP_tutoring);
-        buttonTab[14] = findViewById(R.id.create_user_SP_company);
-        buttonTab[15] = findViewById(R.id.create_user_SP_admin);
+        buttonTab[0] = findViewById(R.id.create_user_SP_0);
+        buttonTab[1] = findViewById(R.id.create_user_SP_1);
+        buttonTab[2] = findViewById(R.id.create_user_SP_2);
+        buttonTab[3] = findViewById(R.id.create_user_SP_3);
+        buttonTab[4] = findViewById(R.id.create_user_SP_4);
+        buttonTab[5] = findViewById(R.id.create_user_SP_5);
+        buttonTab[6] = findViewById(R.id.create_user_SP_6);
+        buttonTab[7] = findViewById(R.id.create_user_SP_7);
+        buttonTab[8] = findViewById(R.id.create_user_SP_8);
+        buttonTab[9] = findViewById(R.id.create_user_SP_9);
+        buttonTab[10] = findViewById(R.id.create_user_SP_10);
+        buttonTab[11] = findViewById(R.id.create_user_SP_11);
+        buttonTab[12] = findViewById(R.id.create_user_SP_12);
+        buttonTab[13] = findViewById(R.id.create_user_SP_13);
+        buttonTab[14] = findViewById(R.id.create_user_SP_14);
+        buttonTab[15] = findViewById(R.id.create_user_SP_15);
 
         buttonTab[0].setOnClickListener(new View.OnClickListener() {
             @Override
