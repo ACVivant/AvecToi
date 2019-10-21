@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- To personnalize (all communities)-->
     <string name="app_name">Super Moi - Communauté</string>
@@ -45,7 +46,7 @@
     <!-- not to change -->
     <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-       <!-- Welcome -->
+    <!-- Welcome -->
     <string name="app_title">Super Moi</string>
     <string name="main_activity_description">"L'appli qui révèle vos super-pouvoirs!"</string>
     <string name="connexion">"J'ai déjà un compte"</string>
@@ -143,7 +144,6 @@
     <!-- NOTIFICATION -->
     <string name="notification_hero_title">"Des héros volent à votre secours"</string>
     <string name="notification_event_title">"Nouvelles fraîches!"</string>
-    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="dont_forget">"N'oubliez pas! Vous vous êtes proposé comme Super Héros pour une mission demain!"</string>
     <string name="new_event_for_you">"Une nouvelle mission nécessitant vos super pouvoirs a été mise en ligne récemment."</string>
 

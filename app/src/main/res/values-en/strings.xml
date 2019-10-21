@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- To personnalize (all communities)-->
+    <string name="app_name">Super Me - Community</string>
+    <string name="welcome_title_with">"Saint-Sébastien parish"</string>
+    <string name="welcome_introduction">"Small personalized text presenting the community; 150 characters is not bad if you want it to be read and it fits in the box!"</string>
+
+    <!-- To adapt if you want to adapt super powers // change strings:  create_SP_? / event_theme[?] and drawables: ic_topic_? -->
+    <string name="create_SP_0">"Do the ironing"</string>
+    <string name="create_SP_1">"To do the housework"</string>
+    <string name="create_SP_2">"Shopping"</string>
+    <string name="create_SP_3">"To cook"</string>
+    <string name="create_SP_4">"To drive"</string>
+    <string name="create_SP_5">"Maintain the garden"</string>
+    <string name="create_SP_6">"Do some crafts"</string>
+    <string name="create_SP_7">"Do work"</string>
+    <string name="create_SP_8">"Help move"</string>
+    <string name="create_SP_9">"To read"</string>
+    <string name="create_SP_10">"Babysitting"</string>
+    <string name="create_SP_11">"Sewing"</string>
+    <string name="create_SP_12">"Make bouquets"</string>
+    <string name="create_SP_13">"Help with homework"</string>
+    <string name="create_SP_14">"Keep company"</string>
+    <string name="create_SP_15">"Make administrative steps"</string>
+
+    <string-array name="event_theme">
+        <item>"Do the ironing"</item>
+        <item>"To do the housework"</item>
+        <item>"Shopping"</item>
+        <item>"To cook"</item>
+        <item>"To drive"</item>
+        <item>"Maintain the garden"</item>
+        <item>"Do some crafts"</item>
+        <item>"Do work"</item>
+        <item>"Help move"</item>
+        <item>"To read"</item>
+        <item>"Babysitting"</item>
+        <item>"Sewing"</item>
+        <item>"Make bouquets"</item>
+        <item>"Help with homework"</item>
+        <item>"Keep company"</item>
+        <item>"Make administrative steps"</item>
+    </string-array>
+
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- not to change -->
+    <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- Welcome -->
+    <string name="app_title">Super Me</string>
+    <string name="main_activity_description">"The app that reveals your super powers!"</string>
+    <string name="connexion">"I already have an account"</string>
+    <string name="new_user">"I would like to create an account"</string>
+    <string name="error_unknown_error">"An unknown error has occurred&#8230;"</string>
+    <string name="error_no_internet">"No internet connection"</string>
+    <string name="error_authentication_canceled">"Authentication canceled"</string>
+    <string name="error_you_need_invitation">"You need an invitation to create an account and use Super Me"</string>
+
+    <!-- Charte activity -->
+    <string name="charte1_title">"All together, everithing is possible!"</string>
+    <string name="charte2_title">"We all have super powers"</string>
+    <string name="charte2_text">"Super Me works on the principle of reciprocity. You can ask for help as much as you want, provided you are ready to help as well!!!"</string>
+    <string name="charte3_title">"A superhero is never missing"</string>
+    <string name="charte3_text">"Remember to actually go for the service for which you are hired or to notify as soon as possible if you have an impediment."</string>
+
+    <!-- Drawer Menu -->
+    <string name="drawer_profil_title">"Me, good and strong"</string>
+    <string name="drawer_profil_description">"My description"</string>
+    <string name="drawer_innedhelp_events">"I asked for help"</string>
+    <string name="drawer_iamhero_events">"I offered my help"</string>
+    <string name="drawer_sponsorship">"And the others too!"</string>
+    <string name="drawer_users">"Superhero Directory"</string>
+    <string name="drawer_sponsorship_invitation">"Invite to join Super Me"</string>
+    <string name="drawer_quit">"Delete my account"</string>
+    <string name="navigation_drawer_open">"Open menu"</string>
+    <string name="navigation_drawer_close">"Close menu"</string>
+
+    <!-- CreateUser -->
+    <string name="create_name">"Name"</string>
+    <string name="create_email">"Email"</string>
+    <string name="create_phone">"0606060606"</string>
+    <string name="create_phone_intro">"My phone number: "</string>
+    <string name="create_description_title">"Who am I?"</string>
+    <string name="create_description_hint">"I tell in a few words who I am."</string>
+    <string name="create_validate">"Go!</string>
+    <string name="info_no_email_found">"No email address"</string>
+    <string name="info_no_username_found">"No username"</string>
+    <string name="create_community">"I live in "</string>
+    <string name="phone_or_town_missing">"You must enter a phone number, a city and a small description."</string>
+    <string name="SP_missing">"You have to reveal at least one super power."</string>
+    <string name="create_SP">"My super powers"</string>
+
+    <!-- HeroDetail -->
+    <string name="hero_phone_intro">"Phone: "</string>
+    <string name="hero_description_title">"Who is he/she?"</string>
+    <string name="hero_SP">"His/her super powers"</string>
+    <string name="hero_community">"lives in "</string>
+    <string name="hero_ref_intro">"This hero has already helped: "</string>
+    <string name="hero_no_ref">"No commitment yet, but it will come!!!"</string>
+    <string name="send_email">"Which messaging do you want to use?"</string>
+    <string name="permission_needed">"We do not have permission"</string>
+    <string name="tel_missing">"We do not have the phone number."</string>
+
+    <!-- CREATE EVENT -->
+    <string name="create_event">"Create a mission form"</string>
+    <string name="event_theme_title">"It's a mission like&#8230;"</string>
+    <string name="event_description_title">"In a few lines, your mission will be: "</string>
+    <string name="event_description">"I describe in a few lines how I need help and under what conditions the mission can take place."</string>
+    <string name="event_town_title">"Place where the mission will take place: "</string>
+    <string name="event_town_expl">"Note the name of the city or \ "home \" if the mission can be done at the hero's own"</string>
+    <string name="event_town">"Name of the city or village"</string>
+    <string name="event_date">"Date of the mission"</string>
+    <string name="event_numberHero">"Number of heroes needed"</string>
+    <string name="event_car">"I can provide transportation."</string>
+    <string name="event_validate">"Save"</string>
+    <string name="event_reset">"Cancel"</string>
+    <string name="event_info_missing">"You have to fill in all the fields."</string>
+
+    <!-- CARD EVENT -->
+    <string name="SOS_CV_intro">"For: "</string>
+    <string name="SOS_CV_town">"in: "</string>
+
+    <!-- MAIN ACTIVITY -->
+    <string name="show_all_events">"All missions"</string>
+    <string name="my_events">"My missions"</string>
+    <string name="delete_account_message">"You will delete your account. Warning! This action is irreversible."</string>
+    <string name="delete_account_validation">"I understood!"</string>
+    <string name="delete_account_reset">"No! Cancel"</string>
+    <string name="deleted_account">"Account deleted"</string>
+
+    <!-- DETAIL EVENT ACTIVITY -->
+    <string name="detail_event_title">"Your mission if you accept it&#8230;"</string>
+    <string name="detail_event_title2">"You will fly to the rescue of: "</string>
+    <string name="detail_event_validate">"Go! This mission is for me."</string>
+    <string name="detail_event_number_heros_already">"Heroes already willing: "</string>
+    <string name="detail_event_number_heros_not_found">"Number of heroes still to find: "</string>
+    <string name="detail_event_number_heros_total_to_find">"Total number of heroes"</string>
+    <string name="detail_event_car_yes">"If necessary, transportation is assured."</string>
+    <string name="detail_event_car_no">"Transportation can not be assured."</string>
+    <string name="detail_event_date_created_intro">"Update of the card: "</string>
+    <string name="detail_event_confirmation_title">"Confirmation"</string>
+    <string name="detail_event_hero_confirmation">"You confirm that you propose to carry out this mission?"</string>
+
+    <!-- NOTIFICATION -->
+    <string name="notification_hero_title">"Heroes fly to your rescue"</string>
+    <string name="notification_event_title">"Fresh news!"</string>
+    <string name="dont_forget">"Do not forget! You volunteered as a Superhero for a mission tomorrow!"</string>
+    <string name="new_event_for_you">"A new mission requiring your super powers has been posted recently."</string>
+
+    <!-- USER EVENTS ACTIVITY -->
+    <string name="iamhero_title">"I pledged to fly to the rescue of "</string>
+    <string name="ineedhelp_title">"I asked for help "</string>
+
+    <!-- UPDATE EVENT -->
+    <string name="update_expl_text">"You can change the description of the event, the number of heroes sought and delete a hero who had proposed. Other changes change the characteristics of the mission too much. To change them you will have to delete this mission and recreate another&#8230; and look for new heroes"</string>
+    <string name="update_hero_delete_text">"You will remove this hero from the list."</string>
+    <string name="update_hero_delete_title">"Warning!"</string>
+
+    <!-- INVITE ACTIVITY-->
+    <string name="invite_text">"You know someone who would like to join Super Me and whom do you trust? Would you like to suggest someone to join Super Moi? The power is in your hands!!!"</string>
+    <string name="invite_text2">"Remember that Super Me is a local application that seeks to connect people from the same community. Only invite people who match this description.</string>
+    <string name="invite_text3"> "Just click on the button. Your guest will receive a link that will allow him to create his account on Super Me and reveal his Super Powers
+!!!"</string>
+    <string name="invite_btn">"Launch the invitation</string>
+</resources>
