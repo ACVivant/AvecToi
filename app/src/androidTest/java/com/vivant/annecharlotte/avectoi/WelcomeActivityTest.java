@@ -11,7 +11,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 /**
- * Created by Anne-Charlotte Vivant on 14/10/2019.
+ * Test Welcome Activity display
  */
 public class WelcomeActivityTest {
     @Rule

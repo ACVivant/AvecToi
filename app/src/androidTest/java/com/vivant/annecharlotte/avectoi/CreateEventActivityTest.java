@@ -12,7 +12,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 /**
- * Created by Anne-Charlotte Vivant on 17/10/2019.
+ * Test CreateEventActivity display
  */
 public class CreateEventActivityTest {
         @Rule

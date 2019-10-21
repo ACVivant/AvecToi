@@ -8,11 +8,10 @@ import androidx.test.rule.ActivityTestRule;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 /**
- * Created by Anne-Charlotte Vivant on 17/10/2019.
+ * Test CreateUserActivity display
  */
 public class CreateUserActivityTest {
     @Rule

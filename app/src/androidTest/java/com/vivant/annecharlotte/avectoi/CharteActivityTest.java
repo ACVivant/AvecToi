@@ -11,7 +11,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 /**
- * Created by Anne-Charlotte Vivant on 17/10/2019.
+ * Test Charte Activity display
  */
 public class CharteActivityTest {
     @Rule
