@@ -107,7 +107,7 @@
     <string name="event_description_title">"In a few lines, your mission will be: "</string>
     <string name="event_description">"I describe in a few lines how I need help and under what conditions the mission can take place."</string>
     <string name="event_town_title">"Place where the mission will take place: "</string>
-    <string name="event_town_expl">"Note the name of the city or \ "home \" if the mission can be done at the hero's own"</string>
+    <string name="event_town_expl">"Note the name of the city or \"home \" if the mission can be done at the hero's own"</string>
     <string name="event_town">"Name of the city or village"</string>
     <string name="event_date">"Date of the mission"</string>
     <string name="event_numberHero">"Number of heroes needed"</string>
